@@ -127,7 +127,7 @@ public class TimerGoController {
 						java.time.Duration dur2 = java.time.Duration.between(time,
 								 programm.getStartTermin().plusMinutes(programm.getLange()));
 
-						//int hours = time.getHour()
+						// int hours = time.getHour()
 						//		- programm.getStartTermin().getHour();
 						
 						int hours = (int)dur.toHours();
