@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<programms>
+    <programm>
+        <lange>45</lange>
+        <produktVerant>Lisa</produktVerant>
+        <sendeVerant>Homer</sendeVerant>
+        <sendungName>The Simpsons</sendungName>
+        <startTermin>2014-11-09T19:30</startTermin>
+    </programm>
+    <programm>
+        <lange>60</lange>
+        <produktVerant>Barney</produktVerant>
+        <sendeVerant>Robin</sendeVerant>
+        <sendungName>HIMYM</sendungName>
+        <startTermin>2014-11-09T20:30</startTermin>
+    </programm>
+    <programm>
+        <lange>60</lange>
+        <produktVerant>Jesse Pinkman</produktVerant>
+        <sendeVerant>Walter White</sendeVerant>
+        <sendungName>Breaking Bad</sendungName>
+        <startTermin>2014-11-11T21:30</startTermin>
+    </programm>
+    <programm>
+        <lange>30</lange>
+        <produktVerant>Zeuberg</produktVerant>
+        <sendeVerant>Bender</sendeVerant>
+        <sendungName>Futurama</sendungName>
+        <startTermin>2014-11-20T19:00</startTermin>
+    </programm>
+    <programm>
+        <lange>60</lange>
+        <produktVerant>Monica</produktVerant>
+        <sendeVerant>Chendler</sendeVerant>
+        <sendungName>Friends</sendungName>
+        <startTermin>2014-11-20T21:30</startTermin>
+    </programm>
+    <programm>
+        <lange>20</lange>
+        <produktVerant>Maria LaGuerta</produktVerant>
+        <sendeVerant>Debra Morgan</sendeVerant>
+        <sendungName>Dexter</sendungName>
+        <startTermin>2014-11-17T18:27</startTermin>
+    </programm>
+</programms>

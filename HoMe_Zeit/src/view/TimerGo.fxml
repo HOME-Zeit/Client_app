@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.embed.swing.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="616.0" prefWidth="1037.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TimerGoController">
+   <children>
+      <Label fx:id="timeStartEndAfter" layoutX="2.0" layoutY="158.0" prefHeight="301.0" prefWidth="1030.0" styleClass="label-timer" textOverrun="CENTER_ELLIPSIS" AnchorPane.bottomAnchor="157.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="158.0">
+         <font>
+            <Font name="Segoe UI Semibold" size="96.0" />
+         </font>
+      </Label>
+      <Label fx:id="programInfo" layoutX="14.0" layoutY="14.0" styleClass="label-timerheader" text="Sendung | Termin | Länge" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <Label fx:id="currTime" layoutX="726.0" layoutY="14.0" styleClass="label-timercurr" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <ProgressBar layoutX="14.0" layoutY="437.0" opacity="0.75" prefHeight="104.0" prefWidth="743.0" progress="0.46" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="20.0" />
+      <Button layoutX="433.0" layoutY="359.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="139.0" text="Main window" AnchorPane.bottomAnchor="140.0" AnchorPane.rightAnchor="210.0" />
+      <Button layoutX="670.0" layoutY="359.0" mnemonicParsing="false" text="Next Program" AnchorPane.bottomAnchor="140.0" AnchorPane.rightAnchor="20.0" />
+   </children>
+</AnchorPane>
