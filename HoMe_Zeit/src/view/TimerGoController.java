@@ -51,7 +51,7 @@ public class TimerGoController {
 	private boolean okClicked = false;
 
 	/**
-	 * To show dif. times
+	 * To show different times
 	 */
 	private DateTimeFormatter formatter1 = DateTimeFormatter
 			.ofPattern("HH:mm:ss");
