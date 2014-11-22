@@ -148,7 +148,7 @@ public class TimerGoController {
 							timeStartEndAfter.setText("- "
 									+LocalTime.of(dur1Hours, dur1Minutes, dur1Seconds ).format(formatter1) +" ") ;
 						}
-						// startof program
+						// start of program
 						else if(dur1SecondsAll==0 ){
 							timeStartEndAfter.setTextFill(Color.WHITE);
 							timeStartEndAfter.setText("  "
@@ -165,6 +165,7 @@ public class TimerGoController {
 							
 							//System.out.println(progresProgram.getProgress()+ " " + time.format(formatter1));
 						}
+						// end of program
 						else if(dur2secondsAll==0){
 							timeStartEndAfter.setTextFill(Color.WHITE);
 							timeStartEndAfter.setText("  "
@@ -177,6 +178,7 @@ public class TimerGoController {
 							
 							timeStartEndAfter.setText("+ "
 									+LocalTime.of(Math.abs(dur2Hours), Math.abs(dur2Minutes), Math.abs(dur2Seconds) ).format(formatter1) +" ") ;
+							progresProgram.setProgress(1);
 						}
 						// should never happen
 						else {
