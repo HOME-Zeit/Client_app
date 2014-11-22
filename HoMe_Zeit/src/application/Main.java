@@ -207,8 +207,6 @@ public class Main extends Application {
 	        controller.setDialogStage(dialogStage);
 	        controller.setProgramm(programm);
 	        
-	        
-	        
 
 	        // Show the dialog and wait until the user closes it
 	        dialogStage.showAndWait();
