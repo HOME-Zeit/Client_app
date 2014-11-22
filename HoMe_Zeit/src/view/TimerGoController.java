@@ -1,15 +1,10 @@
 package view;
 
-import java.text.DateFormat;
-import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
 
-import model.Programm;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -18,11 +13,10 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.Programm;
 
 public class TimerGoController {
 
@@ -42,9 +36,6 @@ public class TimerGoController {
 	private Label timeStartEndAfter;
 
 	@FXML
-	private Label timePlusMinus;
-
-	@FXML
 	private ProgressBar progresProgram;
 
 	private Stage dialogStage;
@@ -59,6 +50,8 @@ public class TimerGoController {
 	private DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("mm:ss");
 	private DateTimeFormatter formatter3 = DateTimeFormatter
 			.ofPattern("HH:mm  dd.MM.yyyy");
+	
+	public Timeline timeline;
 
 	/**
 	 * Initializes the controller class. This method is automatically called
@@ -101,7 +94,9 @@ public class TimerGoController {
 	 * Called when the user clicks cancel.
 	 */
 	@FXML
-	private void handleCancel() {
+	private void handleMainWindow() {
+		if(timeline!=null)
+			timeline.stop();
 		dialogStage.close();
 	}
 
@@ -113,7 +108,7 @@ public class TimerGoController {
 			
 		
 		
-		final Timeline timeline = new Timeline(new KeyFrame(
+		timeline = new Timeline(new KeyFrame(
 				Duration.seconds(1), new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent event) {
@@ -163,7 +158,7 @@ public class TimerGoController {
 							//System.out.println(dur2.getSeconds()+" ");
 							progresProgram.setProgress((programm.getLange()*60.0-dur2.getSeconds()+0.5)/(programm.getLange()*60.0));
 							
-							//System.out.println(progresProgram.getProgress()+ " " + time.format(formatter1));
+							System.out.println(progresProgram.getProgress()+ " " + time.format(formatter1));
 						}
 						// end of program
 						else if(dur2secondsAll==0){

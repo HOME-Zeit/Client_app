@@ -22,7 +22,7 @@
       <Label fx:id="programInfo" layoutX="14.0" layoutY="14.0" styleClass="label-timerheader" text="Sendung | Termin | Länge" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <Label fx:id="currTime" layoutX="726.0" layoutY="14.0" styleClass="label-timercurr" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <ProgressBar fx:id="progresProgram" layoutX="14.0" layoutY="437.0" opacity="0.7" prefHeight="104.0" prefWidth="743.0" progress="0.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="20.0" />
-      <Button layoutX="433.0" layoutY="359.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="139.0" text="Main window" AnchorPane.bottomAnchor="140.0" AnchorPane.rightAnchor="210.0" />
+      <Button layoutX="433.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleMainWindow" prefHeight="33.0" prefWidth="139.0" text="Main window" AnchorPane.bottomAnchor="140.0" AnchorPane.rightAnchor="210.0" />
       <Button layoutX="670.0" layoutY="359.0" mnemonicParsing="false" text="Next Program" AnchorPane.bottomAnchor="140.0" AnchorPane.rightAnchor="20.0" />
       <HBox alignment="CENTER" layoutX="420.0" layoutY="585.0" prefHeight="104.0" prefWidth="197.0" AnchorPane.leftAnchor="420.0" AnchorPane.rightAnchor="420.0">
          <children>

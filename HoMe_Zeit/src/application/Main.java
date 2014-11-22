@@ -210,6 +210,8 @@ public class Main extends Application {
 
 	        // Show the dialog and wait until the user closes it
 	        dialogStage.showAndWait();
+	        if(controller.timeline!=null)
+	        	controller.timeline.stop();
 	        
 	        //return true;
 	        return controller.isOkClicked();
