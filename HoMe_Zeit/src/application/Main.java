@@ -220,7 +220,6 @@ public class Main extends Application {
 	        return false;
 	    }
 	}
-	
 	/**
 	 * Returns the programm file preference, i.e. the file that was last opened.
 	 * The preference is read from the OS specific registry. If no such
