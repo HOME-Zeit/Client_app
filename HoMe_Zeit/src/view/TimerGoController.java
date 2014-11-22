@@ -142,29 +142,43 @@ public class TimerGoController {
 						int dur2Minutes = (int) dur2.minusHours(dur2Hours).toMinutes();
 						int dur2Seconds = (int) dur2.minusHours(dur2Hours).minusMinutes(dur2Minutes).getSeconds();
 						
-						
+						// before start of the program
 						if(dur1SecondsAll>0){
 							timeStartEndAfter.setTextFill(Color.GREENYELLOW);
 							timeStartEndAfter.setText("- "
 									+LocalTime.of(dur1Hours, dur1Minutes, dur1Seconds ).format(formatter1) +" ") ;
 						}
-						else if(dur1SecondsAll==0 || dur2secondsAll==0){
+						// startof program
+						else if(dur1SecondsAll==0 ){
 							timeStartEndAfter.setTextFill(Color.WHITE);
 							timeStartEndAfter.setText("  "
 								+ LocalTime.of(0,0,0).format(formatter1)+" ");
 						}
+						//  during program
 						else if(dur2secondsAll>0){
 							timeStartEndAfter.setTextFill(Color.WHITE);
 							timeStartEndAfter.setText("  "
 									+LocalTime.of(dur2Hours, dur2Minutes, dur2Seconds ).format(formatter1)+" " ) ;
+							//progresProgram.setProgress(((programm.getLange()*60.0-dur2.getSeconds())+1)/(programm.getLange()*60.0));
+							//System.out.println(dur2.getSeconds()+" ");
+							progresProgram.setProgress((programm.getLange()*60.0-dur2.getSeconds()+0.5)/(programm.getLange()*60.0));
 							
+							//System.out.println(progresProgram.getProgress()+ " " + time.format(formatter1));
 						}
+						else if(dur2secondsAll==0){
+							timeStartEndAfter.setTextFill(Color.WHITE);
+							timeStartEndAfter.setText("  "
+								+ LocalTime.of(0,0,0).format(formatter1)+" ");
+							progresProgram.setProgress(1);
+						}
+						// after end of the program
 						else if(dur2secondsAll<0){
 							timeStartEndAfter.setTextFill(Color.RED);
 							
 							timeStartEndAfter.setText("+ "
 									+LocalTime.of(Math.abs(dur2Hours), Math.abs(dur2Minutes), Math.abs(dur2Seconds) ).format(formatter1) +" ") ;
 						}
+						// should never happen
 						else {
 							
 						}
@@ -178,7 +192,7 @@ public class TimerGoController {
 }
 
 
-/*
+/* previos timer - with bugs
 int hours = (int)dur.toHours(); // hours "to start"/"after start" of the program
 int hours2 = (int)dur2.toHours(); // hours "to end"/"after end" of the program
 
