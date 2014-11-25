@@ -25,6 +25,7 @@ public class placeholder_main extends Thread
     {
         //System.out.println("\n"+Init_Retrieve_DB.init_ret_db());    //Upcoming_Server retrieve
         
+    	// TODO import in Main.java 
         startClientTimeLoops(); //loops für ClientTime Anfragen schalten
         startClientDBLoops();   //loops für ClientDB Anfragen schalten
     }

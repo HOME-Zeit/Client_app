@@ -8,7 +8,7 @@ public class Programminformation
 	public Long endzeit;
 	public String prod_verantwortlicher;
 	public String sende_verantwortlicher;
-	public Long reale_startzeit;
+	public Long reale_startzeit; // 
 	public Long reale_endzeit;
 	
 		
