@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.prefs.Preferences;
 
 import javafx.animation.Animation;
@@ -31,8 +32,12 @@ import javax.xml.bind.Unmarshaller;
 import model.Programm;
 import model.ProgrammListWrapper;
 
+import org.controlsfx.control.action.Action;
+import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
 
+import datenbank.Programminformation;
+import server_FrontDBCon.RequestDB;
 import view.ProgrammEditDialogController;
 import view.ProgrammOverviewController;
 import view.RootLayoutController;
@@ -42,6 +47,9 @@ public class Main extends Application {
 	
 	private Stage primaryStage;
     private BorderPane rootLayout;
+    
+    
+    public static boolean isRegieMode = false; // false = Moderator. true = Regie 
 	
     private ObservableList<Programm> programmData = FXCollections.observableArrayList();
     
@@ -49,7 +57,7 @@ public class Main extends Application {
      * Test data in default constructor
      */
     public Main(){
-    	programmData.add
+    	/*programmData.add
     		(new Programm("The Simpsons","Homer","Lisa",45,LocalDate.of(2014, 11, 9),"19:30"));
     	programmData.add
 		(new Programm("HIMYM","Robin","Barney",60,LocalDate.of(2014, 11, 9),"20:30"));
@@ -57,6 +65,7 @@ public class Main extends Application {
 		(new Programm("Futurama","Bender","Zeuberg",30,LocalDate.of(2014, 11, 20),"19:00"));
     	programmData.add
     	(new Programm("Friends","Chendler","Monica",60,LocalDate.of(2014, 11, 20),"21:30"));
+    	*/
     }
     
     public ObservableList<Programm> getProgrammData() {
@@ -71,9 +80,10 @@ public class Main extends Application {
 	        this.primaryStage.setTitle("HoMe Zeit");
 	        
 	        this.primaryStage.getIcons().add(new Image("file:resources/images/1415586239_clock.png"));
+
 	        
 	        initRootLayout();
-
+	        
 	        showProgramOverview();
 			
 			/*BorderPane root = new BorderPane();
@@ -91,6 +101,7 @@ public class Main extends Application {
 	 * person file.
 	 */
 	public void initRootLayout() {
+		String choice = "";
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
@@ -106,15 +117,39 @@ public class Main extends Application {
             controller.setMain(this);
             
             primaryStage.show();
+            
+            choice = Dialogs.create()
+            		.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            		.actions(Dialog.ACTION_OK,Dialog.ACTION_CANCEL)
+            	    .title("Chose your mode")
+            	    .masthead("Mode choosing")
+            	    .message( "You can change your mode in Edit -> Change mode")
+      			  .showChoices("Moderator","Regie").get();
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
         
+        if(choice.compareToIgnoreCase("Regie")==0){
+        	isRegieMode = true;
+        }
+        else {
+        	isRegieMode = false;
+        }
+        
+        if(isRegieMode){
+        // load data from DB - For Server
+        loadProgrammDataFromDB();
+        
+        }
+        
+        /*
      // Try to load last opened person file.
         File file = getProgrammFilePath();
         if (file != null) {
             loadProgrammDataFromFile(file);
         }
+        */
     }
 	
 	public void showProgramOverview() {
@@ -318,4 +353,29 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
+	/*
+	 * Function just for Server
+	 */
+	public void loadProgrammDataFromDB(){
+		try {
+		ArrayList<Programminformation> progrDB = RequestDB.requestMajor(true);
+		ArrayList< Programm> progrClient = new ArrayList<Programm>();
+		
+		for(Programminformation p : progrDB ){
+			progrClient.add(new Programm(p));
+		}
+		
+		
+		programmData.clear();
+        programmData.addAll(progrClient);
+        
+		} catch (Exception e) { // catches ANY exception
+	        Dialogs.create()
+	                .title("Error")
+	                .masthead("Could not load data from DB:\n")
+	                .showException(e);
+	    }
+	}
+	
 }

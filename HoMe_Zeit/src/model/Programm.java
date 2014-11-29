@@ -79,11 +79,11 @@ public class Programm {
     	this.sendeVerant = new SimpleStringProperty(p.sende_verantwortlicher);
     	this.sendungName = new SimpleStringProperty(p.titel);
     	this.startTermin = new SimpleObjectProperty<LocalDateTime>
-    		(LocalDateTime.ofEpochSecond(p.startzeit, 0,ZoneOffset.of("+1:00")));
+    		(LocalDateTime.ofEpochSecond(p.startzeit, 0,ZoneOffset.of("+01:00")));
     	this.lange = new SimpleIntegerProperty((int)((p.endzeit - p.startzeit)/60));
     	
     	this.startTerminReal = new SimpleObjectProperty<LocalDateTime>
-		(LocalDateTime.ofEpochSecond(p.startzeit, 0,ZoneOffset.of("+1:00")));
+		(LocalDateTime.ofEpochSecond(p.startzeit, 0,ZoneOffset.of("+01:00")));
     	this.langeReal = new SimpleIntegerProperty((int)((p.endzeit - p.startzeit)/60));
     	
     }
@@ -94,13 +94,13 @@ public class Programm {
     public Programminformation getProgInfoObject(){
     	Integer nummer = this.getNumber();
     	String titel = this.getSendungName();
-    	Long startzeit = this.getStartTermin().toEpochSecond(ZoneOffset.of("+1:00"));
-    	Long endzeit = this.getStartTermin().plusMinutes(getLange()).toEpochSecond(ZoneOffset.of("+1:00"));
+    	Long startzeit = this.getStartTermin().toEpochSecond(ZoneOffset.of("+01:00"));
+    	Long endzeit = this.getStartTermin().plusMinutes(getLange()).toEpochSecond(ZoneOffset.of("+01:00"));
     	String prod_verantwortlicher = this.getProduktVerant();
     	String sende_verantwortlicher = this.getSendeVerant();
     	
-    	Long reale_startzeit = this.getStartTerminReal().toEpochSecond(ZoneOffset.of("+1:00")); 
-    	Long reale_endzeit = this.getStartTerminReal().plusMinutes(getLangeReal()).toEpochSecond(ZoneOffset.of("+1:00"));
+    	Long reale_startzeit = this.getStartTerminReal().toEpochSecond(ZoneOffset.of("+01:00")); 
+    	Long reale_endzeit = this.getStartTerminReal().plusMinutes(getLangeReal()).toEpochSecond(ZoneOffset.of("+01:00"));
     	
     	return new Programminformation(nummer, titel, startzeit, endzeit, prod_verantwortlicher, sende_verantwortlicher, reale_startzeit, reale_endzeit);
     }

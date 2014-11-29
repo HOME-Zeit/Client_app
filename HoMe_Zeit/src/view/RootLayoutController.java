@@ -2,6 +2,7 @@ package view;
 
 import java.io.File;
 
+import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
 
 import javafx.fxml.FXML;
@@ -101,6 +102,7 @@ public class RootLayoutController {
     @FXML
     private void handleAbout() {
         Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
             .title("HoMe Zeit")
             .masthead("About")
             .message("Author: HoMe Group")

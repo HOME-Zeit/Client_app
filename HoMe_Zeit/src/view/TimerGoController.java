@@ -138,8 +138,8 @@ public class TimerGoController {
 						int dur2Minutes = (int) dur2.minusHours(dur2Hours).toMinutes();
 						int dur2Seconds = (int) dur2.minusHours(dur2Hours).minusMinutes(dur2Minutes).getSeconds();
 						
-						System.out.println(dur1Hours + " 1");
-						System.out.println(dur2Hours + " 2");
+						//System.out.println(dur1Hours + " 1");
+						//System.out.println(dur2Hours + " 2");
 						if(dur1Hours>=24){
 							timeStartEndAfter.setStyle("-fx-font-size:40;");
 							timeStartEndAfter.setTextFill(Color.GREENYELLOW);

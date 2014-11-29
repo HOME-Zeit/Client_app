@@ -105,6 +105,7 @@ public class ProgrammOverviewController {
 	 
 	        if(selectedIndex>=0 ){
 	        	Action response = Dialogs.create()
+	        			.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
 	        			  .actions(Dialog.ACTION_OK,Dialog.ACTION_CANCEL)
 		        	      .title("You sure want to delete this program?")
 		        	      .masthead("Warning !")
