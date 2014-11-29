@@ -8,8 +8,8 @@ public class Programminformation
 	public Long endzeit;
 	public String prod_verantwortlicher;
 	public String sende_verantwortlicher;
-	public Long reale_startzeit; // null
-	public Long reale_endzeit; // null
+	public Long reale_startzeit; // 0
+	public Long reale_endzeit; // 0
 	
 		
 	public Programminformation(Integer nummer, String titel, Long startzeit, Long endzeit, String prod_verantwortlicher, String sende_verantwortlicher, Long reale_startzeit, Long reale_endzeit)

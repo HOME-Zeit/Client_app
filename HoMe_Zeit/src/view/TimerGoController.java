@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Programm;
@@ -137,8 +138,21 @@ public class TimerGoController {
 						int dur2Minutes = (int) dur2.minusHours(dur2Hours).toMinutes();
 						int dur2Seconds = (int) dur2.minusHours(dur2Hours).minusMinutes(dur2Minutes).getSeconds();
 						
+						System.out.println(dur1Hours + " 1");
+						System.out.println(dur2Hours + " 2");
+						if(dur1Hours>=24){
+							timeStartEndAfter.setStyle("-fx-font-size:40;");
+							timeStartEndAfter.setTextFill(Color.GREENYELLOW);
+							timeStartEndAfter.setText("More then 24 hours to START");
+						}
+						else if(dur2Hours<=-24){
+							timeStartEndAfter.setStyle("-fx-font-size:40;");
+							timeStartEndAfter.setTextFill(Color.RED);
+							timeStartEndAfter.setText("More then 24 hours after END");
+							progresProgram.setProgress(1);
+						}
 						// before start of the program
-						if(dur1SecondsAll>0){
+						else if(dur1SecondsAll>0){
 							timeStartEndAfter.setTextFill(Color.GREENYELLOW);
 							timeStartEndAfter.setText("- "
 									+LocalTime.of(dur1Hours, dur1Minutes, dur1Seconds ).format(formatter1) +" ") ;
@@ -189,7 +203,7 @@ public class TimerGoController {
 }
 
 
-/* previos timer - with bugs
+/* previos timer - with bugs...
 int hours = (int)dur.toHours(); // hours "to start"/"after start" of the program
 int hours2 = (int)dur2.toHours(); // hours "to end"/"after end" of the program
 
