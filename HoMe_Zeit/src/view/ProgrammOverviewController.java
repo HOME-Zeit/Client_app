@@ -143,8 +143,10 @@ public class ProgrammOverviewController {
 		        	      .message( "All datas about this program will be delete")
 		        	      .showConfirm();
 	        	if(response==Dialog.ACTION_OK){
-	        		programmTable.getItems().remove(selectedIndex);
+	        		Programm deleteProgramm = programmTable.getItems().remove(selectedIndex);
+	        		UpdateDB.updateDelete(deleteProgramm.getProgInfoObject(), true);
 	        	}
+	        	handleRefreshButton(); // refresh table
 	        }
 	        else {
 	            // Nothing selected.
@@ -169,6 +171,7 @@ public class ProgrammOverviewController {
 	            main.getProgrammData().add(tempProgramm);
 	            UpdateDB.updateAppend(tempProgramm.getProgInfoObject(), true);
 	        }
+	        handleRefreshButton(); // refresh table
 	    }
 
 	    /**
@@ -182,8 +185,10 @@ public class ProgrammOverviewController {
 	            boolean okClicked = main.showProgrammEditDialog(selectedProgramm);
 	            if (okClicked) {
 	                showProgrammDetails(selectedProgramm);
+	                UpdateDB.updateRefactor(selectedProgramm.getProgInfoObject(), true);
 	            }
-
+	            
+	            handleRefreshButton(); // refresh table
 	        } else {
 	            // Nothing selected.
 	            Dialogs.create()
