@@ -41,6 +41,7 @@ import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
 
+import client_ServerRequests.RequestServer;
 import datenbank.Programminformation;
 import server_FrontDBCon.RequestDB;
 import server_NTPRequest.Retrieve_Time;
@@ -134,6 +135,7 @@ public class Main extends Application {
                     System.exit(0);
                 }
             });
+            
             primaryStage.show();
          
             // get mode
@@ -159,7 +161,7 @@ public class Main extends Application {
         	
         }
         else{
-        	this.primaryStage.close();
+        	System.exit(0);
 			}
         
         
@@ -171,7 +173,7 @@ public class Main extends Application {
         placeholder_main.startClientTimeLoops();
         }
         else{
-        	
+        loadAllProgrammDataFromServer();
         	
         }
         
@@ -438,5 +440,32 @@ public class Main extends Application {
     	                .showException(e);
     	    }
     	}
+	
+	/*
+	 * Function just for Client. Load all data from Server
+	 * TODO maybe transport to controller
+	 */
+	public void loadAllProgrammDataFromServer(){
+		try {
+		ArrayList<Programminformation> progrServer = RequestServer.requestMajor(true);
+		ArrayList< Programm> progrClient = new ArrayList<Programm>();
+		
+		for(Programminformation p : progrServer ){
+			progrClient.add(new Programm(p));
+			
+		}
+		
+		//System.out.println(progrClient.get(0).getLangeReal());
+		
+		programmData.clear();
+        programmData.addAll(progrClient);
+        
+		} catch (Exception e) { // catches ANY exception
+	        Dialogs.create()
+	                .title("Error")
+	                .masthead("Could not load data from Server:\n")
+	                .showException(e);
+	    }
+	}
 	
 }
