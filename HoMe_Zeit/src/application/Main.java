@@ -12,6 +12,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +24,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 import javax.xml.bind.JAXBContext;
@@ -50,6 +52,7 @@ public class Main extends Application {
     
     
     public static boolean isRegieMode = false; // false = Moderator. true = Regie 
+    public static String choice = "1";
 	
     private ObservableList<Programm> programmData = FXCollections.observableArrayList();
     
@@ -80,7 +83,6 @@ public class Main extends Application {
 	        this.primaryStage.setTitle("HoMe Zeit");
 	        
 	        this.primaryStage.getIcons().add(new Image("file:resources/images/1415586239_clock.png"));
-
 	        
 	        initRootLayout();
 	        
@@ -101,7 +103,7 @@ public class Main extends Application {
 	 * person file.
 	 */
 	public void initRootLayout() {
-		String choice = "";
+		
         try {
             // Load root layout from fxml file.
             FXMLLoader loader = new FXMLLoader();
@@ -117,7 +119,7 @@ public class Main extends Application {
             controller.setMain(this);
             
             primaryStage.show();
-            
+
             // get mode
             choice = Dialogs.create()
             		.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
@@ -125,18 +127,25 @@ public class Main extends Application {
             	    .title("Chose your mode")
             	    .masthead("Mode choosing")
             	    .message( "You can change your mode in Edit -> Change mode")
-      			  .showChoices("Moderator","Regie").get();
+      			  .showChoices("Moderator","Regie").orElse("");
+            
             
         } catch (IOException e) {
             e.printStackTrace();
         }
         
+        
         if(choice.compareToIgnoreCase("Regie")==0){
         	isRegieMode = true;
         }
-        else {
+        else if(choice.compareToIgnoreCase("Moderator")==0) {
         	isRegieMode = false;
+        	
         }
+        else{
+        	this.primaryStage.close();
+			}
+        
         
         if(isRegieMode){
         // load data from DB - For Server
