@@ -1,9 +1,10 @@
 package server_loops;
 
 import datenbank.Datenbank;
+import datenbank.Programminformation;
+
 import java.net.ServerSocket;
 import java.net.Socket;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -20,7 +21,7 @@ public class DBLoopMajor extends Thread
     private static ObjectOutputStream oOut;
     private static ObjectInputStream oIn;
     private static boolean truefalse;
-    private static ArrayList returnThis = new ArrayList();
+    private static ArrayList <Programminformation> returnThis = new ArrayList<>();
     
     public void run()
     {
@@ -48,9 +49,19 @@ public class DBLoopMajor extends Thread
             }
             catch(IOException e)
             {
+            	/*if (serverSocket != null && !serverSocket.isClosed()) {
+                    try {
+                    	serverSocket.close();
+                    } catch (IOException e1)
+                    {
+                        e1.printStackTrace(System.err);
+                    }
+                }
+                */
                 System.out.println(e+": 4Socket Problem");
                 return;
             }
+        
         }
     }
 }

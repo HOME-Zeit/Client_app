@@ -2,12 +2,13 @@ package server_loops;
 
 import java.net.ServerSocket;
 import java.net.Socket;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
 import datenbank.Datenbank;
+import datenbank.Programminformation;
 
 /**
  *
@@ -20,7 +21,7 @@ public class DBLoopMinor extends Thread
     private static ObjectOutputStream oOut;
     private static ObjectInputStream oIn;
     private static LongBool longBool = new LongBool(0,false);
-    private static ArrayList returnThis = new ArrayList();
+    private static ArrayList <Programminformation> returnThis = new ArrayList<>();
     
     public void run()
     {

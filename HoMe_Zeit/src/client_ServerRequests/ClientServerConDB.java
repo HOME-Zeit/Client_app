@@ -3,6 +3,8 @@ package client_ServerRequests;
 import java.util.ArrayList;
 import java.net.Socket;
 import java.io.*;
+
+import datenbank.Programminformation;
 /**
  *
  * @author Nevanor
@@ -11,12 +13,12 @@ public class ClientServerConDB extends RequestServer
 {
     private static Socket socket;
     //private static FileOutputStream fileOut;
-    //private static FileInputStream fileIn;
+    //private static FileInputStream fileIn;9
     private static ObjectOutputStream oOut;
     private static ObjectInputStream oIn;
-    private static ArrayList answer = new ArrayList();
+    private static ArrayList <Programminformation> answer = new  ArrayList<>();
     
-    public static ArrayList minorCon (long time, boolean truefalse)
+    public static ArrayList <Programminformation> minorCon (long time, boolean truefalse)
     {
         LongBool longBool = new LongBool(time,truefalse);
         try
@@ -29,7 +31,7 @@ public class ClientServerConDB extends RequestServer
             oOut.close();
             
             oIn =  new ObjectInputStream(socket.getInputStream());
-            try{answer = (ArrayList) oIn.readObject();}catch(ClassNotFoundException e){System.out.println(e);}
+            try{answer = (ArrayList<Programminformation>) oIn.readObject();}catch(ClassNotFoundException e){System.out.println(e);}
             oIn.close();
 
             socket.close();
@@ -40,7 +42,7 @@ public class ClientServerConDB extends RequestServer
         }
         return answer;
     }
-    public static ArrayList majorCon (boolean truefalse)
+    public static ArrayList<Programminformation> majorCon (boolean truefalse)
     {
         try
         {
@@ -52,7 +54,7 @@ public class ClientServerConDB extends RequestServer
             oOut.close();
             
             oIn =  new ObjectInputStream(socket.getInputStream());
-            try{answer = (ArrayList) oIn.readObject();}catch(ClassNotFoundException e){System.out.println(e);}
+            try{answer = (ArrayList<Programminformation>) oIn.readObject();}catch(ClassNotFoundException e){System.out.println(e);}
             oIn.close();
 
             socket.close();
@@ -63,7 +65,7 @@ public class ClientServerConDB extends RequestServer
         }
         return answer;
     }
-    public static ArrayList numberCon (int number, boolean truefalse)
+    public static ArrayList <Programminformation> numberCon (int number, boolean truefalse)
     {
         IntBool intBool = new IntBool(number,truefalse);
         try
@@ -76,7 +78,7 @@ public class ClientServerConDB extends RequestServer
             oOut.close();
             
             oIn =  new ObjectInputStream(socket.getInputStream());
-            try{answer = (ArrayList) oIn.readObject();}catch(ClassNotFoundException e){System.out.println(e);}
+            try{answer = (ArrayList<Programminformation>) oIn.readObject();}catch(ClassNotFoundException e){System.out.println(e);}
             oIn.close();
 
             socket.close();

@@ -1,9 +1,10 @@
 package server_loops;
 
 import datenbank.Datenbank;
+import datenbank.Programminformation;
+
 import java.net.ServerSocket;
 import java.net.Socket;
-
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -20,7 +21,7 @@ public class DBLoopNumber extends Thread
     private static ObjectOutputStream oOut;
     private static ObjectInputStream oIn;
     private static IntBool intBool = new IntBool(0,false);
-    private static ArrayList returnThis = new ArrayList();
+    private static ArrayList <Programminformation> returnThis = new ArrayList<>();
     
     public void run()
     {

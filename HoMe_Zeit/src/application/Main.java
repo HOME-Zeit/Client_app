@@ -33,6 +33,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
+import main.placeholder_main;
 import model.Programm;
 import model.ProgrammListWrapper;
 
@@ -127,8 +128,14 @@ public class Main extends Application {
             RootLayoutController controller = loader.getController();
             controller.setMain(this);
             
+            primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    System.exit(0);
+                }
+            });
             primaryStage.show();
-
+         
             // get mode
             choice = Dialogs.create()
             		.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
@@ -159,7 +166,9 @@ public class Main extends Application {
         if(isRegieMode){
         // load data from DB - For Server
         loadAllProgrammDataFromDB();
-        
+        // threads for Server. They respond on Clients questions. 
+        placeholder_main.startClientDBLoops();
+        placeholder_main.startClientTimeLoops();
         }
         else{
         	
