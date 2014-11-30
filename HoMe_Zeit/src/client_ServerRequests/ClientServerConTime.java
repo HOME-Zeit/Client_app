@@ -55,7 +55,7 @@ public class ClientServerConTime
     {
         try
         {
-            socket = new Socket("localhost",55301);
+            socket = new Socket("localhost",55307);
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while((inputLine = bufferedReader.readLine())!=null)
                 returnString = inputLine;
