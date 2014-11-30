@@ -17,7 +17,11 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import util.LocalDateTimeAdapter;
 import datenbank.Programminformation;
-
+/**
+ * 
+ * @author Viktor Osadchyi
+ *
+ */
 public class Programm {
 
 	// number of the program . We get it from database.

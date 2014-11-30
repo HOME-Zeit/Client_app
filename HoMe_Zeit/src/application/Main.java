@@ -40,10 +40,17 @@ import org.controlsfx.dialog.Dialogs;
 
 import datenbank.Programminformation;
 import server_FrontDBCon.RequestDB;
+import server_NTPRequest.Retrieve_Time;
 import view.ProgrammEditDialogController;
 import view.ProgrammOverviewController;
 import view.RootLayoutController;
 import view.TimerGoController;
+
+/**
+ * 
+ * @author Viktor Osadchyi
+ *
+ */
 
 public class Main extends Application {
 	
@@ -149,7 +156,7 @@ public class Main extends Application {
         
         if(isRegieMode){
         // load data from DB - For Server
-        loadProgrammDataFromDB();
+        loadAllProgrammDataFromDB();
         
         }
         else{
@@ -369,9 +376,10 @@ public class Main extends Application {
 	}
 	
 	/*
-	 * Function just for Server
+	 * Function just for Server. Load all data from DB
+	 * TODO maybe transport to controller
 	 */
-	public void loadProgrammDataFromDB(){
+	public void loadAllProgrammDataFromDB(){
 		try {
 		ArrayList<Programminformation> progrDB = RequestDB.requestMajor(true);
 		ArrayList< Programm> progrClient = new ArrayList<Programm>();
@@ -391,5 +399,30 @@ public class Main extends Application {
 	                .showException(e);
 	    }
 	}
+	
+	/*
+	 * Function for Server/Regie . Load today's data from DB.
+	 */
+	public void loadTodayProgrammDataFromDB(){
+    	try {
+    		System.out.println(Retrieve_Time.getTime());
+    		ArrayList<Programminformation> progrDB = RequestDB.requestMinor(Retrieve_Time.getTime(),true);
+    		ArrayList< Programm> progrClient = new ArrayList<Programm>();
+    		
+    		for(Programminformation p : progrDB ){
+    			progrClient.add(new Programm(p));
+    		}
+    		
+    		
+    		programmData.clear();
+            programmData.addAll(progrClient);
+            
+    		} catch (Exception e) { // catches ANY exception
+    	        Dialogs.create()
+    	                .title("Error")
+    	                .masthead("Could not load today's data from DB:\n")
+    	                .showException(e);
+    	    }
+    	}
 	
 }

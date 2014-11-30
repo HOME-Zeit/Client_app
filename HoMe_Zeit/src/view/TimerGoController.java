@@ -18,6 +18,11 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import model.Programm;
+/**
+ * 
+ * @author Viktor Osadchyi
+ *
+ */
 
 public class TimerGoController {
 

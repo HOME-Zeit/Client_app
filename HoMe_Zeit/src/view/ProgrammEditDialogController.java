@@ -10,7 +10,11 @@ import javafx.stage.Stage;
 import model.Programm;
 
 import org.controlsfx.dialog.Dialogs;
-
+/**
+ * 
+ * @author Viktor Osadchyi
+ *
+ */
 public class ProgrammEditDialogController {
 
 

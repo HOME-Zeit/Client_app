@@ -4,8 +4,13 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-
 /**
+ * 
+ * @author Viktor Osadchyi
+ *
+ */
+
+/*
  * Helper class to wrap a list of programms. This is used for saving the
  * list of programms to XML.
  */

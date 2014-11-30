@@ -25,15 +25,15 @@
                         <Glow />
                      </effect>
                   </TableView>
-                  <Button layoutX="14.0" layoutY="406.0" mnemonicParsing="false" text="Refresh" AnchorPane.bottomAnchor="66.0" />
+                  <Button fx:id="refreshButton" layoutX="14.0" layoutY="406.0" mnemonicParsing="false" onAction="#handleRefreshButton" text="Refresh" AnchorPane.bottomAnchor="66.0" />
                   <Group layoutX="9.0" layoutY="448.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="362.0">
                      <children>
-                        <RadioButton mnemonicParsing="false" prefHeight="43.0" prefWidth="244.0" selected="true" text="All programs" textFill="WHITE">
+                        <RadioButton fx:id="allProgramsRB" mnemonicParsing="false" prefHeight="43.0" prefWidth="244.0" selected="true" text="All programs" textFill="WHITE">
                            <toggleGroup>
                               <ToggleGroup fx:id="chooseTime" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton layoutX="122.0" layoutY="13.0" mnemonicParsing="false" text="4 H before / 20 H after " textFill="WHITE" toggleGroup="$chooseTime" />
+                        <RadioButton fx:id="todayProgramsRB" layoutX="122.0" layoutY="13.0" mnemonicParsing="false" text="4 H before / 20 H after " textFill="WHITE" toggleGroup="$chooseTime" />
                      </children>
                   </Group>
                </children>
@@ -70,9 +70,9 @@
                         <Label fx:id="startTerminLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
-                  <Button layoutX="276.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleDeleteProgramm" prefHeight="33.0" prefWidth="90.0" text="Delete" AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="185.0" />
-                  <Button layoutX="65.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleNewProgramm" prefHeight="33.0" prefWidth="90.0" text="New..." AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="396.0" />
-                  <Button layoutX="171.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleEditProgramm" prefHeight="33.0" prefWidth="90.0" text="Edit..." AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="290.0" />
+                  <Button fx:id="deleteButton" layoutX="276.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleDeleteProgramm" prefHeight="33.0" prefWidth="90.0" text="Delete" AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="185.0" />
+                  <Button fx:id="newButton" layoutX="65.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleNewProgramm" prefHeight="33.0" prefWidth="90.0" text="New..." AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="396.0" />
+                  <Button fx:id="editButton" layoutX="171.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleEditProgramm" prefHeight="33.0" prefWidth="90.0" text="Edit..." AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="290.0" />
                   <Button layoutX="422.0" layoutY="369.0" mnemonicParsing="false" onAction="#handleGoProgramm" prefHeight="33.0" prefWidth="96.0" text="GO" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="21.0" />
                </children>
             </AnchorPane>

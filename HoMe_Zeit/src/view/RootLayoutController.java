@@ -8,8 +8,13 @@ import org.controlsfx.dialog.Dialogs;
 import javafx.fxml.FXML;
 import javafx.stage.FileChooser;
 import application.Main;
-
 /**
+ * 
+ * @author Viktor Osadchyi
+ *
+ */
+
+/*
  * The controller for the root layout. The root layout provides the basic
  * application layout containing a menu bar and space where other JavaFX
  * elements can be placed.

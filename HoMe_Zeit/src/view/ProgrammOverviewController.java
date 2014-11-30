@@ -1,16 +1,27 @@
 package view;
 
+import java.util.ArrayList;
+
 import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
 
+import server_FrontDBCon.RequestDB;
+import server_NTPRequest.Retrieve_Time;
+import datenbank.Programminformation;
 import application.Main;
 import model.Programm;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
+/**
+ * 
+ * @author Viktor Osadchyi
+ *
+ */
 public class ProgrammOverviewController {
 	
 	 	@FXML
@@ -32,6 +43,20 @@ public class ProgrammOverviewController {
 	    private Label sendeVerantLabel;
 	    @FXML
 	    private Label produktVerantLabel;
+	    
+	    @FXML
+	    private Button refreshButton;
+	    @FXML
+	    private RadioButton allProgramsRB;
+	    @FXML
+	    private RadioButton todayProgramsRB;
+	    
+	    @FXML
+	    private Button newButton;
+	    @FXML
+	    private Button deleteButton;
+	    @FXML
+	    private Button editButton;
 	 
 	    // Reference to the main application.
 	    private Main main;
@@ -186,4 +211,30 @@ public class ProgrammOverviewController {
 	                .showWarning();
 	        }
 	    }
+	    
+	    /**
+	     * Called when Refresh button pressed.
+	     * Works in two mode: Regie and Moderator (check bool state in main)
+	     * Also check radioButtons for load-mode.
+	     */
+	    @FXML
+	    private void handleRefreshButton(){
+	    	if(Main.isRegieMode){
+	    		if(allProgramsRB.isSelected()){
+	    			main.loadAllProgrammDataFromDB();
+	    		}else{
+	    			main.loadTodayProgrammDataFromDB();
+	    		}
+	    	}
+	    	else{
+	    		if(allProgramsRB.isSelected()){
+	    			
+	    		}else{
+	    			
+	    		}
+	    		
+	    	}
+	    }
+	    
+	    
 }
