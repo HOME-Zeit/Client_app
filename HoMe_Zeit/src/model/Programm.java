@@ -87,8 +87,8 @@ public class Programm {
     	this.lange = new SimpleIntegerProperty((int)((p.endzeit - p.startzeit)/60));
     	
     	this.startTerminReal = new SimpleObjectProperty<LocalDateTime>
-		(LocalDateTime.ofEpochSecond(p.startzeit, 0,ZoneOffset.of("+01:00")));
-    	this.langeReal = new SimpleIntegerProperty((int)((p.endzeit - p.startzeit)/60));
+		(LocalDateTime.ofEpochSecond(p.reale_startzeit, 0,ZoneOffset.of("+01:00")));
+    	this.langeReal = new SimpleIntegerProperty((int)((p.reale_endzeit - p.reale_startzeit)/60));
     	
     }
     

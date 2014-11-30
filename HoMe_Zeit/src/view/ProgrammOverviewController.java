@@ -7,6 +7,7 @@ import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
 
 import server_FrontDBCon.RequestDB;
+import server_FrontDBCon.UpdateDB;
 import server_NTPRequest.Retrieve_Time;
 import datenbank.Programminformation;
 import application.Main;
@@ -74,6 +75,7 @@ public class ProgrammOverviewController {
 	     */
 	    @FXML
 	    private void initialize() {
+	    	setVisibleMode();
 	        // Initialize the person table with the two columns.
 	    	startTerminColumn.setCellValueFactory(cellData -> cellData.getValue().startTerminProperty().asString());
 	    	sendungColumn.setCellValueFactory(cellData -> cellData.getValue().sendungNameProperty());
@@ -85,6 +87,7 @@ public class ProgrammOverviewController {
 	        // Listen for selection changes and show the person details when changed.
 	        programmTable.getSelectionModel().selectedItemProperty().addListener(
 	                (observable, oldValue, newValue) -> showProgrammDetails(newValue));
+	        
 	    }
 
 	    /**
@@ -146,6 +149,7 @@ public class ProgrammOverviewController {
 	        else {
 	            // Nothing selected.
 	            Dialogs.create()
+	            	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
 	                .title("No Selection")
 	                .masthead("No Person Selected")
 	                .message("Please select a person in the table.")
@@ -163,6 +167,7 @@ public class ProgrammOverviewController {
 	        boolean okClicked = main.showProgrammEditDialog(tempProgramm);
 	        if (okClicked) {
 	            main.getProgrammData().add(tempProgramm);
+	            UpdateDB.updateAppend(tempProgramm.getProgInfoObject(), true);
 	        }
 	    }
 
@@ -182,6 +187,7 @@ public class ProgrammOverviewController {
 	        } else {
 	            // Nothing selected.
 	            Dialogs.create()
+	            	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
 	                .title("No Selection")
 	                .masthead("No Person Selected")
 	                .message("Please select a person in the table.")
@@ -205,6 +211,7 @@ public class ProgrammOverviewController {
 	        } else {
 	            // Nothing selected.
 	            Dialogs.create()
+	            	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
 	                .title("No Selection")
 	                .masthead("No Person Selected")
 	                .message("Please select a person in the table.")
@@ -236,5 +243,18 @@ public class ProgrammOverviewController {
 	    	}
 	    }
 	    
+	    private void setVisibleMode(){
+	    	if(Main.isRegieMode){
+	    		newButton.setVisible(true);
+	    		deleteButton.setVisible(true);
+	    		editButton.setVisible(true);
+	    	}
+	    	else{
+	    		newButton.setVisible(false);
+	    		deleteButton.setVisible(false);
+	    		editButton.setVisible(false);
+	    	}
+	    	
+	    }
 	    
 }

@@ -98,7 +98,13 @@ public class ProgrammEditDialogController {
             programm.setLange(Integer.parseInt(langeField.getText()));
             programm.setSendeVerant(sendeVerantField.getText());
             programm.setProduktVerant(produktVerantField.getText());
-
+            
+            // set startRealTime same as startTime
+            programm.setStartTerminReal(LocalDateTime.of(startTerminFieldDate.getValue(),
+        			LocalTime.of(Integer.parseInt(startTerminFieldHours.getText()),
+        					Integer.parseInt(startTerminFieldMinutes.getText()))));
+            programm.setLangeReal(Integer.parseInt(langeField.getText()));
+            
             okClicked = true;
             dialogStage.close();
         }

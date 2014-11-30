@@ -3,7 +3,9 @@ package application;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.prefs.Preferences;
@@ -386,8 +388,10 @@ public class Main extends Application {
 		
 		for(Programminformation p : progrDB ){
 			progrClient.add(new Programm(p));
+			
 		}
 		
+		//System.out.println(progrClient.get(0).getLangeReal());
 		
 		programmData.clear();
         programmData.addAll(progrClient);
@@ -405,7 +409,7 @@ public class Main extends Application {
 	 */
 	public void loadTodayProgrammDataFromDB(){
     	try {
-    		System.out.println(Retrieve_Time.getTime());
+    		//System.out.println(Retrieve_Time.getTime()); // Test time
     		ArrayList<Programminformation> progrDB = RequestDB.requestMinor(Retrieve_Time.getTime(),true);
     		ArrayList< Programm> progrClient = new ArrayList<Programm>();
     		

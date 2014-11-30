@@ -88,8 +88,11 @@ public class Datenbank
 		ArrayList<Programminformation> programminformation = new ArrayList<Programminformation>();
 		//4 Stunden = 1000*60*60*4 = 14400000
 		//20 Stunden = 1000*60*60*20 = 72000000
-		Long min = zeit - 14400000;
-		Long max = zeit + 72000000;
+		
+		//4 Stunden in seconds = 60*60*4 = 14400 
+		//20 Stunden in seconds = 60*60*20 = 72000
+		Long min = zeit - 14400;
+		Long max = zeit + 72000;
 		try 
 		{
 			Class.forName(driver).newInstance();
