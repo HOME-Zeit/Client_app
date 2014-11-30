@@ -19,6 +19,8 @@ public class ProgrammOverviewController {
 	    private TableColumn<Programm, String> startTerminColumn;
 	    @FXML
 	    private TableColumn<Programm, String> sendungColumn;
+	    @FXML
+	    private TableColumn<Programm, String> numberColumn;
 
 	    @FXML
 	    private Label startTerminLabel;
@@ -50,6 +52,7 @@ public class ProgrammOverviewController {
 	        // Initialize the person table with the two columns.
 	    	startTerminColumn.setCellValueFactory(cellData -> cellData.getValue().startTerminProperty().asString());
 	    	sendungColumn.setCellValueFactory(cellData -> cellData.getValue().sendungNameProperty());
+	    	numberColumn.setCellValueFactory(cellData -> cellData.getValue().numberProperty().asString());
 	    	
 	    	// Clear person details.
 	        showProgrammDetails(null);

@@ -118,6 +118,7 @@ public class Main extends Application {
             
             primaryStage.show();
             
+            // get mode
             choice = Dialogs.create()
             		.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
             		.actions(Dialog.ACTION_OK,Dialog.ACTION_CANCEL)
@@ -141,6 +142,10 @@ public class Main extends Application {
         // load data from DB - For Server
         loadProgrammDataFromDB();
         
+        }
+        else{
+        	
+        	
         }
         
         /*
