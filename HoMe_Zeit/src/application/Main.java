@@ -61,7 +61,7 @@ public class Main extends Application {
     
     
     public static boolean isRegieMode = false; // false = Moderator. true = Regie 
-    public static String choice = "1";
+    public static String choice = "";
 	
     private ObservableList<Programm> programmData = FXCollections.observableArrayList();
     
@@ -262,6 +262,7 @@ public class Main extends Application {
 
 	        // Set the programm into the controller.
 	        TimerGoController controller = loader.getController();
+	        controller.setMain(this);
 	        controller.setDialogStage(dialogStage);
 	        controller.setProgramm(programm);
 	        

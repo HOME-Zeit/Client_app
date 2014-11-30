@@ -2,9 +2,12 @@ package view;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
+import server_NTPRequest.Retrieve_Time;
+import application.Main;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -47,6 +50,19 @@ public class TimerGoController {
 	private Stage dialogStage;
 	private Programm programm;
 	private boolean okClicked = false;
+	
+	private long secondsDiff = 0;
+	
+	// Reference to the main application
+    private Main main;
+	/**
+     * Is called by the main application to give a reference back to itself.
+     * 
+     * @param main
+     */
+    public void setMain(Main main) {
+        this.main = main;
+    }
 
 	/**
 	 * To show different times
@@ -84,6 +100,8 @@ public class TimerGoController {
 				+ programm.getStartTermin().format(formatter3).toString()
 				+ " | " + Integer.toString(programm.getLange()) + " Minuten");
 
+		getDiffTime();
+		//System.out.println(secondsDiff);
 		timeChanger();
 	}
 
@@ -111,15 +129,13 @@ public class TimerGoController {
 	 * code of shame ^^
 	 */
 	public void timeChanger() {
-			
-		
-		
+
 		timeline = new Timeline(new KeyFrame(
 				Duration.seconds(1), new EventHandler<ActionEvent>() {
 					@Override
 					public void handle(ActionEvent event) {
 		
-						LocalDateTime time = LocalDateTime.now();
+						LocalDateTime time = LocalDateTime.now().plusSeconds(secondsDiff);
 						currTime.setText(time.format(formatter1)); // show current time
 						
 						// time between current time and start of the programm.
@@ -205,101 +221,18 @@ public class TimerGoController {
 		timeline.play();
 
 	}
-}
-
-
-/* previos timer - with bugs...
-int hours = (int)dur.toHours(); // hours "to start"/"after start" of the program
-int hours2 = (int)dur2.toHours(); // hours "to end"/"after end" of the program
-
-// this will work if there is one hour before and after the end of program
-if (hours == 0 || hours2==0) {
 	
-	// seconds of the current time
-	int seconds = time.getSecond();
-	
-	// minutes to start/after start of the program
-	int minutes = (int) dur.minusHours(hours).toMinutes(); 
-	// minutes to end/after end of the program
-	int minutes2 = (int) dur2.minusHours(hours2).toMinutes();
-	
-	//System.out.println(" " + minutes + " " + minutes2);
-	//dur2.minusHours((int)dur2.toHours()).toMinutes();
-	
-	//LocalTime timeToShow = LocalTime.of(0,
-	//		Math.abs(minutes), Math.abs(seconds));
-
-	
-	int k=0;
-	
-	
-	// it's time before the start of the programm 
-	// time.compareTo(programm.getStartTermin())<0
-	if (minutes>=0 && time.compareTo(programm.getStartTermin())<0) {
-		timeStartEndAfter.setTextFill(Color.GREENYELLOW);
-		if(seconds==0 )
-			k=1;
-		else k=0;
-		timeStartEndAfter.setText("- "
-				+ LocalTime.of(0,Math.abs(minutes)+k,Math.floorMod((60 - Math.abs(seconds)), 60)).format(formatter2));
-	}
-	// it's start of the program 00:00
-	// time.isEqual(programm.getStartTermin())
-	else if(minutes==0 && seconds==0) {
-		timeStartEndAfter.setTextFill(Color.WHITE);
-		timeStartEndAfter.setText("  "
-			+ LocalTime.of(0,0,0).format(formatter2));
-	
-	}
-	//time.compareTo(programm.getStartTermin().plusMinutes(programm.getLange()))<0	
-	else if(minutes2>=0 && time.compareTo(programm.getStartTermin().plusMinutes(programm.getLange()))<0){
-		if(Math.floorMod((60 - Math.abs(seconds)), 60)==0)
-			k=1;
-		timeStartEndAfter.setTextFill(Color.WHITE);
-		timeStartEndAfter.setText("  "+ LocalTime.of(0, Math.abs(programm.getLange()-Math.abs(minutes-1))+k, 
-						Math.floorMod((60 - Math.abs(seconds)), 60)).format(formatter2));
-	}
-	else {
-		timeStartEndAfter.setTextFill(Color.RED);
-		
-		timeStartEndAfter.setText("+ "
-				+ LocalTime.of(0, Math.abs(minutes2), 
-						time.getSecond()).format(formatter2) + "  ");
-		
+	private void getDiffTime(){
+		if(Main.isRegieMode){
+			try {
+				this.secondsDiff = Retrieve_Time.getTime() - LocalDateTime.now().toEpochSecond(ZoneOffset.of("+01:00"))  ;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else{
+			
+		}
 	}
 }
-
-*/
-
-//String sPlus = "";
-
-
-//int hours = time.getHour()
-//		- programm.getStartTermin().getHour();
-
-
-//int minutes = time.getMinute()
-//		- programm.getStartTermin().getMinute();
-
-//else if(minutes)
-// timeStartEndAfter.setText("+ " +
-// timeToShow.format(formatter2));
-
-/*
- * java.time.Duration dur =
- * java.time.Duration.between(
- * programm.getStartTermin(), time);
- * 
- * 
- * long minutes = dur.toMinutes();
- * 
- * if (minutes > 0 + programm.getLange()) {
- * 
- * sPlus = "+ "; } else if (minutes < 0) { sPlus =
- * ""; }
- * 
- * 
- * timeStartEndAfter.setText(sPlus +
- * Long.toString(minutes) + ":" +
- * Long.toString(dur.abs().getSeconds() % 60));
- */
