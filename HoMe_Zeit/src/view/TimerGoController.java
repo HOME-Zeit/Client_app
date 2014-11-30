@@ -21,7 +21,7 @@ import model.Programm;
 /**
  * 
  * @author Viktor Osadchyi
- *
+ * 
  */
 
 public class TimerGoController {
