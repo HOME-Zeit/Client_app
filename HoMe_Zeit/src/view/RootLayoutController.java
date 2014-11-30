@@ -105,7 +105,7 @@ public class RootLayoutController {
         	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
             .title("HoMe Zeit")
             .masthead("About")
-            .message("Author: HoMe Group")
+            .message("Author: HoMe Group\nYear: 2014 \nVersion: 1.0")
             .showInformation();
     }
 
