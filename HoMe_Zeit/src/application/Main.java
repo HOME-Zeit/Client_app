@@ -298,7 +298,7 @@ public class Main extends Application {
 	 * 
 	 * @return
 	 */
-	public File getProgrammFilePath() {
+	/*public File getProgrammFilePath() {
 	    Preferences prefs = Preferences.userNodeForPackage(Main.class);
 	    String filePath = prefs.get("filePath", null);
 	    if (filePath != null) {
@@ -307,14 +307,14 @@ public class Main extends Application {
 	        return null;
 	    }
 	}
-
+	*/
 	/**
 	 * Sets the file path of the currently loaded file. The path is persisted in
 	 * the OS specific registry.
 	 * 
 	 * @param file the file or null to remove the path
 	 */
-	public void setProgrammFilePath(File file) {
+	/*public void setProgrammFilePath(File file) {
 	    Preferences prefs = Preferences.userNodeForPackage(Main.class);
 	    if (file != null) {
 	        prefs.put("filePath", file.getPath());
@@ -328,14 +328,14 @@ public class Main extends Application {
 	        primaryStage.setTitle("HoMe Zeit");
 	    }
 	}
-	
+	*/
 	/**
 	 * Loads programm data from the specified file. The current programm data will
 	 * be replaced.
 	 * 
 	 * @param file
 	 */
-	public void loadProgrammDataFromFile(File file) {
+	/*public void loadProgrammDataFromFile(File file) {
 	    try {
 	        JAXBContext context = JAXBContext
 	                .newInstance(ProgrammListWrapper.class);
@@ -357,13 +357,13 @@ public class Main extends Application {
 	                .showException(e);
 	    }
 	}
-
+	*/
 	/**
 	 * Saves the current programm data to the specified file.
 	 * 
 	 * @param file
 	 */
-	public void saveProgrammDataToFile(File file) {
+	/*public void saveProgrammDataToFile(File file) {
 	    try {
 	        JAXBContext context = JAXBContext
 	                .newInstance(ProgrammListWrapper.class);
@@ -385,7 +385,7 @@ public class Main extends Application {
 	                .showException(e);
 	    }
 	}
-	
+	*/
 	public static void main(String[] args) {
 		launch(args);
 	}
