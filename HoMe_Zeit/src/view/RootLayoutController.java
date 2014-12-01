@@ -51,6 +51,7 @@ public class RootLayoutController {
 //		main.setProgrammFilePath(null);
 	}
 	
+	
 	/**
 	 * Opens a FileChooser to let the user select program book to load.
 	 */
