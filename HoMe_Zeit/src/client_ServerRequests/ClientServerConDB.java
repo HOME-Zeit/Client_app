@@ -23,7 +23,7 @@ public class ClientServerConDB extends RequestServer
         LongBool longBool = new LongBool(time,truefalse);
         try
         {
-            socket = new Socket("localhost",55305);
+            socket = new Socket("149.205.109.19",55305);
             //fileOut = new FileOutputStream("/tmp/longBool.ser");
             oOut = new ObjectOutputStream(socket.getOutputStream());
             oOut.writeObject(longBool);
@@ -47,7 +47,7 @@ public class ClientServerConDB extends RequestServer
     {
         try
         {
-            socket = new Socket("localhost",55304); // 
+            socket = new Socket("149.205.109.19",55304); // 
             //fileOut = new FileOutputStream("/tmp/longBool.ser");
             oOut = new ObjectOutputStream(socket.getOutputStream());
             oOut.writeObject(truefalse);
@@ -77,7 +77,7 @@ public class ClientServerConDB extends RequestServer
         IntBool intBool = new IntBool(number,truefalse);
         try
         {
-            socket = new Socket("localhost",55306);
+            socket = new Socket("149.205.109.19",55306);
             //fileOut = new FileOutputStream("/tmp/longBool.ser");
             oOut = new ObjectOutputStream(socket.getOutputStream());
             oOut.writeObject(intBool);

@@ -19,7 +19,7 @@ public class ClientServerConTime
     {
         try
         {
-            socket = new Socket("localhost",55303);
+            socket = new Socket("149.205.109.19",55303);
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while((inputLine = bufferedReader.readLine())!=null)
                 returnString = inputLine;
@@ -37,7 +37,7 @@ public class ClientServerConTime
     {
         try
         {
-            socket = new Socket("localhost",55302);
+            socket = new Socket("149.205.109.19",55302);
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while((inputLine = bufferedReader.readLine())!=null)
                 returnString = inputLine;
@@ -55,7 +55,7 @@ public class ClientServerConTime
     {
         try
         {
-            socket = new Socket("localhost",55307);
+            socket = new Socket("149.205.109.19",55307);
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while((inputLine = bufferedReader.readLine())!=null)
                 returnString = inputLine;

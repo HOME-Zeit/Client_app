@@ -173,8 +173,8 @@ public class Main extends Application {
         placeholder_main.startClientTimeLoops();
         }
         else{
-        placeholder_main.startClientDBLoops(); // test on the same PC
-        placeholder_main.startClientTimeLoops();
+        //placeholder_main.startClientDBLoops(); // test on the same PC
+        //placeholder_main.startClientTimeLoops();
         loadAllProgrammDataFromServer();
         }
         
