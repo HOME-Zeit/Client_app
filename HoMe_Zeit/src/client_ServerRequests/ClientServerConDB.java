@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.net.Socket;
 import java.io.*;
 
+import org.controlsfx.dialog.Dialog;
+import org.controlsfx.dialog.Dialogs;
+
 import datenbank.Programminformation;
 /**
  *
@@ -39,7 +42,13 @@ public class ClientServerConDB extends RequestServer
         }
         catch(IOException e)
         {
-            System.out.println(e);
+            //System.out.println(e);
+        	Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("No connection")
+            .masthead("Program cannot connect with Server")
+            .message("Please check internet connection or change mode")
+            .showWarning();
         }
         return answer;
     }
@@ -67,7 +76,13 @@ public class ClientServerConDB extends RequestServer
         }
         catch(IOException e)
         {
-            System.out.println(e + " socket error");
+            //System.out.println(e + " socket error");
+        	Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("No connection")
+            .masthead("Program cannot connect with Server")
+            .message("Please check internet connection or change mode")
+            .showWarning();
         }
         return answer;
         
@@ -92,7 +107,13 @@ public class ClientServerConDB extends RequestServer
         }
         catch(IOException e)
         {
-            System.out.println(e);
+            //System.out.println(e);
+        	Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("No connection")
+            .masthead("Program cannot connect with Server")
+            .message("Please check internet connection or change mode")
+            .showWarning();
         }
         return answer;
     }

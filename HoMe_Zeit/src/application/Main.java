@@ -475,6 +475,7 @@ public class Main extends Application {
 	public void loadTodayProgrammDataFromServer(){
     	try {
     		//System.out.println(Retrieve_Time.getTime()); // Test time
+    		
     		long time =RequestServer.requestSec();
     		ArrayList<Programminformation> progrServer = RequestServer.requestMinor(time,true);
     		ArrayList< Programm> progrClient = new ArrayList<Programm>();
@@ -488,10 +489,10 @@ public class Main extends Application {
             programmData.addAll(progrClient);
             
     		} catch (Exception e) { // catches ANY exception
-    	        Dialogs.create()
-    	                .title("Error")
-    	                .masthead("Could not load today's data from DB:\n")
-    	                .showException(e);
+//    	        Dialogs.create()
+//    	                .title("Error")
+//    	                .masthead("Could not load today's data from DB:\n")
+//    	                .showException(e);
     	    }
     	}
 	
