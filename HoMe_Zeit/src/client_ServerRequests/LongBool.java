@@ -7,8 +7,12 @@ import java.io.*;
  */
 public class LongBool implements Serializable
 {
-    long time;
-    boolean truefalse;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L; // have added 
+	public long time;
+    public boolean truefalse;
     public LongBool (long time, boolean truefalse)
     {
         this.time = time;

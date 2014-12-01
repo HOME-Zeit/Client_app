@@ -32,19 +32,27 @@ public class DBLoopMajor extends Thread
                 serverSocket = new ServerSocket(55304);
                 clientSocket = serverSocket.accept();
                 oIn =  new ObjectInputStream(clientSocket.getInputStream());
-                try{truefalse = (boolean) oIn.readObject();}catch(ClassNotFoundException e){System.out.println(e);}
-                oIn.close();
+                try{
+                	truefalse = (boolean) oIn.readObject();
+                	//System.out.println("check "+truefalse);
+                	}catch(ClassNotFoundException e){
+                		System.out.println(e);
+                		}
+                
                 
                 //TODO Minor besorgen von DB
                 returnThis = Datenbank.ausgeben(truefalse);
-                
+                //System.out.println(returnThis.get(0).prod_verantwortlicher + " check2");
                 oOut = new ObjectOutputStream(clientSocket.getOutputStream());
                 oOut.writeObject(returnThis);
+                
+                //System.out.println(" check4");
+                oIn.close();
                 oOut.flush();
                 oOut.close();
-                
                 serverSocket.close();
                 clientSocket.close();
+               
                 try{Thread.sleep(50);}catch(Exception e){System.out.println(e);}
             }
             catch(IOException e)

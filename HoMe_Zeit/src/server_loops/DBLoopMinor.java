@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import datenbank.Datenbank;
 import datenbank.Programminformation;
 
+import client_ServerRequests.LongBool;;
+
 /**
  *
  * @author Nevanor
@@ -32,14 +34,21 @@ public class DBLoopMinor extends Thread
                 serverSocket = new ServerSocket(55305);
                 clientSocket = serverSocket.accept();
                 oIn =  new ObjectInputStream(clientSocket.getInputStream());
-                try{longBool = (LongBool) oIn.readObject();}catch(ClassNotFoundException e){System.out.println(e);}
-                oIn.close();
+                try{
+                	// have changed package of LongBool
+                	longBool = (client_ServerRequests.LongBool) oIn.readObject(); 
+                	}catch(ClassNotFoundException e){
+                		System.out.println(e);
+                		}
+                
                 
                 //TODO Minor besorgen von DB
                 returnThis = Datenbank.ausgeben(longBool.time,longBool.truefalse);
                 
                 oOut = new ObjectOutputStream(clientSocket.getOutputStream());
                 oOut.writeObject(returnThis);
+                
+                oIn.close();
                 oOut.flush();
                 oOut.close();
                 

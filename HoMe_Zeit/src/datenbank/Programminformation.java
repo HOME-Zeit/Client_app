@@ -1,6 +1,8 @@
 package datenbank;
 
-public class Programminformation 
+import java.io.Serializable;
+
+public class Programminformation implements Serializable
 {
 	public Integer nummer;
 	public String titel;

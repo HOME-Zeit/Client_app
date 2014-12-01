@@ -173,8 +173,8 @@ public class Main extends Application {
         placeholder_main.startClientTimeLoops();
         }
         else{
-        //placeholder_main.startClientDBLoops(); // test on the same PC
-        //placeholder_main.startClientTimeLoops();
+        placeholder_main.startClientDBLoops(); // test on the same PC
+        placeholder_main.startClientTimeLoops();
         loadAllProgrammDataFromServer();
         }
         
@@ -475,7 +475,8 @@ public class Main extends Application {
 	public void loadTodayProgrammDataFromServer(){
     	try {
     		//System.out.println(Retrieve_Time.getTime()); // Test time
-    		ArrayList<Programminformation> progrServer = RequestServer.requestMinor(Retrieve_Time.getTime(),true);
+    		long time =RequestServer.requestSec();
+    		ArrayList<Programminformation> progrServer = RequestServer.requestMinor(time,true);
     		ArrayList< Programm> progrClient = new ArrayList<Programm>();
     		
     		for(Programminformation p : progrServer ){

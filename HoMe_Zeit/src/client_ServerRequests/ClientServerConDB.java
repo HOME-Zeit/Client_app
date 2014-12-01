@@ -27,13 +27,14 @@ public class ClientServerConDB extends RequestServer
             //fileOut = new FileOutputStream("/tmp/longBool.ser");
             oOut = new ObjectOutputStream(socket.getOutputStream());
             oOut.writeObject(longBool);
-            oOut.flush();
-            oOut.close();
+            
             
             oIn =  new ObjectInputStream(socket.getInputStream());
             try{answer = (ArrayList<Programminformation>) oIn.readObject();}catch(ClassNotFoundException e){System.out.println(e);}
             oIn.close();
 
+            oOut.flush();
+            oOut.close();
             socket.close();
         }
         catch(IOException e)
@@ -50,13 +51,18 @@ public class ClientServerConDB extends RequestServer
             //fileOut = new FileOutputStream("/tmp/longBool.ser");
             oOut = new ObjectOutputStream(socket.getOutputStream());
             oOut.writeObject(truefalse);
-            oOut.flush();
-            oOut.close();
+            
             
             oIn =  new ObjectInputStream(socket.getInputStream());
-            try{answer = (ArrayList<Programminformation>) oIn.readObject();}catch(ClassNotFoundException e){System.out.println(e + "obejt error");}
+            try{
+            	answer = (ArrayList<Programminformation>) oIn.readObject();
+            	//System.out.println(answer.get(0).sende_verantwortlicher + " check 3");
+            	}catch(ClassNotFoundException e){
+            		System.out.println(e + "object error");
+            		}
             oIn.close();
-
+            oOut.flush();
+            oOut.close();
             socket.close();
         }
         catch(IOException e)
