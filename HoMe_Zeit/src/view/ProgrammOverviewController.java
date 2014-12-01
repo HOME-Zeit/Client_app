@@ -240,9 +240,9 @@ public class ProgrammOverviewController {
 	    	}
 	    	else{
 	    		if(allProgramsRB.isSelected()){
-	    			
+	    			main.loadAllProgrammDataFromServer();
 	    		}else{
-	    			
+	    			main.loadTodayProgrammDataFromServer();
 	    		}
 	    		
 	    	}

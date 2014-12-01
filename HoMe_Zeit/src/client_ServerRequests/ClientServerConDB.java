@@ -46,7 +46,7 @@ public class ClientServerConDB extends RequestServer
     {
         try
         {
-            socket = new Socket("localhost",55304);
+            socket = new Socket("localhost",55304); // 
             //fileOut = new FileOutputStream("/tmp/longBool.ser");
             oOut = new ObjectOutputStream(socket.getOutputStream());
             oOut.writeObject(truefalse);
@@ -54,16 +54,17 @@ public class ClientServerConDB extends RequestServer
             oOut.close();
             
             oIn =  new ObjectInputStream(socket.getInputStream());
-            try{answer = (ArrayList<Programminformation>) oIn.readObject();}catch(ClassNotFoundException e){System.out.println(e);}
+            try{answer = (ArrayList<Programminformation>) oIn.readObject();}catch(ClassNotFoundException e){System.out.println(e + "obejt error");}
             oIn.close();
 
             socket.close();
         }
         catch(IOException e)
         {
-            System.out.println(e);
+            System.out.println(e + " socket error");
         }
         return answer;
+        
     }
     public static ArrayList <Programminformation> numberCon (int number, boolean truefalse)
     {

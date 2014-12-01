@@ -49,15 +49,7 @@ public class DBLoopMajor extends Thread
             }
             catch(IOException e)
             {
-            	/*if (serverSocket != null && !serverSocket.isClosed()) {
-                    try {
-                    	serverSocket.close();
-                    } catch (IOException e1)
-                    {
-                        e1.printStackTrace(System.err);
-                    }
-                }
-                */
+            	
                 System.out.println(e+": 4Socket Problem");
                 return;
             }
@@ -65,3 +57,13 @@ public class DBLoopMajor extends Thread
         }
     }
 }
+
+/*if (serverSocket != null && !serverSocket.isClosed()) {
+try {
+	serverSocket.close();
+} catch (IOException e1)
+{
+    e1.printStackTrace(System.err);
+}
+}
+*/

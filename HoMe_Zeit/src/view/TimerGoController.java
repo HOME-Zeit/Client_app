@@ -6,6 +6,7 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
+import client_ServerRequests.RequestServer;
 import server_NTPRequest.Retrieve_Time;
 import application.Main;
 import javafx.animation.Animation;
@@ -232,7 +233,12 @@ public class TimerGoController {
 			}
 		}
 		else{
-			
+			try {
+				this.secondsDiff = RequestServer.requestSec() - LocalDateTime.now().toEpochSecond(ZoneOffset.of("+01:00"))  ;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

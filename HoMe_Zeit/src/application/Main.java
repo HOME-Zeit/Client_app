@@ -173,8 +173,9 @@ public class Main extends Application {
         placeholder_main.startClientTimeLoops();
         }
         else{
+        //placeholder_main.startClientDBLoops(); // test on the same PC
+        //placeholder_main.startClientTimeLoops();
         loadAllProgrammDataFromServer();
-        	
         }
         
         /*
@@ -467,5 +468,30 @@ public class Main extends Application {
 	                .showException(e);
 	    }
 	}
+	
+	/*
+	 * Function for Server/Regie . Load today's data from DB.
+	 */
+	public void loadTodayProgrammDataFromServer(){
+    	try {
+    		//System.out.println(Retrieve_Time.getTime()); // Test time
+    		ArrayList<Programminformation> progrServer = RequestServer.requestMinor(Retrieve_Time.getTime(),true);
+    		ArrayList< Programm> progrClient = new ArrayList<Programm>();
+    		
+    		for(Programminformation p : progrServer ){
+    			progrClient.add(new Programm(p));
+    		}
+    		
+    		
+    		programmData.clear();
+            programmData.addAll(progrClient);
+            
+    		} catch (Exception e) { // catches ANY exception
+    	        Dialogs.create()
+    	                .title("Error")
+    	                .masthead("Could not load today's data from DB:\n")
+    	                .showException(e);
+    	    }
+    	}
 	
 }
