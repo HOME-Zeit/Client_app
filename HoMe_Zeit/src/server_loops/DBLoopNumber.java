@@ -16,8 +16,8 @@ import java.util.ArrayList;
  */
 public class DBLoopNumber extends Thread
 {
-    private static ServerSocket serverSocket;
-    private static Socket clientSocket;
+	private static ServerSocket serverSocket;
+	private static Socket clientSocket;
     private static ObjectOutputStream oOut;
     private static ObjectInputStream oIn;
     private static IntBool intBool = new IntBool(0,false);
@@ -25,7 +25,7 @@ public class DBLoopNumber extends Thread
     
     public void run()
     {
-        while(true)
+        while(!Thread.currentThread().isInterrupted())
         {
             try
             {
@@ -53,5 +53,26 @@ public class DBLoopNumber extends Thread
                 return;
             }
         }
+    }
+    
+	public static void socketsClose(){
+    	
+    	if(serverSocket!=null ){
+    		try {
+    			serverSocket.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    	if(clientSocket!=null ){
+    		try {
+				clientSocket.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    	
     }
 }

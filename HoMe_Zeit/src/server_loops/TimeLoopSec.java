@@ -20,7 +20,7 @@ public class TimeLoopSec extends Thread
     public void run()
     {
         System.out.println("Sec READY! Waiting for Clients...");
-        while(true)
+        while(!Thread.currentThread().isInterrupted())
         {
             try
             {
@@ -48,5 +48,25 @@ public class TimeLoopSec extends Thread
                 return;
             }
         }
+    }
+	public static void socketsClose(){
+    	
+    	if(serverSocket!=null ){
+    		try {
+    			serverSocket.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    	if(clientSocket!=null ){
+    		try {
+				clientSocket.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    	
     }
 }

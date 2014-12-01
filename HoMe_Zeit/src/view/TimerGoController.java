@@ -194,7 +194,7 @@ public class TimerGoController {
 							//System.out.println(dur2.getSeconds()+" ");
 							progresProgram.setProgress((programm.getLange()*60.0-dur2.getSeconds()+0.5)/(programm.getLange()*60.0));
 							
-							System.out.println(progresProgram.getProgress()+ " " + time.format(formatter1));
+							//System.out.println(progresProgram.getProgress()+ " " + time.format(formatter1));
 						}
 						// end of program
 						else if(dur2secondsAll==0){

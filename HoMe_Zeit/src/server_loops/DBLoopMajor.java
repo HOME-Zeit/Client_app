@@ -25,7 +25,7 @@ public class DBLoopMajor extends Thread
     
     public void run()
     {
-        while(true)
+        while(!Thread.currentThread().isInterrupted())
         {
             try
             {
@@ -63,6 +63,27 @@ public class DBLoopMajor extends Thread
             }
         
         }
+    }
+    
+    public static void socketsClose(){
+    	
+    	if(serverSocket!=null ){
+    		try {
+    			serverSocket.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    	if(clientSocket!=null ){
+    		try {
+				clientSocket.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    	
     }
 }
 
