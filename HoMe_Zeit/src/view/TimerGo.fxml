@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="616.0" prefWidth="1037.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TimerGoController">
+<AnchorPane fx:id="timerGoAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="616.0" prefWidth="1037.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TimerGoController">
    <children>
       <Label fx:id="timeStartEndAfter" layoutX="2.0" layoutY="158.0" prefHeight="301.0" prefWidth="1030.0" styleClass="label-timer" textOverrun="CENTER_ELLIPSIS" AnchorPane.bottomAnchor="157.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="158.0">
          <font>
@@ -21,13 +21,14 @@
       </Label>
       <Label fx:id="programInfo" layoutX="14.0" layoutY="14.0" styleClass="label-timerheader" text="Sendung | Termin | Länge" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <Label fx:id="currTime" layoutX="726.0" layoutY="14.0" styleClass="label-timercurr" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
-      <ProgressBar fx:id="progresProgram" layoutX="14.0" layoutY="437.0" opacity="0.7" prefHeight="104.0" prefWidth="743.0" progress="0.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="20.0" />
-      <Button layoutX="433.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleMainWindow" prefHeight="33.0" prefWidth="139.0" text="Main window" AnchorPane.bottomAnchor="140.0" AnchorPane.rightAnchor="210.0" />
-      <Button layoutX="670.0" layoutY="359.0" mnemonicParsing="false" text="Next Program" visible="false" AnchorPane.bottomAnchor="140.0" AnchorPane.rightAnchor="20.0" />
+      <ProgressBar fx:id="progresProgram" layoutX="14.0" layoutY="437.0" opacity="0.7" prefHeight="104.0" prefWidth="743.0" progress="0.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+      <Button layoutX="878.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleMainWindow" prefHeight="33.0" prefWidth="139.0" text="Main window" AnchorPane.bottomAnchor="140.0" AnchorPane.rightAnchor="20.0" />
+      <Button layoutX="709.0" layoutY="531.0" mnemonicParsing="false" text="Next Program" visible="false" AnchorPane.bottomAnchor="140.0" AnchorPane.rightAnchor="189.0" />
       <HBox alignment="CENTER" layoutX="420.0" layoutY="585.0" prefHeight="104.0" prefWidth="197.0" AnchorPane.leftAnchor="420.0" AnchorPane.rightAnchor="420.0">
          <children>
             <Line endX="51.0" rotate="90.0" startX="-51.0" stroke="#eb2a10" strokeWidth="3.0" />
          </children>
       </HBox>
+      <ToggleButton fx:id="colorModeToggle" layoutX="15.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleColorModeChange" prefHeight="33.0" prefWidth="81.0" text="Dark" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="20.0" />
    </children>
 </AnchorPane>
