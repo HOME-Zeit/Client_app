@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 
 .background {
-    -fx-background-color: white;
+    -fx-background-color: #FFFFF0;
 }
 
 .label {

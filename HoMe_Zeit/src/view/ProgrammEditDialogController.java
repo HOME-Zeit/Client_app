@@ -197,4 +197,22 @@ public class ProgrammEditDialogController {
             return false;
         }
     }
+    
+    /**
+     * Set current Time
+     */
+    @FXML
+    private void handleJetzt() {
+    	startTerminFieldHours.setText(Integer.toString(LocalDateTime.now().getHour()));
+        startTerminFieldMinutes.setText(Integer.toString(LocalDateTime.now().getMinute()));
+        startTerminFieldDate.setValue(LocalDateTime.now().toLocalDate());
+    }
+    
+    /**
+     * Copy sendev.
+     */
+    @FXML
+    private void handleCopySende() {
+    	produktVerantField.setText(sendeVerantField.getText());
+    }
 }

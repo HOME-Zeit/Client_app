@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -7,12 +8,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="364.0" prefWidth="583.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProgrammEditDialogController">
+<AnchorPane prefHeight="342.0" prefWidth="682.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProgrammEditDialogController">
    <children>
       <GridPane layoutX="97.0" layoutY="42.0" prefHeight="225.0" prefWidth="499.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="264.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="10.0" prefWidth="112.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="301.0" minWidth="10.0" prefWidth="276.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -27,7 +29,7 @@
             <Label text="Länge der Sendung (Minuten)" GridPane.rowIndex="2" />
             <Label text="Sendeverantwortlichen" GridPane.rowIndex="3" />
             <Label text="Produktionsverantwortlichen" GridPane.rowIndex="4" />
-            <Group GridPane.columnIndex="1">
+            <Group GridPane.columnIndex="2">
                <children>
                   <Label layoutX="345.0" layoutY="270.0" prefHeight="20.0" prefWidth="2.0" text=":" />
                   <TextField fx:id="startTerminFieldHours" layoutX="292.0" layoutY="262.0" prefHeight="37.0" prefWidth="40.0" />
@@ -39,16 +41,18 @@
                   </DatePicker>
                </children>
             </Group>
-            <TextField fx:id="sendungField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="langeField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="sendeVerantField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="produktVerantField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="sendungField" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="langeField" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <TextField fx:id="sendeVerantField" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <TextField fx:id="produktVerantField" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleJetzt" prefHeight="33.0" prefWidth="110.0" text="Jetzt" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#handleCopySende" prefHeight="33.0" prefWidth="109.0" text="Copy" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
          <opaqueInsets>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
          </opaqueInsets>
       </GridPane>
-      <Button defaultButton="true" layoutX="364.0" layoutY="317.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="33.0" prefWidth="91.0" text="OK" />
-      <Button layoutX="477.0" layoutY="317.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+      <Button defaultButton="true" layoutX="456.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="33.0" prefWidth="91.0" text="OK" />
+      <Button layoutX="577.0" layoutY="295.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
    </children>
 </AnchorPane>
