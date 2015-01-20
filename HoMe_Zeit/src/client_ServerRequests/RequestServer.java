@@ -9,6 +9,9 @@ import datenbank.Programminformation;
  */
 public class RequestServer 
 {
+    private static String IPAddress = "localhost";
+
+	
     public static ArrayList <Programminformation> requestMinor(long time, boolean truefalse)
     {
         return ClientServerConDB.minorCon(time,truefalse);
@@ -33,6 +36,15 @@ public class RequestServer
     public static long requestSec ()
     {
         return ClientServerConTime.secCon();
+    }
+    
+    public static String getIP(){
+    	return RequestServer.IPAddress;
+    }
+    
+    public static void setIP(String ipTmp){
+    	RequestServer.IPAddress = ipTmp;
+    	
     }
     
 }

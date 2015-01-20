@@ -2,10 +2,13 @@ package view;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 
+import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
 
+import client_ServerRequests.RequestServer;
 import server_loops.DBLoopMajor;
 import server_loops.DBLoopMinor;
 import server_loops.DBLoopNumber;
@@ -157,6 +160,40 @@ public class RootLayoutController {
 			e.printStackTrace();
 		}
 		main.start(main.getPrimaryStage());
+
+	}
+	
+	@FXML
+	private void handleChangeIP() {
+		Optional<String> iPAddress = Dialogs.create()
+    			.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+    			  .actions(Dialog.ACTION_OK,Dialog.ACTION_CANCEL)
+        	      .title("IP - Address choice")
+        	      .masthead("Now IP = \""+ RequestServer.getIP()+"\"")
+        	      .message( "Enter new IP-Address of the server or Cancel")
+        	      .showTextInput();
+		
+		/**
+		 * TODO chaeck or in new IP are 4 blocks - str.split(...)
+		 */
+		if(iPAddress.isPresent() && iPAddress.get().compareTo("")!=0){
+			RequestServer.setIP(iPAddress.get());
+			
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("You have changed IP-Address")
+            .masthead("IP-Address = \""+ RequestServer.getIP()+"\"")
+            .showWarning();
+		}
+		else{
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("You have not changed IP-Address")
+            .masthead("IP-Address = \""+ RequestServer.getIP()+"\"")
+            .message("If you want to change IP-Address -  try again")
+            .showWarning();
+		}
+	
 
 	}
 

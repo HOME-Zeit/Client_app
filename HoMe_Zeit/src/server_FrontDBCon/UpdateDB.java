@@ -26,7 +26,7 @@ public class UpdateDB
     }
     
     //-----
-    
+    /*
     public static void segmentsRegister(Programminformation p, boolean truefalse)
     {
         //TODO Register a new Segment with the whole Programminformation
@@ -55,4 +55,5 @@ public class UpdateDB
         //TODO Refactor a Segment by overwriting it directly
         Datenbank.abschnitt_bearbeiten(segment,truefalse);
     }
+*/
 }

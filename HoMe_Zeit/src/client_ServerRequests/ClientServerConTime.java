@@ -16,13 +16,13 @@ public class ClientServerConTime
     private static BufferedReader bufferedReader;
     private static Socket socket;
     private static String inputLine;
-    private static String returnString; 
+    private static String returnString;
     
     public static String clkCon()
     {
         try
         {
-            socket = new Socket("localhost",55303);
+            socket = new Socket(RequestServer.getIP(),55303);
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while((inputLine = bufferedReader.readLine())!=null)
                 returnString = inputLine;
@@ -46,7 +46,7 @@ public class ClientServerConTime
     {
         try
         {
-            socket = new Socket("localhost",55302);
+            socket = new Socket(RequestServer.getIP(),55302);
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while((inputLine = bufferedReader.readLine())!=null)
                 returnString = inputLine;
@@ -70,7 +70,7 @@ public class ClientServerConTime
     {
         try
         {
-            socket = new Socket("localhost",55307);
+            socket = new Socket(RequestServer.getIP(),55307);
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while((inputLine = bufferedReader.readLine())!=null)
                 returnString = inputLine;
@@ -90,4 +90,7 @@ public class ClientServerConTime
         
         return Long.parseLong(returnString,10);
     }
+    
+    
+    
 }

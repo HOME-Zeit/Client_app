@@ -21,6 +21,7 @@
           <Menu mnemonicParsing="false" text="Edit">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#handleChangeMode" text="Change mode" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleChangeIP" text="Change IP - Address" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
