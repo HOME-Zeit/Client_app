@@ -46,7 +46,7 @@
             <TextField fx:id="sendeVerantField" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <TextField fx:id="produktVerantField" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleJetzt" prefHeight="33.0" prefWidth="110.0" text="Jetzt" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" onAction="#handleCopySende" prefHeight="33.0" prefWidth="109.0" text="Copy" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleCopySende" prefHeight="33.0" prefWidth="109.0" text="Copy" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
          <opaqueInsets>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
