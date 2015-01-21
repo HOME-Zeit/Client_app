@@ -1,6 +1,7 @@
 package datenbank;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Programminformation implements Serializable
 {
@@ -12,9 +13,12 @@ public class Programminformation implements Serializable
 	public String sende_verantwortlicher;
 	public Long reale_startzeit; // 0
 	public Long reale_endzeit; // 0
+	public ArrayList<Abschnitt> abschnitte;
 	
 		
-	public Programminformation(Integer nummer, String titel, Long startzeit, Long endzeit, String prod_verantwortlicher, String sende_verantwortlicher, Long reale_startzeit, Long reale_endzeit)
+	public Programminformation(Integer nummer, String titel, Long startzeit,
+			Long endzeit, String prod_verantwortlicher, String sende_verantwortlicher,
+			Long reale_startzeit, Long reale_endzeit, ArrayList<Abschnitt> abschnitte)
 	{
 		this.nummer = nummer;
 		this.titel = titel;
@@ -24,6 +28,7 @@ public class Programminformation implements Serializable
 		this.sende_verantwortlicher = sende_verantwortlicher;
 		this.reale_startzeit = reale_startzeit;
 		this.reale_endzeit = reale_endzeit;
+		this.abschnitte = abschnitte;
 		return;
 	}	
 }
