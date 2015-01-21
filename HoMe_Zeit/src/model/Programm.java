@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
@@ -16,6 +17,7 @@ import javafx.beans.property.StringProperty;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import util.LocalDateTimeAdapter;
+import datenbank.Abschnitt;
 import datenbank.Programminformation;
 /**
  * 
@@ -38,6 +40,8 @@ public class Programm {
    
     String pattern = "HH:mm";
     DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern(pattern);
+    
+    public ArrayList<AbschnittMy> abschnittMy;  
 
     /**
      * Default constructor.
@@ -53,13 +57,15 @@ public class Programm {
     	
     	this.langeReal = new SimpleIntegerProperty();
     	this.startTerminReal = new SimpleObjectProperty<LocalDateTime>();
+    	
+    	abschnittMy = new ArrayList<>();
     }
 
     /**
      * Constructor with some initial data.
      * 
      */
-    public Programm(String sendungName, String sendeVerant , String produktVerant, Integer lange , LocalDate date ,String time ) {
+    public Programm(String sendungName, String sendeVerant , String produktVerant, Integer lange , LocalDate date ,String time, ArrayList<AbschnittMy> abschnittMy ) {
         
     	this.number=new SimpleIntegerProperty(0); // +
     	this.startTermin = new SimpleObjectProperty<LocalDateTime>
@@ -72,6 +78,7 @@ public class Programm {
     	this.langeReal = new SimpleIntegerProperty();
     	this.startTerminReal = new SimpleObjectProperty<LocalDateTime>();
        
+    	this.abschnittMy = abschnittMy;
     }
     
     /**
@@ -90,6 +97,12 @@ public class Programm {
 		(LocalDateTime.ofEpochSecond(p.reale_startzeit, 0,ZoneOffset.of("+01:00")));
     	this.langeReal = new SimpleIntegerProperty((int)((p.reale_endzeit - p.reale_startzeit)/60));
     	
+    	/*
+    	 * TODO improve this bicycle
+    	 */
+    	for(Abschnitt ab: p.abschnitte){
+    		this.abschnittMy.add(new AbschnittMy(ab));
+    	}
     }
     
     /*
@@ -106,7 +119,13 @@ public class Programm {
     	Long reale_startzeit = this.getStartTerminReal().toEpochSecond(ZoneOffset.of("+01:00")); 
     	Long reale_endzeit = this.getStartTerminReal().plusMinutes(getLangeReal()).toEpochSecond(ZoneOffset.of("+01:00"));
     	
-    	return new Programminformation(nummer, titel, startzeit, endzeit, prod_verantwortlicher, sende_verantwortlicher, reale_startzeit, reale_endzeit);
+    	ArrayList<Abschnitt> abschnitt = new ArrayList<>();
+    	for(AbschnittMy ab : this.abschnittMy){
+    		abschnitt.add(ab.getAbschnittObject());
+    	}
+    	
+    	
+    	return new Programminformation(nummer, titel, startzeit, endzeit, prod_verantwortlicher, sende_verantwortlicher, reale_startzeit, reale_endzeit,abschnitt);
     }
     
 
