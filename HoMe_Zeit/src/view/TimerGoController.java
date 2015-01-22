@@ -24,6 +24,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -82,6 +83,8 @@ public class TimerGoController {
 	 */
 	public void setMain(Main main) {
 		this.main = main;
+		
+		currTime.setTooltip(new Tooltip("Current time"));
 	}
 
 	/**
@@ -333,5 +336,13 @@ public class TimerGoController {
 			timerGoAnchor.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
 			
 		}
+	}
+	
+	/**
+	 * Called when the user clicks next Abschnitt.
+	 */
+	@FXML
+	private void handleNextAbschnitt() {
+
 	}
 }

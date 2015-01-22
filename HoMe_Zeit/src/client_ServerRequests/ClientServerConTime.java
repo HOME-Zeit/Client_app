@@ -23,6 +23,16 @@ public class ClientServerConTime
         try
         {
             socket = new Socket(RequestServer.getIP(),55303);
+            /*try
+            {
+            	socket = new Socket(RequestServer.getIP(),55303);
+                socket.setSoTimeout(2600);
+            }
+            catch(Exception e)
+            {
+                socket.close();
+                socket = new Socket(RequestServer.getIP(),55303);
+            }*/
             //socket.setSoTimeout(10000);
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while((inputLine = bufferedReader.readLine())!=null)
@@ -48,6 +58,16 @@ public class ClientServerConTime
         try
         {
             socket = new Socket(RequestServer.getIP(),55302);
+            /*try
+            {
+            	socket = new Socket(RequestServer.getIP(),55302);
+                socket.setSoTimeout(2600);
+            }
+            catch(Exception e)
+            {
+                socket.close();
+                socket = new Socket(RequestServer.getIP(),55302);
+            }*/
             //socket.setSoTimeout(10000);
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while((inputLine = bufferedReader.readLine())!=null)
@@ -73,6 +93,16 @@ public class ClientServerConTime
         try
         {
             socket = new Socket(RequestServer.getIP(),55307);
+            /*try
+            {
+            	socket = new Socket(RequestServer.getIP(),55307);
+                socket.setSoTimeout(2600);
+            }
+            catch(Exception e)
+            {
+                socket.close();
+                socket = new Socket(RequestServer.getIP(),55307);
+            }*/
             //socket.setSoTimeout(10000);
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while((inputLine = bufferedReader.readLine())!=null)

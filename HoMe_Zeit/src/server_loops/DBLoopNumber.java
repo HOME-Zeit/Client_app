@@ -30,6 +30,16 @@ public class DBLoopNumber extends Thread
             try
             {
                 serverSocket = new ServerSocket(55306);
+                /*try
+                {
+                    serverSocket = new ServerSocket(55306);
+                    serverSocket.setSoTimeout(2600);
+                }
+                catch(Exception e)
+                {
+                    serverSocket.close();
+                    serverSocket = new ServerSocket(55306);
+                }*/
                 //serverSocket.setSoTimeout(10000);
                 clientSocket = serverSocket.accept();
                 oIn =  new ObjectInputStream(clientSocket.getInputStream());
