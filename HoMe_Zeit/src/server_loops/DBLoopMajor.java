@@ -30,6 +30,7 @@ public class DBLoopMajor extends Thread
             try
             {
                 serverSocket = new ServerSocket(55304);
+                serverSocket.setSoTimeout(10000);
                 clientSocket = serverSocket.accept();
                 oIn =  new ObjectInputStream(clientSocket.getInputStream());
                 try{
@@ -41,7 +42,8 @@ public class DBLoopMajor extends Thread
                 
                 
                 //TODO Minor besorgen von DB
-                returnThis = Datenbank.ausgeben(truefalse);
+                Datenbank DB = new Datenbank();
+                returnThis = DB.ausgeben(truefalse);
                 //System.out.println(returnThis.get(0).prod_verantwortlicher + " check2");
                 oOut = new ObjectOutputStream(clientSocket.getOutputStream());
                 oOut.writeObject(returnThis);

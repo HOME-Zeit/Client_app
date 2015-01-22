@@ -30,13 +30,15 @@ public class DBLoopNumber extends Thread
             try
             {
                 serverSocket = new ServerSocket(55306);
+                serverSocket.setSoTimeout(10000);
                 clientSocket = serverSocket.accept();
                 oIn =  new ObjectInputStream(clientSocket.getInputStream());
                 try{intBool = (IntBool) oIn.readObject();}catch(ClassNotFoundException e){System.out.println(e);}
                 oIn.close();
                 
                 //TODO Minor besorgen von DB
-                returnThis = Datenbank.ausgeben(intBool.number,intBool.truefalse);
+                Datenbank DB = new Datenbank();
+                returnThis = DB.ausgeben(intBool.number,intBool.truefalse);
                 
                 oOut = new ObjectOutputStream(clientSocket.getOutputStream());
                 oOut.writeObject(returnThis);

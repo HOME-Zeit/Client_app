@@ -9,19 +9,22 @@ public class RequestDB
 {
     //Class<?> Programm = new server_FrontDBCon.Programminformation().getClass(); 
     // I have added <Programminformation> - Viktor
-    public static ArrayList <Programminformation> requestMinor(long time, boolean truefalse)
+	
+	Datenbank DB = new Datenbank();
+	
+    public ArrayList <Programminformation> requestMinor(long time, boolean truefalse)
     {
         //TODO get certain Stuff from DB
-        return Datenbank.ausgeben(time,truefalse);
+        return DB.ausgeben(time,truefalse);
     }
-    public static ArrayList <Programminformation> requestMajor(boolean truefalse)
+    public ArrayList <Programminformation> requestMajor(boolean truefalse)
     {
         //TODO get ALL STUFF from DB
-        return Datenbank.ausgeben(truefalse);
+        return DB.ausgeben(truefalse);
     }
-    public static ArrayList <Programminformation> requestNumber(int number, boolean truefalse)
+    public ArrayList <Programminformation> requestNumber(int number, boolean truefalse)
     {
         //TODO get Stuff via number
-        return Datenbank.ausgeben(number,truefalse);
+        return DB.ausgeben(number,truefalse);
     }
 }

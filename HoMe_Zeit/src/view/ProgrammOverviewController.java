@@ -61,6 +61,9 @@ public class ProgrammOverviewController {
 	 
 	    // Reference to the main application.
 	    private Main main;
+	    
+	    // reference to the UpdateDB
+	    UpdateDB updateDB = new UpdateDB();
 
 	    /**
 	     * The constructor.
@@ -144,7 +147,7 @@ public class ProgrammOverviewController {
 		        	      .showConfirm();
 	        	if(response==Dialog.ACTION_OK){
 	        		Programm deleteProgramm = programmTable.getItems().remove(selectedIndex);
-	        		UpdateDB.updateDelete(deleteProgramm.getProgInfoObject(), true);
+	        		updateDB.updateDelete(deleteProgramm.getProgInfoObject(), true);
 	        	}
 	        	handleRefreshButton(); // refresh table
 	        }
@@ -169,7 +172,7 @@ public class ProgrammOverviewController {
 	        boolean okClicked = main.showProgrammEditDialog(tempProgramm);
 	        if (okClicked) {
 	            main.getProgrammData().add(tempProgramm);
-	            UpdateDB.updateAppend(tempProgramm.getProgInfoObject(), true);
+	            updateDB.updateAppend(tempProgramm.getProgInfoObject(), true);
 	        }
 	        handleRefreshButton(); // refresh table
 	    }
@@ -185,7 +188,7 @@ public class ProgrammOverviewController {
 	            boolean okClicked = main.showProgrammEditDialog(selectedProgramm);
 	            if (okClicked) {
 	                showProgrammDetails(selectedProgramm);
-	                UpdateDB.updateRefactor(selectedProgramm.getProgInfoObject(), true);
+	                updateDB.updateRefactor(selectedProgramm.getProgInfoObject(), true);
 	            }
 	            
 	            handleRefreshButton(); // refresh table

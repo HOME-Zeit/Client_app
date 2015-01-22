@@ -396,7 +396,8 @@ public class Main extends Application {
 	 */
 	public void loadAllProgrammDataFromDB(){
 		try {
-		ArrayList<Programminformation> progrDB = RequestDB.requestMajor(true);
+		RequestDB requestDB = new RequestDB();
+		ArrayList<Programminformation> progrDB = requestDB.requestMajor(true);
 		ArrayList< Programm> progrClient = new ArrayList<Programm>();
 		
 		for(Programminformation p : progrDB ){
@@ -423,7 +424,8 @@ public class Main extends Application {
 	public void loadTodayProgrammDataFromDB(){
     	try {
     		//System.out.println(Retrieve_Time.getTime()); // Test time
-    		ArrayList<Programminformation> progrDB = RequestDB.requestMinor(Retrieve_Time.getTime(),true);
+    		RequestDB requestDB = new RequestDB();
+    		ArrayList<Programminformation> progrDB = requestDB.requestMinor(Retrieve_Time.getTime(),true);
     		ArrayList< Programm> progrClient = new ArrayList<Programm>();
     		
     		for(Programminformation p : progrDB ){

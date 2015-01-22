@@ -27,6 +27,7 @@ public class ClientServerConDB extends RequestServer
         try
         {
             socket = new Socket(RequestServer.getIP(),55305);
+            socket.setSoTimeout(10000); 
             //fileOut = new FileOutputStream("/tmp/longBool.ser");
             oOut = new ObjectOutputStream(socket.getOutputStream());
             oOut.writeObject(longBool);
@@ -56,7 +57,8 @@ public class ClientServerConDB extends RequestServer
     {
         try
         {
-            socket = new Socket(RequestServer.getIP(),55304); // 
+            socket = new Socket(RequestServer.getIP(),55304); //
+            socket.setSoTimeout(10000);
             //fileOut = new FileOutputStream("/tmp/longBool.ser");
             oOut = new ObjectOutputStream(socket.getOutputStream());
             oOut.writeObject(truefalse);
@@ -93,6 +95,7 @@ public class ClientServerConDB extends RequestServer
         try
         {
             socket = new Socket(RequestServer.getIP(),55306);
+            socket.setSoTimeout(10000);
             //fileOut = new FileOutputStream("/tmp/longBool.ser");
             oOut = new ObjectOutputStream(socket.getOutputStream());
             oOut.writeObject(intBool);

@@ -30,6 +30,7 @@ public class TimeLoopClk extends Thread
             try
             {
                 serverSocket = new ServerSocket(55303);
+                serverSocket.setSoTimeout(10000);
                 clientSocket = serverSocket.accept();
                 printWriter = new PrintWriter(clientSocket.getOutputStream(),true);
                 try

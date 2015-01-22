@@ -30,6 +30,7 @@ public class DBLoopMinor extends Thread {
 		while (!Thread.currentThread().isInterrupted()) {
 			try {
 				serverSocket = new ServerSocket(55305);
+				serverSocket.setSoTimeout(10000);
 				clientSocket = serverSocket.accept();
 				oIn = new ObjectInputStream(clientSocket.getInputStream());
 				try {
@@ -41,7 +42,8 @@ public class DBLoopMinor extends Thread {
 				}
 
 				// TODO Minor besorgen von DB
-				returnThis = Datenbank.ausgeben(longBool.time,
+				Datenbank DB = new Datenbank();
+				returnThis = DB.ausgeben(longBool.time,
 						longBool.truefalse);
 
 				oOut = new ObjectOutputStream(clientSocket.getOutputStream());

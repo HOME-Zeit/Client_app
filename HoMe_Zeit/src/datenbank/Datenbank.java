@@ -9,21 +9,21 @@ import java.util.ArrayList;
 
 public class Datenbank 
 {
-	public static String adresse = "127.0.0.1:3306";
-	public static String url = "jdbc:mysql://" + adresse; // MySQL in Xampp Port 3306
-	public static String db = "studiouhr";
-	public static String driver = "com.mysql.jdbc.Driver";
-	public static String user = "root";
-	public static String pwd = "";
-	public static Connection connection;
+	private String adresse = "127.0.0.1:3306";
+	private String url = "jdbc:mysql://" + adresse; // MySQL in Xampp Port 3306
+	private String db = "studiouhr";
+	private String driver = "com.mysql.jdbc.Driver";
+	private String user = "root";
+	private String pwd = "";
+	private Connection connection;
 	
-	public static String tabelle_1 = "programminformation";
-	private static String tabelle_2 = "abschnitt";
+	private String tabelle_1 = "programminformation";
+	private String tabelle_2 = "abschnitt";
 	
 	
 	
 		
-	static public boolean dbVerbindungTesten()
+	public boolean dbVerbindungTesten()
 	{
 		try 
 		{
@@ -41,7 +41,7 @@ public class Datenbank
 	
 		
  
-	static public ArrayList<Programminformation> ausgeben(boolean exceptionAnzeigen)
+	public ArrayList<Programminformation> ausgeben(boolean exceptionAnzeigen)
 	{
 		ArrayList<Programminformation> programminformation = new ArrayList<Programminformation>();		
 		try 
@@ -84,7 +84,7 @@ public class Datenbank
 	
 	
 	
-	static public ArrayList<Programminformation> ausgeben(Long zeit, boolean exceptionAnzeigen)
+	public ArrayList<Programminformation> ausgeben(Long zeit, boolean exceptionAnzeigen)
 	{
 		ArrayList<Programminformation> programminformation = new ArrayList<Programminformation>();
 		//4 Stunden = 1000*60*60*4 = 14400000
@@ -137,7 +137,7 @@ public class Datenbank
 	
 	
 	
-	static public ArrayList<Programminformation> ausgeben(Integer nummer, boolean exceptionAnzeigen)
+	public ArrayList<Programminformation> ausgeben(Integer nummer, boolean exceptionAnzeigen)
 	{
 		ArrayList<Programminformation> programminformation = new ArrayList<Programminformation>();
 		try 
@@ -178,7 +178,7 @@ public class Datenbank
 	}
 	
 	
-	static public ArrayList<Abschnitt> abschnitte(Integer programm, boolean exceptionAnzeigen)
+	public ArrayList<Abschnitt> abschnitte(Integer programm, boolean exceptionAnzeigen)
 	{
 		ArrayList<Abschnitt> abschnitt = new ArrayList<Abschnitt>();
 		try 
@@ -220,7 +220,7 @@ public class Datenbank
 	
 	
 		
-	static public boolean eintragen(Programminformation p, boolean exceptionAnzeigen)
+	public boolean eintragen(Programminformation p, boolean exceptionAnzeigen)
 	{
 		try 
 		{
@@ -258,7 +258,7 @@ public class Datenbank
 	
 	
 	
-	static public boolean bearbeiten(Programminformation p, boolean exceptionAnzeigen)
+	public boolean bearbeiten(Programminformation p, boolean exceptionAnzeigen)
 	{
 		try 
 		{
@@ -298,7 +298,7 @@ public class Datenbank
 	
 	
 	
-	static public boolean loeschen(Programminformation p, boolean exceptionAnzeigen)
+	public boolean loeschen(Programminformation p, boolean exceptionAnzeigen)
 	{
 		try 
 		{
@@ -331,7 +331,7 @@ public class Datenbank
 	}
 	
 	
-	static public boolean abschnitte_eintragen(Programminformation p, boolean exceptionAnzeigen)
+	public boolean abschnitte_eintragen(Programminformation p, boolean exceptionAnzeigen)
 	{
 		ArrayList<Abschnitt> abschnitte = p.abschnitte;
 		try 
@@ -370,7 +370,7 @@ public class Datenbank
 	
 	
 	
-	static public boolean abschnitte_eintragen(ArrayList<Abschnitt> abschnitte, boolean exceptionAnzeigen)
+	public boolean abschnitte_eintragen(ArrayList<Abschnitt> abschnitte, boolean exceptionAnzeigen)
 	{
 		try 
 		{
@@ -409,7 +409,7 @@ public class Datenbank
 	
 	
 	
-	static public boolean abschnitte_eintragen(Abschnitt a, boolean exceptionAnzeigen)
+	public boolean abschnitte_eintragen(Abschnitt a, boolean exceptionAnzeigen)
 	{
 		try 
 		{
@@ -444,7 +444,7 @@ public class Datenbank
 	
 	
 	
-	static public boolean abschnitt_loeschen(Integer nummer, boolean exceptionAnzeigen)
+	public boolean abschnitt_loeschen(Integer nummer, boolean exceptionAnzeigen)
 	{
 		try 
 		{
@@ -478,7 +478,7 @@ public class Datenbank
 	
 	
 	
-	static public boolean abschnitt_bearbeiten(Abschnitt a, boolean exceptionAnzeigen)
+	public boolean abschnitt_bearbeiten(Abschnitt a, boolean exceptionAnzeigen)
 	{
 		try 
 		{
