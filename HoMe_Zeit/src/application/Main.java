@@ -108,7 +108,6 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	
 	/**
 	 * Initializes the root layout and tries to load the last opened
 	 * person file.

@@ -100,6 +100,7 @@ public class Programm {
     	/*
     	 * TODO improve this bicycle
     	 */
+    	abschnittMy = new ArrayList<AbschnittMy>();
     	for(Abschnitt ab: p.abschnitte){
     		this.abschnittMy.add(new AbschnittMy(ab));
     	}

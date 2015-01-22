@@ -25,7 +25,7 @@ public class TimeLoopSec extends Thread
             try
             {
                 serverSocket = new ServerSocket(55307);
-                serverSocket.setSoTimeout(10000);
+                //serverSocket.setSoTimeout(10000);
                 clientSocket = serverSocket.accept();
                 printWriter = new PrintWriter(clientSocket.getOutputStream(),true);
                 try

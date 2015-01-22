@@ -30,7 +30,7 @@ public class DBLoopMinor extends Thread {
 		while (!Thread.currentThread().isInterrupted()) {
 			try {
 				serverSocket = new ServerSocket(55305);
-				serverSocket.setSoTimeout(10000);
+				//serverSocket.setSoTimeout(10000);
 				clientSocket = serverSocket.accept();
 				oIn = new ObjectInputStream(clientSocket.getInputStream());
 				try {

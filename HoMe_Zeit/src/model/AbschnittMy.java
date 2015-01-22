@@ -20,14 +20,14 @@ import javafx.beans.property.StringProperty;
 
 public class AbschnittMy implements Serializable {
 	
-	public IntegerProperty nummer; // +
-	public IntegerProperty programm; // +
-	public StringProperty titel; // +
-	public ObjectProperty<LocalDateTime> startZeit; //  +
-	public IntegerProperty lange; // +
-	public StringProperty mitwirkende; // +
-	public ObjectProperty<LocalDateTime> real_startZeit; // +
-	public IntegerProperty reale_lange; // +
+	private IntegerProperty nummer; // +
+	private IntegerProperty programm; // +
+	private StringProperty titel; // +
+	private ObjectProperty<LocalDateTime> startZeit; //  +
+	private IntegerProperty lange; // +
+	private StringProperty mitwirkende; // +
+	private ObjectProperty<LocalDateTime> real_startZeit; // +
+	private IntegerProperty reale_lange; // +
 
 	
 	/**

@@ -1,23 +1,22 @@
 package view;
 
-import java.util.ArrayList;
-
-import org.controlsfx.control.action.Action;
-import org.controlsfx.dialog.Dialog;
-import org.controlsfx.dialog.Dialogs;
-
-import server_FrontDBCon.RequestDB;
-import server_FrontDBCon.UpdateDB;
-import server_NTPRequest.Retrieve_Time;
-import datenbank.Programminformation;
-import application.Main;
-import model.Programm;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import model.AbschnittMy;
+import model.Programm;
+
+import org.controlsfx.control.action.Action;
+import org.controlsfx.dialog.Dialog;
+import org.controlsfx.dialog.Dialogs;
+
+import server_FrontDBCon.UpdateDB;
+import application.Main;
 /**
  * 
  * @author Viktor Osadchyi
@@ -64,6 +63,26 @@ public class ProgrammOverviewController {
 	    
 	    // reference to the UpdateDB
 	    UpdateDB updateDB = new UpdateDB();
+	    
+	    // Abschnitte table and column
+	    @FXML
+	    private TableView<AbschnittMy> abschnittTable;
+	    @FXML
+	    private TableColumn<AbschnittMy, String> numberAbColumn;
+	    @FXML
+	    private TableColumn<AbschnittMy, String> titelAbColumn;
+	    @FXML
+	    private TableColumn<AbschnittMy, String> startAbColumn;
+	    @FXML
+	    private TableColumn<AbschnittMy, String> langeAbColumn;
+	    @FXML
+	    private TableColumn<AbschnittMy, String> mitwirkendeAbColumn;
+	    @FXML
+	    private TableColumn<AbschnittMy, String> startRealAbColumn;
+	    @FXML
+	    private TableColumn<AbschnittMy, String> langeRealColumn;
+	    
+	    private ObservableList<AbschnittMy> AbschnittMyData = FXCollections.observableArrayList();
 
 	    /**
 	     * The constructor.
@@ -103,6 +122,7 @@ public class ProgrammOverviewController {
 
 	        // Add observable list data to the table
 	        programmTable.setItems(main.getProgrammData());
+	        abschnittTable.setItems(AbschnittMyData);
 	    }
 	    
 	    /**
@@ -119,6 +139,12 @@ public class ProgrammOverviewController {
 	        	langeLabel.setText(Integer.toString(programm.getLange()));
 	        	sendeVerantLabel.setText(programm.getSendeVerant());
 	        	produktVerantLabel.setText(programm.getProduktVerant());
+	        	
+	        	AbschnittMyData.clear();
+	        	AbschnittMyData.addAll(programm.abschnittMy);
+	        	
+	        	
+	        	showAbschnittDetails(programm);
 
 	        } else {
 	            // Programm is null, remove all the text.
@@ -127,7 +153,30 @@ public class ProgrammOverviewController {
 	        	langeLabel.setText("");
 	        	sendeVerantLabel.setText("");
 	        	produktVerantLabel.setText("");
+	        	
+	        	AbschnittMyData.clear();
 	        }
+	    }
+	    
+	    /**
+	     * Fills table with abschnitte
+	     */
+	    private void showAbschnittDetails(Programm programm) {
+	    if(programm.abschnittMy.size()>0){
+	    	numberAbColumn.setCellValueFactory(cellData -> cellData.getValue().nummerProperty().asString());
+	    	titelAbColumn.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
+	    	startAbColumn.setCellValueFactory(cellData -> cellData.getValue().startZeitProperty().asString());
+	    	langeAbColumn.setCellValueFactory(cellData -> cellData.getValue().langeProperty().asString());
+	    	mitwirkendeAbColumn.setCellValueFactory(cellData -> cellData.getValue().mitwirkendeProperty());
+	    	startRealAbColumn.setCellValueFactory(cellData -> cellData.getValue().startZeitRealProperty().asString());
+	    	langeRealColumn.setCellValueFactory(cellData -> cellData.getValue().realLangeProperty().asString());
+	    	//System.out.println(" in showAbschnittDetails");
+	    	//System.out.println(programm.abschnittMy.get(0).getTitel());
+	    	//System.out.println(numberAbColumn.getCellData(0));
+	    }else{
+	    	
+	    }
+	    	
 	    }
 	    
 	    /**

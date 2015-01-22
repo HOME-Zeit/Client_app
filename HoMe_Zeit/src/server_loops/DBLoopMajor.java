@@ -30,7 +30,7 @@ public class DBLoopMajor extends Thread
             try
             {
                 serverSocket = new ServerSocket(55304);
-                serverSocket.setSoTimeout(10000);
+                //serverSocket.setSoTimeout(10000);
                 clientSocket = serverSocket.accept();
                 oIn =  new ObjectInputStream(clientSocket.getInputStream());
                 try{

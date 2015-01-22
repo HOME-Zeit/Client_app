@@ -27,7 +27,7 @@ public class TimeLoopDate extends Thread
             try
             {
                 serverSocket = new ServerSocket(55302);
-                serverSocket.setSoTimeout(10000);
+                //serverSocket.setSoTimeout(10000);
                 clientSocket = serverSocket.accept();
                 printWriter = new PrintWriter(clientSocket.getOutputStream(),true);
                 try

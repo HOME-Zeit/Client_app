@@ -23,7 +23,7 @@ public class ClientServerConTime
         try
         {
             socket = new Socket(RequestServer.getIP(),55303);
-            socket.setSoTimeout(10000);
+            //socket.setSoTimeout(10000);
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while((inputLine = bufferedReader.readLine())!=null)
                 returnString = inputLine;
@@ -48,7 +48,7 @@ public class ClientServerConTime
         try
         {
             socket = new Socket(RequestServer.getIP(),55302);
-            socket.setSoTimeout(10000);
+            //socket.setSoTimeout(10000);
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while((inputLine = bufferedReader.readLine())!=null)
                 returnString = inputLine;
@@ -73,7 +73,7 @@ public class ClientServerConTime
         try
         {
             socket = new Socket(RequestServer.getIP(),55307);
-            socket.setSoTimeout(10000);
+            //socket.setSoTimeout(10000);
             bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while((inputLine = bufferedReader.readLine())!=null)
                 returnString = inputLine;
