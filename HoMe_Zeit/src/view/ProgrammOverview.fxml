@@ -70,11 +70,11 @@
                         <Label fx:id="startTerminLabel" styleClass="label-bright" text="Label" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
-                  <Button fx:id="deleteButton" layoutX="276.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleDeleteProgramm" prefHeight="33.0" prefWidth="90.0" text="Delete" visible="false" AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="185.0" />
-                  <Button fx:id="newButton" layoutX="65.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleNewProgramm" prefHeight="33.0" prefWidth="90.0" text="New..." visible="false" AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="396.0" />
-                  <Button fx:id="editButton" layoutX="171.0" layoutY="394.0" mnemonicParsing="false" onAction="#handleEditProgramm" prefHeight="33.0" prefWidth="90.0" text="Edit..." visible="false" AnchorPane.bottomAnchor="78.0" AnchorPane.rightAnchor="290.0" />
+                  <Button fx:id="deleteButton" layoutX="227.0" layoutY="457.0" mnemonicParsing="false" onAction="#handleDeleteProgramm" prefHeight="33.0" prefWidth="90.0" text="Delete" visible="false" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="227.0" />
+                  <Button fx:id="newButton" layoutX="15.0" layoutY="457.0" mnemonicParsing="false" onAction="#handleNewProgramm" prefHeight="33.0" prefWidth="90.0" text="New..." visible="false" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" />
+                  <Button fx:id="editButton" layoutX="119.0" layoutY="457.0" mnemonicParsing="false" onAction="#handleEditProgramm" prefHeight="33.0" prefWidth="90.0" text="Edit..." visible="false" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="119.0" />
                   <Button layoutX="422.0" layoutY="369.0" mnemonicParsing="false" onAction="#handleGoProgramm" prefHeight="33.0" prefWidth="96.0" text="GO" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="21.0" />
-                  <TableView fx:id="abschnittTable" layoutX="5.0" layoutY="290.0" prefHeight="150.0" prefWidth="497.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="290.0">
+                  <TableView fx:id="abschnittTable" layoutX="5.0" layoutY="290.0" prefHeight="150.0" prefWidth="497.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="290.0">
                     <columns>
                       <TableColumn fx:id="numberAbColumn" maxWidth="75.0" prefWidth="50.0" text="#" />
                       <TableColumn fx:id="titelAbColumn" maxWidth="200.0" minWidth="85.0" prefWidth="85.0" text="Titel" />
@@ -85,7 +85,7 @@
                         <TableColumn fx:id="langeRealColumn" maxWidth="200.0" minWidth="165.0" prefWidth="165.0" text="Reale Länge" />
                     </columns>
                   </TableView>
-                  <Label layoutX="17.0" layoutY="236.0" styleClass="label-header" text="Abschnitte" AnchorPane.leftAnchor="10.0" />
+                  <Label layoutX="17.0" layoutY="236.0" styleClass="label-header" text="Abschnitte:" AnchorPane.leftAnchor="10.0" />
                </children>
             </AnchorPane>
         </items>

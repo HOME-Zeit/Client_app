@@ -4,9 +4,13 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.AbschnittMy;
 import model.Programm;
 
 import org.controlsfx.dialog.Dialogs;
@@ -32,6 +36,34 @@ public class ProgrammEditDialogController {
     private TextField sendeVerantField;
     @FXML
     private TextField produktVerantField;
+    
+    
+ // Abschnitte table and column
+    @FXML
+    private TableView<AbschnittMy> abschnittTable;
+    @FXML
+    private TableColumn<AbschnittMy, String> numberAbColumn;
+    @FXML
+    private TableColumn<AbschnittMy, String> titelAbColumn;
+    @FXML
+    private TableColumn<AbschnittMy, String> startAbColumn;
+    @FXML
+    private TableColumn<AbschnittMy, String> langeAbColumn;
+    @FXML
+    private TableColumn<AbschnittMy, String> mitwirkendeAbColumn;
+    @FXML
+    private TableColumn<AbschnittMy, String> startRealAbColumn;
+    @FXML
+    private TableColumn<AbschnittMy, String> langeRealColumn;
+    
+    // Buttons for work with Abschnitte
+    @FXML
+    private Button btnAddAb;
+    @FXML
+    private Button btnEditAb;
+    @FXML
+    private Button btnDeleteAb;
+    
 
 
     private Stage dialogStage;
@@ -214,5 +246,29 @@ public class ProgrammEditDialogController {
     @FXML
     private void handleCopySende() {
     	produktVerantField.setText(sendeVerantField.getText());
+    }
+    
+    /**
+     * Called when the user clicks add Abschnitt.
+     */
+    @FXML
+    private void handleAddAb() {
+    	
+    }
+    
+    /**
+     * Called when the user clicks edit Abschnitt.
+     */
+    @FXML
+    private void handleEditAb() {
+    	
+    }
+    
+    /**
+     * Called when the user clicks delete Abschnitt.
+     */
+    @FXML
+    private void handleDeleteAb() {
+    	
     }
 }

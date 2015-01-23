@@ -30,9 +30,9 @@
          </children>
       </HBox>
       <ToggleButton fx:id="colorModeToggle" layoutX="15.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleColorModeChange" prefHeight="33.0" prefWidth="81.0" text="Dark" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="20.0" />
-      <Label layoutX="14.0" layoutY="76.0" styleClass="label-abtitel" text="Titel | Startzeit | Länge" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="76.0" />
-      <Label layoutX="956.0" layoutY="85.0" styleClass="label-abcurr" text="20:15" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="85.0" />
-      <Label layoutX="845.0" layoutY="85.0" styleClass="label-abcurr" text="16:18:30" AnchorPane.rightAnchor="132.0" AnchorPane.topAnchor="85.0" />
+      <Label fx:id="abschnittInfo" layoutX="14.0" layoutY="76.0" styleClass="label-abtitel" text="Titel | Startzeit | Länge" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="76.0" />
+      <Label fx:id="abschnittTime" layoutX="956.0" layoutY="85.0" styleClass="label-abcurr" text="20:15" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="85.0" />
+      <Label fx:id="abschnittRealStart" layoutX="845.0" layoutY="85.0" styleClass="label-abcurr" text="16:18:30" AnchorPane.rightAnchor="132.0" AnchorPane.topAnchor="85.0" />
       <Label layoutX="922.0" layoutY="85.0" prefHeight="21.0" prefWidth="11.0" styleClass="label-abcurr" text="|" AnchorPane.rightAnchor="104.0" AnchorPane.topAnchor="85.0" />
    </children>
 </AnchorPane>

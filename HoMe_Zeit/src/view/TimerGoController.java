@@ -64,7 +64,16 @@ public class TimerGoController {
 
 	@FXML
 	private AnchorPane timerGoAnchor;
+	
+	@FXML
+	private Label abschnittInfo;
+	
+	@FXML
+	private Label abschnittRealStart;
 
+	@FXML
+	private Label abschnittTime;
+	
 	private Stage dialogStage;
 	private Programm programm;
 	private boolean okClicked = false;
