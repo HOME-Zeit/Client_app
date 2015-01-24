@@ -132,6 +132,10 @@ public class ProgrammOverviewController {
 	     */
 	    private void showProgrammDetails(Programm programm) {
 	        if (programm != null) {
+	        	
+	        	deleteButton.setDisable(false);
+	    		editButton.setDisable(false);
+	        	
 	            // Fill the labels with info from the person object.
 	        	startTerminLabel.setText(programm.getStartTermin().toString());
 	        	sendungLabel.setText(programm.getSendungName());
@@ -154,6 +158,8 @@ public class ProgrammOverviewController {
 	        	sendeVerantLabel.setText("");
 	        	produktVerantLabel.setText("");
 	        	
+	        	deleteButton.setDisable(true);
+	    		editButton.setDisable(true);
 	        
 	        	Main.getAbschnittData().clear();}
 	       
@@ -229,6 +235,16 @@ public class ProgrammOverviewController {
 	            updateDB.updateAppend(tempProgramm.getProgInfoObject(), true);
 	        }
 	        handleRefreshButton(); // refresh table
+	        
+	        /*int i = main.getProgrammData().size();
+	        System.out.println(i);
+	        int n = main.getProgrammData().get(0).getNumber();
+	        for(AbschnittMy ab : Main.getAbschnittData()){
+	        	ab.setProgramm(n);
+	        	updateDB.segmentsRegister(ab.getAbschnittObject(),true);
+	        }*/
+	        
+	        //handleRefreshButton(); // refresh table
 	    }
 
 	    /**
@@ -310,11 +326,20 @@ public class ProgrammOverviewController {
 	    		newButton.setVisible(true);
 	    		deleteButton.setVisible(true);
 	    		editButton.setVisible(true);
+	    		
+	    		numberAbColumn.setVisible(true);
+	    		startRealAbColumn.setVisible(true);
+	    		langeRealColumn.setVisible(true);
+	    		
 	    	}
 	    	else{
 	    		newButton.setVisible(false);
 	    		deleteButton.setVisible(false);
 	    		editButton.setVisible(false);
+	    		
+	    		numberAbColumn.setVisible(false);
+	    		startRealAbColumn.setVisible(false);
+	    		langeRealColumn.setVisible(false);
 	    	}
 	    	
 	    }

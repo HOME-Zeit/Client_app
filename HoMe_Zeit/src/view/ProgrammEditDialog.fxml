@@ -65,9 +65,10 @@
             <TableColumn fx:id="langeRealColumn" maxWidth="200.0" minWidth="165.0" prefWidth="165.0" text="Reale Länge" />
          </columns>
       </TableView>
-      <Label layoutX="14.0" layoutY="243.0" styleClass="label-abtitel" text="Abschnitte:" />
+      <Label fx:id="abText" layoutX="14.0" layoutY="243.0" styleClass="label-abtitel" text="Abschnitte:" />
       <Button fx:id="btnAddAb" layoutX="187.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleAddAb" prefHeight="33.0" prefWidth="90.0" text="Add" AnchorPane.leftAnchor="187.0" AnchorPane.topAnchor="255.0" />
-      <Button fx:id="btnEditAb" layoutX="295.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleEditAb" prefHeight="33.0" prefWidth="90.0" text="Edit" AnchorPane.leftAnchor="295.0" AnchorPane.topAnchor="255.0" />
-      <Button fx:id="btnDeleteAb" layoutX="403.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleDeleteAb" text="Delete" AnchorPane.leftAnchor="403.0" AnchorPane.topAnchor="255.0" />
+      <Button fx:id="btnEditAb" disable="true" layoutX="295.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleEditAb" prefHeight="33.0" prefWidth="90.0" text="Edit" AnchorPane.leftAnchor="295.0" AnchorPane.topAnchor="255.0" />
+      <Button fx:id="btnDeleteAb" disable="true" layoutX="403.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleDeleteAb" text="Delete" AnchorPane.leftAnchor="403.0" AnchorPane.topAnchor="255.0" />
+      <Label fx:id="abInfo" layoutX="15.0" layoutY="276.0" prefHeight="153.0" prefWidth="650.0" styleClass="label-abtitel" text="At first you have to save this program and then you can add Abschnitte" textAlignment="CENTER" visible="false" wrapText="true" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
    </children>
 </AnchorPane>
