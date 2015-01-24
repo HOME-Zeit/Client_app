@@ -93,8 +93,16 @@ public class AbschnittMy implements Serializable {
     	Long laenge = (long)this.getLange(); 
     	String mitwirkende = this.getMitwirkende();
     	
-    	Long reale_startzeit = this.getStartZeitReal().toEpochSecond(ZoneOffset.of("+01:00")); 
-    	Long reale_laenge = (long) this.getRealLange(); 
+    	Long reale_startzeit = this.getStartZeit().toEpochSecond(ZoneOffset.of("+01:00"));
+    	if(this.getStartZeitReal()!=null){
+    		reale_startzeit = this.getStartZeitReal().toEpochSecond(ZoneOffset.of("+01:00")); 
+    	}
+    	
+    	Long reale_laenge = (long)this.getLange(); // (long) this.getRealLange();
+    	if(this.getRealLange()!=0){
+    		reale_laenge = (long) this.getRealLange();
+    	}
+
     	return new Abschnitt(nummer, programm, titel, startzeit, laenge, mitwirkende, reale_startzeit, reale_laenge);
     }
     

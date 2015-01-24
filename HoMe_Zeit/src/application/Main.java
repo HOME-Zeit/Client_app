@@ -34,6 +34,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 import main.placeholder_main;
+import model.AbschnittMy;
 import model.Programm;
 import model.ProgrammListWrapper;
 
@@ -45,6 +46,7 @@ import client_ServerRequests.RequestServer;
 import datenbank.Programminformation;
 import server_FrontDBCon.RequestDB;
 import server_NTPRequest.Retrieve_Time;
+import view.AbschnittEditDialogController;
 import view.ProgrammEditDialogController;
 import view.ProgrammOverviewController;
 import view.RootLayoutController;
@@ -66,6 +68,10 @@ public class Main extends Application {
     public static String choice = "";
 	
     private ObservableList<Programm> programmData = FXCollections.observableArrayList();
+    /*
+     * TODO think about to make it not static
+     */
+    private static ObservableList<AbschnittMy> abschnittMyData = FXCollections.observableArrayList();
     
     /**
      * Test data in default constructor
@@ -84,6 +90,10 @@ public class Main extends Application {
     
     public ObservableList<Programm> getProgrammData() {
         return programmData;
+    }
+    
+    public static ObservableList<AbschnittMy> getAbschnittData() {
+        return abschnittMyData;
     }
     
 	@Override
@@ -235,8 +245,49 @@ public class Main extends Application {
 
 	        // Set the programm into the controller.
 	        ProgrammEditDialogController controller = loader.getController();
+	        controller.setMain(this);
 	        controller.setDialogStage(dialogStage);
 	        controller.setProgramm(programm);
+
+	        // Show the dialog and wait until the user closes it
+	        dialogStage.showAndWait();
+
+	        return controller.isOkClicked();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        return false;
+	    }
+	}
+	
+	/**
+	 * Opens a dialog to edit details for the specified abschnitt. If the user
+	 * clicks OK, the changes are saved into the provided programm object and true
+	 * is returned.
+	 * 
+	 * @param programm the programm object to be edited
+	 * @return true if the user clicked OK, false otherwise.
+	 */
+	public boolean showAbschnittEditDialog(AbschnittMy abschnitt) {
+	    try {
+	        // Load the fxml file and create a new stage for the popup dialog.
+	        FXMLLoader loader = new FXMLLoader();
+	        loader.setLocation(Main.class.getResource("../view/AbschnittEditDialog.fxml"));
+	        AnchorPane page = (AnchorPane) loader.load();
+
+	        // Create the dialog Stage.
+	        Stage dialogStage = new Stage();
+	        dialogStage.setTitle("HoMe Zeit - Edit Abschnitt");
+	        dialogStage.initModality(Modality.WINDOW_MODAL);
+	        dialogStage.initOwner(primaryStage);
+	        Scene scene = new Scene(page);
+	        dialogStage.setScene(scene);
+	        dialogStage.getIcons().add(new Image("file:resources/images/1415586239_clock.png"));
+
+	        // Set the programm into the controller.
+	        AbschnittEditDialogController controller = loader.getController();
+	        controller.setMain(this);
+	        controller.setDialogStage(dialogStage);
+	        controller.setAbschnitt(abschnitt);
 
 	        // Show the dialog and wait until the user closes it
 	        dialogStage.showAndWait();

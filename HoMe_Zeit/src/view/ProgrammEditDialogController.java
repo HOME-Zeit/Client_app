@@ -13,7 +13,12 @@ import javafx.stage.Stage;
 import model.AbschnittMy;
 import model.Programm;
 
+import org.controlsfx.control.action.Action;
+import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
+
+import server_FrontDBCon.UpdateDB;
+import application.Main;
 /**
  * 
  * @author Viktor Osadchyi
@@ -69,13 +74,38 @@ public class ProgrammEditDialogController {
     private Stage dialogStage;
     private Programm programm;
     private boolean okClicked = false;
+    
+    // Reference to the main application.
+    private Main main;
+    
+ // reference to the UpdateDB
+    UpdateDB updateDB = new UpdateDB();
 
+    // Abschnitt to change
+    //private AbschnittMy abschnitt;
+    
     /**
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.
      */
     @FXML
     private void initialize() {
+    }
+    
+    /**
+     * Is called by the main application to give a reference back to itself.
+     * 
+     * @param main
+     */
+    public void setMain(Main main) {
+        this.main = main;
+
+        // Add observable list data to the table
+        abschnittTable.setItems(Main.getAbschnittData());
+        
+     // Listen for selection changes and show the person details when changed.
+     //   abschnittTable.getSelectionModel().selectedItemProperty().addListener(
+     //           (observable, oldValue, newValue) -> saveAbschnittToChange(newValue));
     }
 
     /**
@@ -87,6 +117,10 @@ public class ProgrammEditDialogController {
         this.dialogStage = dialogStage;
     }
 
+    //private void saveAbschnittToChange(AbschnittMy abschnitt) {
+    //	this.abschnitt = abschnitt;
+    // }
+    
     /**
      * Sets the programm to be edited in the dialog.
      * 
@@ -99,13 +133,44 @@ public class ProgrammEditDialogController {
         startTerminFieldMinutes.setText(Integer.toString(programm.getStartTermin().getMinute()));
         startTerminFieldDate.setValue(programm.getStartTermin().toLocalDate());
         sendungField.setText(programm.getSendungName());
-    	if(programm.getLange()==0){
+    	if(programm.getLange()<=0){
     		langeField.setText("");
     	} else { 
     		langeField.setText(Integer.toString(programm.getLange()));
     		}
     	sendeVerantField.setText(programm.getSendeVerant());
     	produktVerantField.setText(programm.getProduktVerant());
+    	
+    	if(programm.abschnittMy.size()>0){
+    		Main.getAbschnittData().clear();
+        	Main.getAbschnittData().addAll(programm.abschnittMy);
+        	
+        	showAbschnitt(programm);
+    	}else{
+    		Main.getAbschnittData().clear();
+    	}
+    	
+    }
+    
+    /**
+     * Fills table with abschnitte
+     */
+    private void showAbschnitt(Programm programm) {
+    if(programm.abschnittMy.size()>0){
+    	numberAbColumn.setCellValueFactory(cellData -> cellData.getValue().nummerProperty().asString());
+    	titelAbColumn.setCellValueFactory(cellData -> cellData.getValue().titleProperty());
+    	startAbColumn.setCellValueFactory(cellData -> cellData.getValue().startZeitProperty().asString());
+    	langeAbColumn.setCellValueFactory(cellData -> cellData.getValue().langeProperty().asString());
+    	mitwirkendeAbColumn.setCellValueFactory(cellData -> cellData.getValue().mitwirkendeProperty());
+    	startRealAbColumn.setCellValueFactory(cellData -> cellData.getValue().startZeitRealProperty().asString());
+    	langeRealColumn.setCellValueFactory(cellData -> cellData.getValue().realLangeProperty().asString());
+    	//System.out.println(" in showAbschnittDetails");
+    	//System.out.println(programm.abschnittMy.get(0).getTitel());
+    	//System.out.println(numberAbColumn.getCellData(0));
+    }else{
+    	
+    }
+    	
     }
 
     /**
@@ -253,7 +318,21 @@ public class ProgrammEditDialogController {
      */
     @FXML
     private void handleAddAb() {
-    	
+        AbschnittMy tempAbschnitt = new AbschnittMy();
+        boolean okClicked = main.showAbschnittEditDialog(tempAbschnitt);
+        if (okClicked) {
+        	if(programm.getNumber()==0){
+        		main.getProgrammData().add(programm);
+	            updateDB.updateAppend(programm.getProgInfoObject(), true);
+        	}
+        	tempAbschnitt.setProgramm(programm.getNumber());
+            programm.abschnittMy.add(tempAbschnitt);
+            updateDB.segmentsRegister(tempAbschnitt.getAbschnittObject(), true);
+        }
+        Main.getAbschnittData().clear();
+    	Main.getAbschnittData().addAll(programm.abschnittMy);
+
+    	showAbschnitt(programm);
     }
     
     /**
@@ -261,7 +340,25 @@ public class ProgrammEditDialogController {
      */
     @FXML
     private void handleEditAb() {
-    	
+    	AbschnittMy selectedAbschnitt = abschnittTable.getSelectionModel().getSelectedItem();
+    	int index = programm.abschnittMy.indexOf(selectedAbschnitt);
+    	if (selectedAbschnitt != null) {
+            boolean okClicked = main.showAbschnittEditDialog(selectedAbschnitt);
+            if (okClicked) {
+                programm.abschnittMy.set(index, selectedAbschnitt);
+                updateDB.segmentsRefactor(selectedAbschnitt.getAbschnittObject(), true);
+            }
+            
+            showAbschnitt(programm);
+        } else {
+            // Nothing selected.
+            Dialogs.create()
+            	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+                .title("No Selection")
+                .masthead("No Abschnitt Selected")
+                .message("Please select a abschnitt in the table.")
+                .showWarning();
+        }
     }
     
     /**
@@ -269,6 +366,32 @@ public class ProgrammEditDialogController {
      */
     @FXML
     private void handleDeleteAb() {
-    	
+    	int selectedIndex = abschnittTable.getSelectionModel().getSelectedIndex();
+      	 
+        if(selectedIndex>=0 ){
+        	Action response = Dialogs.create()
+        			.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+        			  .actions(Dialog.ACTION_OK,Dialog.ACTION_CANCEL)
+	        	      .title("You sure want to delete this abschnitt?")
+	        	      .masthead("Warning !")
+	        	      .message( "All datas about this abschnitt will be delete")
+	        	      .showConfirm();
+        	if(response==Dialog.ACTION_OK){
+        		AbschnittMy abschnittToDelete = abschnittTable.getItems().remove(selectedIndex);
+        		programm.abschnittMy.remove(abschnittToDelete);
+        		updateDB.segmentsDelete(abschnittToDelete.getNummer(), true);
+        		
+        	}
+        	showAbschnitt(programm);
+        }
+        else {
+            // Nothing selected.
+            Dialogs.create()
+            	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+                .title("No Selection")
+                .masthead("No Abschnitt Selected")
+                .message("Please select a abschnitt in the table.")
+                .showWarning();
+        }
     }
 }

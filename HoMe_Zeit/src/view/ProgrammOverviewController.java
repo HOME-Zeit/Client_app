@@ -82,7 +82,6 @@ public class ProgrammOverviewController {
 	    @FXML
 	    private TableColumn<AbschnittMy, String> langeRealColumn;
 	    
-	    private ObservableList<AbschnittMy> AbschnittMyData = FXCollections.observableArrayList();
 
 	    /**
 	     * The constructor.
@@ -122,7 +121,7 @@ public class ProgrammOverviewController {
 
 	        // Add observable list data to the table
 	        programmTable.setItems(main.getProgrammData());
-	        abschnittTable.setItems(AbschnittMyData);
+	        abschnittTable.setItems(Main.getAbschnittData());
 	    }
 	    
 	    /**
@@ -140,8 +139,9 @@ public class ProgrammOverviewController {
 	        	sendeVerantLabel.setText(programm.getSendeVerant());
 	        	produktVerantLabel.setText(programm.getProduktVerant());
 	        	
-	        	AbschnittMyData.clear();
-	        	AbschnittMyData.addAll(programm.abschnittMy);
+	        	Main.getAbschnittData().clear();
+	        	
+	        	Main.getAbschnittData().addAll(programm.abschnittMy);
 	        	
 	        	
 	        	showAbschnittDetails(programm);
@@ -154,8 +154,9 @@ public class ProgrammOverviewController {
 	        	sendeVerantLabel.setText("");
 	        	produktVerantLabel.setText("");
 	        	
-	        	AbschnittMyData.clear();
-	        }
+	        
+	        	Main.getAbschnittData().clear();}
+	       
 	    }
 	    
 	    /**
@@ -195,7 +196,11 @@ public class ProgrammOverviewController {
 		        	      .message( "All datas about this program will be delete")
 		        	      .showConfirm();
 	        	if(response==Dialog.ACTION_OK){
+	        		
 	        		Programm deleteProgramm = programmTable.getItems().remove(selectedIndex);
+	        		for(AbschnittMy ab : deleteProgramm.abschnittMy ){
+	        			updateDB.segmentsDelete(ab.getNummer(), true);
+	        		}
 	        		updateDB.updateDelete(deleteProgramm.getProgInfoObject(), true);
 	        	}
 	        	handleRefreshButton(); // refresh table

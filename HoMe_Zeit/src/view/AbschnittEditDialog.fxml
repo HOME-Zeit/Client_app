@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="359.0" prefWidth="609.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="view.AbschnittEditDialogController">
+<AnchorPane prefHeight="359.0" prefWidth="609.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AbschnittEditDialogController">
    <children>
       <GridPane layoutX="26.0" layoutY="27.0" prefHeight="220.0" prefWidth="571.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="25.0">
          <children>
@@ -16,6 +15,7 @@
             <Label text="Startzeit (Stunden : Minuten | Data)" GridPane.rowIndex="1" />
             <Label text="Länge der Abschnitt (Minuten)" GridPane.rowIndex="2" />
             <Label text="Mitwirkende" GridPane.rowIndex="3" />
+            <TextField fx:id="titelField" GridPane.columnIndex="1" />
             <Group GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Label layoutX="345.0" layoutY="270.0" prefHeight="20.0" prefWidth="2.0" text=":" />
@@ -28,7 +28,6 @@
                   </DatePicker>
                </children>
             </Group>
-            <TextField fx:id="titelField" GridPane.columnIndex="1" />
             <TextField fx:id="langeAbField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="mitwirkendeField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
