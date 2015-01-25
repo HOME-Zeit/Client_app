@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="359.0" prefWidth="609.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AbschnittEditDialogController">
+   <children>
+      <GridPane layoutX="26.0" layoutY="27.0" prefHeight="220.0" prefWidth="571.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <Label text="Titel" />
+            <Label text="Startzeit (Stunden : Minuten | Data)" GridPane.rowIndex="1" />
+            <Label text="Länge der Abschnitt (Minuten)" GridPane.rowIndex="2" />
+            <Label text="Mitwirkende" GridPane.rowIndex="3" />
+            <TextField fx:id="titelField" GridPane.columnIndex="1" />
+            <Group GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label layoutX="345.0" layoutY="270.0" prefHeight="20.0" prefWidth="2.0" text=":" />
+                  <TextField fx:id="startZeitFieldHours" layoutX="292.0" layoutY="262.0" prefHeight="37.0" prefWidth="40.0" />
+                  <TextField fx:id="startZeitFieldMinutes" layoutX="364.0" layoutY="262.0" maxWidth="40.0" prefHeight="37.0" prefWidth="40.0" />
+                  <DatePicker fx:id="startZeitFieldDate" layoutX="432.0" layoutY="262.0" prefHeight="37.0" prefWidth="145.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </DatePicker>
+               </children>
+            </Group>
+            <TextField fx:id="langeAbField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="mitwirkendeField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="264.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="301.0" minWidth="10.0" prefWidth="184.0" />
+         </columnConstraints>
+         <opaqueInsets>
+            <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+         </opaqueInsets>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+      <Button layoutX="503.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" />
+      <Button defaultButton="true" layoutX="382.0" layoutY="304.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="33.0" prefWidth="91.0" text="OK" />
+   </children>
+</AnchorPane>
