@@ -9,7 +9,7 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Datei">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#handleNew" text="New" visible="false" />
                   <MenuItem mnemonicParsing="false" onAction="#handleOpen" text="Open..." visible="false" />
@@ -18,13 +18,13 @@
                   <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Bearbeiten">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#handleChangeMode" text="Change mode" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleChangeIP" text="Change IP - Address" />
+              <MenuItem mnemonicParsing="false" onAction="#handleChangeMode" text="Modus wechseln" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleChangeIP" text="IP - Address wechseln" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="Hilfe">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="About" />
             </items>

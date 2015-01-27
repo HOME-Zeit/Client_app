@@ -92,6 +92,10 @@ public class AbschnittEditDialogController {
     		abschnitt.setTitle(titelField.getText());
     		abschnitt.setLange(Integer.parseInt(langeAbField.getText()));
             abschnitt.setMitwirkende(mitwirkendeField.getText());
+            abschnitt.setStartZeitReal(LocalDateTime.of(startZeitFieldDate.getValue(),
+        			LocalTime.of(Integer.parseInt(startZeitFieldHours.getText()),
+        					Integer.parseInt(startZeitFieldMinutes.getText()))));
+            abschnitt.setRealLange(Integer.parseInt(langeAbField.getText()));;
             
             okClicked = true;
             dialogStage.close();

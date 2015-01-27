@@ -151,9 +151,9 @@ public class Main extends Application {
             choice = Dialogs.create()
             		.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
             		.actions(Dialog.ACTION_OK,Dialog.ACTION_CANCEL)
-            	    .title("Chose your mode")
-            	    .masthead("Mode choosing")
-            	    .message( "You can change your mode in Edit -> Change mode")
+            	    .title("Modus wählen")
+            	    .masthead("Modus wählen")
+            	    .message( "Modus wechseln unter Bearbeiten -> Modus wechseln")
       			  .showChoices("Moderator","Regie").orElse("");
             
             
@@ -236,7 +236,7 @@ public class Main extends Application {
 
 	        // Create the dialog Stage.
 	        Stage dialogStage = new Stage();
-	        dialogStage.setTitle("HoMe Zeit - Edit Programm");
+	        dialogStage.setTitle("HoMe Zeit - Programm bearbeiten");
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
 	        dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(page);
@@ -276,7 +276,7 @@ public class Main extends Application {
 
 	        // Create the dialog Stage.
 	        Stage dialogStage = new Stage();
-	        dialogStage.setTitle("HoMe Zeit - Edit Abschnitt");
+	        dialogStage.setTitle("HoMe Zeit - Abschnitt bearbeiten");
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
 	        dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(page);
@@ -314,7 +314,7 @@ public class Main extends Application {
 
 	        // Create the dialog Stage.
 	        Stage dialogStage = new Stage();
-	        dialogStage.setTitle("HoMe Zeit - GO");
+	        dialogStage.setTitle("HoMe Zeit - Start");
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
 	        dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(page);

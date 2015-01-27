@@ -1,6 +1,7 @@
 package view;
 
 import java.io.File;
+import java.sql.Time;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneOffset;
@@ -20,6 +21,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ToggleButton;
@@ -30,6 +32,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.AbschnittMy;
 import model.Programm;
 import javafx.scene.control.Toggle;
 
@@ -74,6 +77,9 @@ public class TimerGoController {
 	@FXML
 	private Label abschnittTime;
 	
+	@FXML
+	private Button btnNext;
+	
 	private Stage dialogStage;
 	private Programm programm;
 	private boolean okClicked = false;
@@ -113,6 +119,8 @@ public class TimerGoController {
 	 */
 	@FXML
 	private void initialize() {
+		
+		setVisibleMode();
 		// SegmentedButton segmentedButton = new SegmentedButton();
 		// segmentedButton.getButtons().addAll(darkToggle,lightToggle);
 
@@ -163,6 +171,7 @@ public class TimerGoController {
 		getDiffTime();
 		// System.out.println(secondsDiff);
 		timeChanger();
+		
 	}
 
 	/**
@@ -185,8 +194,7 @@ public class TimerGoController {
 	}
 
 	/**
-	 * Current time and time before | till the end | after program . code of
-	 * shame ^^
+	 * Current time and time before | till the end | after program .
 	 */
 	public void timeChanger() {
 
@@ -234,12 +242,12 @@ public class TimerGoController {
 							timeStartEndAfter.setStyle("-fx-font-size:40;");
 							timeStartEndAfter.setTextFill(Color.GREENYELLOW);
 							timeStartEndAfter
-									.setText("More then 24 hours to START");
+									.setText("Mehr als 24h bis Anfang");
 						} else if (dur2Hours <= -24) {
 							timeStartEndAfter.setStyle("-fx-font-size:40;");
 							timeStartEndAfter.setTextFill(Color.RED);
 							timeStartEndAfter
-									.setText("More then 24 hours after END");
+									.setText("Mehr als 24h nach Ende");
 							progresProgram.setProgress(1);
 						}
 						// before start of the program
@@ -264,12 +272,14 @@ public class TimerGoController {
 									+ LocalTime.of(dur2Hours, dur2Minutes,
 											dur2Seconds).format(formatter1)
 									+ " ");
+							
+							abschnittWork(time);
 							// progresProgram.setProgress(((programm.getLange()*60.0-dur2.getSeconds())+1)/(programm.getLange()*60.0));
 							// System.out.println(dur2.getSeconds()+" ");
 							progresProgram.setProgress((programm.getLange()
 									* 60.0 - dur2.getSeconds() + 0.5)
 									/ (programm.getLange() * 60.0));
-
+							
 							// System.out.println(progresProgram.getProgress()+
 							// " " + time.format(formatter1));
 						}
@@ -303,6 +313,35 @@ public class TimerGoController {
 		timeline.play();
 
 	}
+	
+	/*
+	 * controls work with abschnitte
+	 */
+	private void abschnittWork(LocalDateTime curTime){
+		if(programm.abschnittMy.size()>0){
+			for(AbschnittMy ab : programm.abschnittMy){
+				if(curTime.isAfter(ab.getStartZeitReal()) 
+						&& curTime.isBefore(ab.getStartZeitReal().plusMinutes(ab.getRealLange()))){
+					abschnittInfo.setText(ab.getTitel() + " | "
+							+ ab.getMitwirkende() + " | " + ab.getStartZeit().format(formatter3).toString()
+							+ " | " + Integer.toString(ab.getLange()) + " Minuten");
+					
+					abschnittRealStart.setText(ab.getStartZeitReal().format(formatter3).toString());
+					java.time.Duration dur1 = java.time.Duration.between(ab.getStartZeitReal(),
+							curTime);
+					int dur1Minutes = (int) dur1.toMinutes();
+					int dur1Seconds = (int) dur1.minusMinutes(dur1Minutes).getSeconds();
+					abschnittTime.setText(String.format("%02d", dur1Minutes) + ":" + String.format("%02d", dur1Seconds));
+				}	
+			}
+			abschnittInfo.setText("");
+			abschnittRealStart.setText("");
+			abschnittTime.setText("");
+		}
+		else{
+		}
+		
+	}
 
 	private void getDiffTime() {
 		if (Main.isRegieMode) {
@@ -332,13 +371,13 @@ public class TimerGoController {
 	@FXML
 	private void handleColorModeChange() {
 		if (colorModeToggle.isSelected()){
-			colorModeToggle.setText("Light");
+			colorModeToggle.setText("Hell");
 			blackOrWhiteColor = Color.web("#1d1d1d");
 			File f = new File("src/view/LightTheme.css");
 			timerGoAnchor.getStylesheets().clear();
 			timerGoAnchor.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
 		}else{
-			colorModeToggle.setText("Dark");
+			colorModeToggle.setText("Dunkel");
 			blackOrWhiteColor = Color.WHITE;
 			File f = new File("src/view/DarkTheme.css");
 			timerGoAnchor.getStylesheets().clear();
@@ -352,6 +391,25 @@ public class TimerGoController {
 	 */
 	@FXML
 	private void handleNextAbschnitt() {
-
+		
 	}
+	
+	private void setVisibleMode(){
+    	if(Main.isRegieMode){
+    		btnNext.setVisible(true);
+    		if(programm.abschnittMy.size()==0){
+    			btnNext.setDisable(true);
+    		}
+    		else{
+    			btnNext.setDisable(false);
+    		}
+    		
+    	}
+    	else{
+    		btnNext.setVisible(false);
+    		
+    	}
+    	
+    }
+	
 }
