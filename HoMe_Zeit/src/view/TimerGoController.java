@@ -78,6 +78,9 @@ public class TimerGoController {
 	private Label abschnittTime;
 	
 	@FXML
+	private Label abschnittDivider;
+	
+	@FXML
 	private Button btnNext;
 	
 	private Stage dialogStage;
@@ -120,7 +123,7 @@ public class TimerGoController {
 	@FXML
 	private void initialize() {
 		
-		setVisibleMode();
+		//setVisibleMode();
 		// SegmentedButton segmentedButton = new SegmentedButton();
 		// segmentedButton.getButtons().addAll(darkToggle,lightToggle);
 
@@ -322,6 +325,7 @@ public class TimerGoController {
 			for(AbschnittMy ab : programm.abschnittMy){
 				if(curTime.isAfter(ab.getStartZeitReal()) 
 						&& curTime.isBefore(ab.getStartZeitReal().plusMinutes(ab.getRealLange()))){
+					abschnittDivider.setText("|");
 					abschnittInfo.setText(ab.getTitel() + " | "
 							+ ab.getMitwirkende() + " | " + ab.getStartZeit().format(formatter3).toString()
 							+ " | " + Integer.toString(ab.getLange()) + " Minuten");
@@ -332,15 +336,23 @@ public class TimerGoController {
 					int dur1Minutes = (int) dur1.toMinutes();
 					int dur1Seconds = (int) dur1.minusMinutes(dur1Minutes).getSeconds();
 					abschnittTime.setText(String.format("%02d", dur1Minutes) + ":" + String.format("%02d", dur1Seconds));
-				}	
+					break;
+				}
+				else{
+					abschnittInfo.setText("");
+					abschnittRealStart.setText("");
+					abschnittTime.setText("");
+					abschnittDivider.setText("");
+				}
 			}
+			
+		}
+		else{
 			abschnittInfo.setText("");
 			abschnittRealStart.setText("");
 			abschnittTime.setText("");
+			abschnittDivider.setText("");
 		}
-		else{
-		}
-		
 	}
 
 	private void getDiffTime() {
@@ -373,16 +385,18 @@ public class TimerGoController {
 		if (colorModeToggle.isSelected()){
 			colorModeToggle.setText("Hell");
 			blackOrWhiteColor = Color.web("#1d1d1d");
-			File f = new File("src/view/LightTheme.css");
+			//File f = new File("src/view/LightTheme.css");
 			timerGoAnchor.getStylesheets().clear();
-			timerGoAnchor.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
+			//timerGoAnchor.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
+			
+			timerGoAnchor.getStylesheets().add("/view/LightTheme.css");
 		}else{
 			colorModeToggle.setText("Dunkel");
 			blackOrWhiteColor = Color.WHITE;
-			File f = new File("src/view/DarkTheme.css");
+			//File f = new File("src/view/DarkTheme.css");
 			timerGoAnchor.getStylesheets().clear();
-			timerGoAnchor.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
-			
+			//timerGoAnchor.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
+			timerGoAnchor.getStylesheets().add("/view/DarkTheme.css");
 		}
 	}
 	
@@ -397,7 +411,9 @@ public class TimerGoController {
 	private void setVisibleMode(){
     	if(Main.isRegieMode){
     		btnNext.setVisible(true);
-    		if(programm.abschnittMy.size()==0){
+    		//System.out.println(programm.abschnittMy.toArray());
+    		
+    		if(Main.getAbschnittData().size()>0){
     			btnNext.setDisable(true);
     		}
     		else{

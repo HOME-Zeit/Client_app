@@ -119,8 +119,8 @@ public class RootLayoutController {
 	@FXML
 	private void handleAbout() {
 		Dialogs.create().styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
-				.title("HoMe Zeit").masthead("About")
-				.message("Author: HoMe Group\nYear: 2014 \nVersion: 1.0")
+				.title("HoMe Zeit").masthead("\u00dcber")
+				.message("Autor: HoMe Group\nJahr: 2014 \nVersion: 1.0")
 				.showInformation();
 	}
 
@@ -168,9 +168,9 @@ public class RootLayoutController {
 		Optional<String> iPAddress = Dialogs.create()
     			.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
     			  .actions(Dialog.ACTION_OK,Dialog.ACTION_CANCEL)
-        	      .title("IP - Address choice")
-        	      .masthead("Now IP = \""+ RequestServer.getIP()+"\"")
-        	      .message( "Enter new IP-Address of the server or Cancel")
+        	      .title("IP-Adresse w\u00e4hlen")
+        	      .masthead("Aktuelle IP = \""+ RequestServer.getIP()+"\"")
+        	      .message( "Geben Sie die neue Adresse des Servers ein")
         	      .showTextInput();
 		
 		/**
@@ -181,16 +181,16 @@ public class RootLayoutController {
 			
 			Dialogs.create()
         	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
-            .title("You have changed IP-Address")
-            .masthead("IP-Address = \""+ RequestServer.getIP()+"\"")
+            .title("Sie haben die IP-Adresse ge\u00e4ndert")
+            .masthead("IP-Adresse = \""+ RequestServer.getIP()+"\"")
             .showWarning();
 		}
 		else{
 			Dialogs.create()
         	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
-            .title("You have not changed IP-Address")
-            .masthead("IP-Address = \""+ RequestServer.getIP()+"\"")
-            .message("If you want to change IP-Address -  try again")
+            .title("Sie haben die IP-Adresse nicht ge\u00e4ndert")
+            .masthead("IP-Adresse = \""+ RequestServer.getIP()+"\"")
+            .message("Wenn Sie die IP-Adresse \u00e4ndern wollen, versuchen Sie dies erneut")
             .showWarning();
 		}
 	

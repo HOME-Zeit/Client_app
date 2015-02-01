@@ -1,23 +1,11 @@
 package application;
 	
-import java.io.File;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.prefs.Preferences;
 
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -27,23 +15,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import javafx.util.Duration;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-
 import main.placeholder_main;
 import model.AbschnittMy;
 import model.Programm;
-import model.ProgrammListWrapper;
 
-import org.controlsfx.control.action.Action;
 import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
 
-import client_ServerRequests.RequestServer;
-import datenbank.Programminformation;
 import server_FrontDBCon.RequestDB;
 import server_NTPRequest.Retrieve_Time;
 import view.AbschnittEditDialogController;
@@ -51,6 +29,8 @@ import view.ProgrammEditDialogController;
 import view.ProgrammOverviewController;
 import view.RootLayoutController;
 import view.TimerGoController;
+import client_ServerRequests.RequestServer;
+import datenbank.Programminformation;
 
 /**
  * 
@@ -103,7 +83,7 @@ public class Main extends Application {
 			this.primaryStage = primaryStage;
 	        this.primaryStage.setTitle("HoMe Zeit");
 	        
-	        this.primaryStage.getIcons().add(new Image("file:resources/images/1415586239_clock.png"));
+	        this.primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("1415586239_clock.png")));
 	        
 	        initRootLayout();
 	        
@@ -126,8 +106,9 @@ public class Main extends Application {
 		
         try {
             // Load root layout from fxml file.
+        	//System.err.println("FXML resource: " + Main.class.getResource("../view/RootLayout.fxml"));
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("../view/RootLayout.fxml"));
+            loader.setLocation(Main.class.getResource("/view/RootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
 
             // Show the scene containing the root layout.
@@ -151,8 +132,8 @@ public class Main extends Application {
             choice = Dialogs.create()
             		.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
             		.actions(Dialog.ACTION_OK,Dialog.ACTION_CANCEL)
-            	    .title("Modus wählen")
-            	    .masthead("Modus wählen")
+            	    .title("Modus w\u00e4hlen")
+            	    .masthead("Modus w\u00e4hlen")
             	    .message( "Modus wechseln unter Bearbeiten -> Modus wechseln")
       			  .showChoices("Moderator","Regie").orElse("");
             
@@ -200,7 +181,7 @@ public class Main extends Application {
         try {
             // Load program overview.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("../view/ProgrammOverview.fxml"));
+            loader.setLocation(Main.class.getResource("/view/ProgrammOverview.fxml"));
             AnchorPane programmOverview = (AnchorPane) loader.load();
 
             // Set program overview into the center of root layout.
@@ -231,7 +212,7 @@ public class Main extends Application {
 	    try {
 	        // Load the fxml file and create a new stage for the popup dialog.
 	        FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(Main.class.getResource("../view/ProgrammEditDialog.fxml"));
+	        loader.setLocation(Main.class.getResource("/view/ProgrammEditDialog.fxml"));
 	        AnchorPane page = (AnchorPane) loader.load();
 
 	        // Create the dialog Stage.
@@ -241,7 +222,7 @@ public class Main extends Application {
 	        dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(page);
 	        dialogStage.setScene(scene);
-	        dialogStage.getIcons().add(new Image("file:resources/images/1415586239_clock.png"));
+	        dialogStage.getIcons().add(new Image(getClass().getResourceAsStream("1415586239_clock.png")));
 
 	        // Set the programm into the controller.
 	        ProgrammEditDialogController controller = loader.getController();
@@ -267,11 +248,11 @@ public class Main extends Application {
 	 * @param programm the programm object to be edited
 	 * @return true if the user clicked OK, false otherwise.
 	 */
-	public boolean showAbschnittEditDialog(AbschnittMy abschnitt) {
+	public boolean showAbschnittEditDialog(AbschnittMy abschnitt, Programm programm) {
 	    try {
 	        // Load the fxml file and create a new stage for the popup dialog.
 	        FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(Main.class.getResource("../view/AbschnittEditDialog.fxml"));
+	        loader.setLocation(Main.class.getResource("/view/AbschnittEditDialog.fxml"));
 	        AnchorPane page = (AnchorPane) loader.load();
 
 	        // Create the dialog Stage.
@@ -281,13 +262,14 @@ public class Main extends Application {
 	        dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(page);
 	        dialogStage.setScene(scene);
-	        dialogStage.getIcons().add(new Image("file:resources/images/1415586239_clock.png"));
+	        dialogStage.getIcons().add(new Image(getClass().getResourceAsStream("1415586239_clock.png")));
 
 	        // Set the programm into the controller.
 	        AbschnittEditDialogController controller = loader.getController();
 	        controller.setMain(this);
 	        controller.setDialogStage(dialogStage);
 	        controller.setAbschnitt(abschnitt);
+	        controller.setProgramm(programm);
 
 	        // Show the dialog and wait until the user closes it
 	        dialogStage.showAndWait();
@@ -309,7 +291,7 @@ public class Main extends Application {
 	    try {
 	        // Load the fxml file and create a new stage for the popup dialog.
 	        FXMLLoader loader = new FXMLLoader();
-	        loader.setLocation(Main.class.getResource("../view/TimerGo.fxml"));
+	        loader.setLocation(Main.class.getResource("/view/TimerGo.fxml"));
 	        AnchorPane page = (AnchorPane) loader.load();
 
 	        // Create the dialog Stage.
@@ -319,7 +301,7 @@ public class Main extends Application {
 	        dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(page);
 	        dialogStage.setScene(scene);
-	        dialogStage.getIcons().add(new Image("file:resources/images/1415586239_clock.png"));
+	        dialogStage.getIcons().add(new Image(getClass().getResourceAsStream("1415586239_clock.png")));
 	        dialogStage.setMaximized(true);
 
 	        // Set the programm into the controller.

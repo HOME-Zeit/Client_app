@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="533.0" prefWidth="680.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProgrammEditDialogController">
+<AnchorPane minHeight="533.0" minWidth="680.0" prefHeight="533.0" prefWidth="680.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProgrammEditDialogController">
    <children>
-      <GridPane layoutX="97.0" layoutY="42.0" prefHeight="225.0" prefWidth="499.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+      <GridPane layoutX="97.0" layoutY="42.0" minHeight="225.0" minWidth="499.0" prefHeight="225.0" prefWidth="499.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="290.0" minWidth="10.0" prefWidth="264.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.0" minWidth="10.0" prefWidth="112.0" />
@@ -24,11 +24,11 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Starttermin (Stunden : Minuten | Data)" />
+            <Label text="Starttermin(Stunden:Minuten | Datum)" />
             <Label text="Sendung" GridPane.rowIndex="1" />
             <Label text="Länge der Sendung (Minuten)" GridPane.rowIndex="2" />
-            <Label text="Sendeverantwortlichen" GridPane.rowIndex="3" />
-            <Label text="Produktionsverantwortlichen" GridPane.rowIndex="4" />
+            <Label text="Sendeverantwortliche(r)" GridPane.rowIndex="3" />
+            <Label text="Produktionsverantwortliche(r)" GridPane.rowIndex="4" />
             <Group GridPane.columnIndex="2">
                <children>
                   <Label layoutX="345.0" layoutY="270.0" prefHeight="20.0" prefWidth="2.0" text=":" />
@@ -46,14 +46,14 @@
             <TextField fx:id="sendeVerantField" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <TextField fx:id="produktVerantField" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleJetzt" prefHeight="33.0" prefWidth="110.0" text="Jetzt" GridPane.columnIndex="1" />
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleCopySende" prefHeight="33.0" prefWidth="109.0" text="Copy" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleCopySende" prefHeight="33.0" prefWidth="109.0" text="Kopieren" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
          <opaqueInsets>
             <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
          </opaqueInsets>
       </GridPane>
-      <Button defaultButton="true" layoutX="465.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="33.0" prefWidth="91.0" text="OK" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="124.0" />
-      <Button layoutX="574.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="15.0" />
+      <Button defaultButton="true" layoutX="419.0" layoutY="486.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="33.0" prefWidth="91.0" text="OK" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="170.0" />
+      <Button layoutX="574.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="33.0" prefWidth="119.0" text="Abbrechen" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="15.0" />
       <TableView fx:id="abschnittTable" editable="true" layoutX="15.0" layoutY="292.0" prefHeight="177.0" prefWidth="650.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="64.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="292.0">
          <columns>
             <TableColumn fx:id="numberAbColumn" maxWidth="75.0" prefWidth="50.0" text="#" />
@@ -69,6 +69,6 @@
       <Button fx:id="btnAddAb" layoutX="187.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleAddAb" prefHeight="33.0" prefWidth="90.0" text="Add" AnchorPane.leftAnchor="187.0" AnchorPane.topAnchor="255.0" />
       <Button fx:id="btnEditAb" disable="true" layoutX="295.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleEditAb" prefHeight="33.0" prefWidth="90.0" text="Edit" AnchorPane.leftAnchor="295.0" AnchorPane.topAnchor="255.0" />
       <Button fx:id="btnDeleteAb" disable="true" layoutX="403.0" layoutY="255.0" mnemonicParsing="false" onAction="#handleDeleteAb" text="Delete" AnchorPane.leftAnchor="403.0" AnchorPane.topAnchor="255.0" />
-      <Label fx:id="abInfo" layoutX="15.0" layoutY="276.0" prefHeight="153.0" prefWidth="650.0" styleClass="label-abtitel" text="At first you have to save this program and then you can add Abschnitte" textAlignment="CENTER" visible="false" wrapText="true" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
+      <Label fx:id="abInfo" layoutX="15.0" layoutY="276.0" prefHeight="153.0" prefWidth="650.0" styleClass="label-abtitel" text="Sie müssen diese Sendung erst speichern, bevor Sie Abschnitte hinzufügen können." textAlignment="CENTER" visible="false" wrapText="true" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" />
    </children>
 </AnchorPane>

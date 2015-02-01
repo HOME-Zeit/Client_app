@@ -108,7 +108,8 @@ public class ProgrammOverviewController {
 	        // Listen for selection changes and show the person details when changed.
 	        programmTable.getSelectionModel().selectedItemProperty().addListener(
 	                (observable, oldValue, newValue) -> showProgrammDetails(newValue));
-	        
+	        programmTable.setPlaceholder(new Label("Tabelle ohne Inhalt"));
+	        abschnittTable.setPlaceholder(new Label("Tabelle ohne Inhalt"));
 	    }
 
 	    /**
@@ -197,9 +198,9 @@ public class ProgrammOverviewController {
 	        	Action response = Dialogs.create()
 	        			.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
 	        			  .actions(Dialog.ACTION_OK,Dialog.ACTION_CANCEL)
-		        	      .title("You sure want to delete this program?")
-		        	      .masthead("Warning !")
-		        	      .message( "All datas about this program will be delete")
+		        	      .title("Sendung l\u00f6schen?")
+		        	      .masthead("Warnung !")
+		        	      .message( "Alle Daten dieser Sendung werden gel\u00f6scht")
 		        	      .showConfirm();
 	        	if(response==Dialog.ACTION_OK){
 	        		
@@ -215,9 +216,9 @@ public class ProgrammOverviewController {
 	            // Nothing selected.
 	            Dialogs.create()
 	            	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
-	                .title("No Selection")
-	                .masthead("No Person Selected")
-	                .message("Please select a person in the table.")
+	                .title("Keine Auswahl")
+	                .masthead("Keine Sendung ausgew\u00e4hlt")
+	                .message("Bitte w\u00e4hlen Sie eine Sendung aus der Tabelle.")
 	                .showWarning();
 	        }
 	    }
@@ -263,12 +264,12 @@ public class ProgrammOverviewController {
 	            
 	            handleRefreshButton(); // refresh table
 	        } else {
-	            // Nothing selected.
+	        	// Nothing selected.
 	            Dialogs.create()
 	            	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
-	                .title("No Selection")
-	                .masthead("No Person Selected")
-	                .message("Please select a person in the table.")
+	                .title("Keine Auswahl")
+	                .masthead("Keine Sendung ausgew\u00e4hlt")
+	                .message("Bitte w\u00e4hlen Sie eine Sendung aus der Tabelle.")
 	                .showWarning();
 	        }
 	    }
@@ -288,11 +289,12 @@ public class ProgrammOverviewController {
 
 	        } else {
 	            // Nothing selected.
+	        	// Nothing selected.
 	            Dialogs.create()
 	            	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
-	                .title("No Selection")
-	                .masthead("No Person Selected")
-	                .message("Please select a person in the table.")
+	                .title("Keine Auswahl")
+	                .masthead("Keine Sendung ausgew\u00e4hlt")
+	                .message("Bitte w\u00e4hlen Sie eine Sendung aus der Tabelle.")
 	                .showWarning();
 	        }
 	    }

@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="timerGoAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="616.0" prefWidth="1037.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TimerGoController">
+<AnchorPane fx:id="timerGoAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1400.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TimerGoController">
    <children>
-      <Label fx:id="timeStartEndAfter" layoutX="2.0" layoutY="158.0" prefHeight="301.0" prefWidth="1030.0" styleClass="label-timer" textOverrun="CENTER_ELLIPSIS" AnchorPane.bottomAnchor="157.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="158.0">
+      <Label fx:id="timeStartEndAfter" layoutX="2.0" layoutY="158.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1400.0" styleClass="label-timer" textOverrun="CENTER_ELLIPSIS" AnchorPane.bottomAnchor="157.0" AnchorPane.topAnchor="158.0">
          <font>
             <Font name="Segoe UI Semibold" size="96.0" />
          </font>
@@ -22,17 +22,17 @@
       <Label fx:id="programInfo" layoutX="14.0" layoutY="14.0" styleClass="label-timerheader" text="Sendung | Termin | Länge" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <Label fx:id="currTime" layoutX="726.0" layoutY="14.0" styleClass="label-timercurr" text="19:01:01" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <ProgressBar fx:id="progresProgram" layoutX="14.0" layoutY="437.0" opacity="0.7" prefHeight="104.0" prefWidth="743.0" progress="0.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-      <Button layoutX="878.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleMainWindow" prefHeight="33.0" prefWidth="139.0" text="Main window" AnchorPane.bottomAnchor="140.0" AnchorPane.rightAnchor="20.0" />
-      <Button layoutX="709.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleNextAbschnitt" text="Next Abschnitt" AnchorPane.bottomAnchor="140.0" AnchorPane.rightAnchor="189.0" />
-      <HBox alignment="CENTER" layoutX="420.0" layoutY="585.0" prefHeight="104.0" prefWidth="197.0" AnchorPane.leftAnchor="420.0" AnchorPane.rightAnchor="420.0">
+      <Button layoutX="878.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleMainWindow" prefHeight="33.0" prefWidth="139.0" text="Startseite" AnchorPane.bottomAnchor="140.0" AnchorPane.rightAnchor="20.0" />
+      <Button fx:id="btnNext" layoutX="709.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleNextAbschnitt" text="Nächster Abschnitt" visible="false" AnchorPane.bottomAnchor="140.0" AnchorPane.rightAnchor="189.0" />
+      <HBox alignment="CENTER" layoutX="420.0" layoutY="585.0" prefHeight="104.0" prefWidth="197.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="420.0" AnchorPane.rightAnchor="420.0">
          <children>
             <Line endX="51.0" rotate="90.0" startX="-51.0" stroke="#eb2a10" strokeWidth="3.0" />
          </children>
       </HBox>
-      <ToggleButton fx:id="colorModeToggle" layoutX="15.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleColorModeChange" prefHeight="33.0" prefWidth="81.0" text="Dark" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="20.0" />
-      <Label fx:id="abschnittInfo" layoutX="14.0" layoutY="76.0" styleClass="label-abtitel" text="Titel | Startzeit | Länge" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="76.0" />
-      <Label fx:id="abschnittTime" layoutX="956.0" layoutY="85.0" styleClass="label-abcurr" text="20:15" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="85.0" />
-      <Label fx:id="abschnittRealStart" layoutX="845.0" layoutY="85.0" styleClass="label-abcurr" text="16:18:30" AnchorPane.rightAnchor="132.0" AnchorPane.topAnchor="85.0" />
-      <Label layoutX="922.0" layoutY="85.0" prefHeight="21.0" prefWidth="11.0" styleClass="label-abcurr" text="|" AnchorPane.rightAnchor="104.0" AnchorPane.topAnchor="85.0" />
+      <ToggleButton fx:id="colorModeToggle" layoutX="15.0" layoutY="531.0" mnemonicParsing="false" onAction="#handleColorModeChange" prefHeight="33.0" prefWidth="95.0" text="Dunkel" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="20.0" />
+      <Label fx:id="abschnittInfo" layoutX="14.0" layoutY="76.0" styleClass="label-abtitel" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="76.0" />
+      <Label fx:id="abschnittTime" layoutX="956.0" layoutY="85.0" styleClass="label-abcurr" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="85.0" />
+      <Label fx:id="abschnittRealStart" layoutX="845.0" layoutY="85.0" styleClass="label-abcurr" AnchorPane.rightAnchor="132.0" AnchorPane.topAnchor="85.0" />
+      <Label fx:id="abschnittDivider" layoutX="922.0" layoutY="85.0" prefHeight="21.0" prefWidth="11.0" styleClass="label-abcurr" AnchorPane.rightAnchor="104.0" AnchorPane.topAnchor="85.0" />
    </children>
 </AnchorPane>
