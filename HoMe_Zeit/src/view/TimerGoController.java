@@ -93,6 +93,8 @@ public class TimerGoController {
 	private Main main;
 	
 	private Color blackOrWhiteColor = Color.WHITE; 
+	
+	private Retrieve_Time retrieve_Time = new Retrieve_Time();
 
 	/**
 	 * Is called by the main application to give a reference back to itself.
@@ -358,7 +360,7 @@ public class TimerGoController {
 	private void getDiffTime() {
 		if (Main.isRegieMode) {
 			try {
-				this.secondsDiff = Retrieve_Time.getTime()
+				this.secondsDiff = retrieve_Time.getTime()
 						- LocalDateTime.now().toEpochSecond(
 								ZoneOffset.of("+01:00"));
 			} catch (Exception e) {
@@ -367,7 +369,8 @@ public class TimerGoController {
 			}
 		} else {
 			try {
-				this.secondsDiff = RequestServer.requestSec()
+				RequestServer requestServer = new RequestServer();
+				this.secondsDiff = requestServer.requestSec()
 						- LocalDateTime.now().toEpochSecond(
 								ZoneOffset.of("+01:00"));
 			} catch (Exception e) {

@@ -9,6 +9,7 @@ import org.controlsfx.dialog.Dialog;
 import org.controlsfx.dialog.Dialogs;
 
 import client_ServerRequests.RequestServer;
+import server_NTPRequest.Retrieve_Time;
 import server_loops.DBLoopMajor;
 import server_loops.DBLoopMinor;
 import server_loops.DBLoopNumber;
@@ -16,6 +17,8 @@ import server_loops.TimeLoopClk;
 import server_loops.TimeLoopDate;
 import server_loops.TimeLoopSec;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
 import application.Main;
 
@@ -32,10 +35,25 @@ import application.Main;
  */
 
 public class RootLayoutController {
+	
+	@FXML
+	private MenuItem ntpChange;
+	
+	@FXML
+	private MenuItem ipChange;
 
 	// Reference to the main application
 	private Main main;
 
+	public RootLayoutController() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	@FXML
+    private void initialize() {
+		
+    }
+	
 	/**
 	 * Is called by the main application to give a reference back to itself.
 	 * 
@@ -165,11 +183,12 @@ public class RootLayoutController {
 	
 	@FXML
 	private void handleChangeIP() {
+		RequestServer requestServer = new RequestServer();
 		Optional<String> iPAddress = Dialogs.create()
     			.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
     			  .actions(Dialog.ACTION_OK,Dialog.ACTION_CANCEL)
         	      .title("IP-Adresse w\u00e4hlen")
-        	      .masthead("Aktuelle IP = \""+ RequestServer.getIP()+"\"")
+        	      .masthead("Aktuelle IP = \""+ requestServer.getIP()+"\"")
         	      .message( "Geben Sie die neue Adresse des Servers ein")
         	      .showTextInput();
 		
@@ -177,24 +196,74 @@ public class RootLayoutController {
 		 * TODO chaeck or in new IP are 4 blocks - str.split(...)
 		 */
 		if(iPAddress.isPresent() && iPAddress.get().compareTo("")!=0){
-			RequestServer.setIP(iPAddress.get());
-			
+			requestServer.setIP(iPAddress.get());
+			main.saveIpNtpToPref(requestServer.getIP());
 			Dialogs.create()
         	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
             .title("Sie haben die IP-Adresse ge\u00e4ndert")
-            .masthead("IP-Adresse = \""+ RequestServer.getIP()+"\"")
+            .masthead("IP-Adresse = \""+ requestServer.getIP()+"\"")
             .showWarning();
+			
 		}
 		else{
 			Dialogs.create()
         	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
             .title("Sie haben die IP-Adresse nicht ge\u00e4ndert")
-            .masthead("IP-Adresse = \""+ RequestServer.getIP()+"\"")
+            .masthead("IP-Adresse = \""+ requestServer.getIP()+"\"")
             .message("Wenn Sie die IP-Adresse \u00e4ndern wollen, versuchen Sie dies erneut")
             .showWarning();
 		}
 	
 
 	}
+	
+	@FXML
+	private void handleChangeNTP() {
+		Retrieve_Time retrieve_Time = new Retrieve_Time();
+		Optional<String> nTPAddress = Dialogs.create()
+    			.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+    			  .actions(Dialog.ACTION_OK,Dialog.ACTION_CANCEL)
+        	      .title("Ntp-Server Adresse w\u00e4hlen")
+        	      .masthead("Aktuelle NTP = \""+ retrieve_Time.getUrl()+"\"")
+        	      .message( "Geben Sie die neue Adresse des Ntp-Servers ein")
+        	      .showTextInput();
+		
+		/**
+		 * TODO chaeck or in new IP are 4 blocks - str.split(...)
+		 */
+		if(nTPAddress.isPresent() && nTPAddress.get().compareTo("")!=0){
+			retrieve_Time.setUrl(nTPAddress.get());
+			main.saveIpNtpToPref(retrieve_Time.getUrl());
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Sie haben die Ntp-Server Adresse ge\u00e4ndert")
+            .masthead("Ntp-Server Adresse = \""+ retrieve_Time.getUrl()+"\"")
+            .showWarning();
+		}
+		else{
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Sie haben die Ntp-Server Adresse nicht ge\u00e4ndert")
+            .masthead("Ntp-Server Adresse = \""+ retrieve_Time.getUrl()+"\"")
+            .message("Wenn Sie die Ntp-Server Adresse \u00e4ndern wollen, versuchen Sie dies erneut")
+            .showWarning();
+		}
+	
+
+	}
+	
+	public void setVisibleMode(){
+    	if(Main.isRegieMode){
+    		//System.out.println("I am here");
+    		ipChange.setVisible(false);
+    		ntpChange.setVisible(true);
+ 
+    	}
+    	else{
+    		ipChange.setVisible(true);
+    		ntpChange.setVisible(false);
+    	}
+    	
+    }
 
 }

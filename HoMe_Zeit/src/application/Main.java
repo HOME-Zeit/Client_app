@@ -1,7 +1,9 @@
 package application;
 	
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.prefs.Preferences;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -103,7 +105,7 @@ public class Main extends Application {
 	 * person file.
 	 */
 	public void initRootLayout() {
-		
+		RootLayoutController controller = new RootLayoutController();
         try {
             // Load root layout from fxml file.
         	//System.err.println("FXML resource: " + Main.class.getResource("../view/RootLayout.fxml"));
@@ -116,7 +118,7 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             
             // Give the controller access to the main app.
-            RootLayoutController controller = loader.getController();
+            controller = loader.getController();
             controller.setMain(this);
             
             primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -155,18 +157,25 @@ public class Main extends Application {
 			}
         
         
+        
         if(isRegieMode){
         // load data from DB - For Server
         loadAllProgrammDataFromDB();
         // threads for Server. They respond on Clients questions. 
         placeholder_main.startClientDBLoops();
         placeholder_main.startClientTimeLoops();
+        
+        
         }
         else{
-        placeholder_main.startClientDBLoops(); // test on the same PC
-        placeholder_main.startClientTimeLoops();
+        //placeholder_main.startClientDBLoops(); // test on the same PC
+        //placeholder_main.startClientTimeLoops();
         loadAllProgrammDataFromServer();
+        
+        
         }
+        
+        controller.setVisibleMode();
         
         /*
      // Try to load last opened person file.
@@ -323,6 +332,65 @@ public class Main extends Application {
 	        return false;
 	    }
 	}
+	
+	
+	/**
+	 * Save IP-Url for Moderator Mode
+	 *  and Ntp-Url for Regie Mode
+	 *  to preferences
+	 * 
+	 * @param file the file or null to remove the path
+	 */
+	public void saveIpNtpToPref(String IPorNTP) {
+	    Preferences prefs = Preferences.userNodeForPackage(Main.class);
+	    
+	    if(isRegieMode){
+	    	//Retrieve_Time retrieve_Time = new Retrieve_Time();
+	    	if (IPorNTP != null && IPorNTP.compareTo("")!=0) {
+	    		
+		        prefs.put("NtpAdd", IPorNTP);
+
+		    } 
+	    	
+	    }else{
+	    	if (IPorNTP != null && IPorNTP.compareTo("")!=0) {
+	    		
+		        prefs.put("IpAdd", IPorNTP);
+
+		    } 
+	    }   
+	}
+	
+	/**
+	 * Return IP-Url for Moderator Mode
+	 *  and Ntp-Url for Regie Mode
+	 *  to preferences
+	 * 
+	 * @param file the file or null to remove the path
+	 */
+	public static String getIpNtpFromPref() {
+	    Preferences prefs = Preferences.userNodeForPackage(Main.class);
+	    
+	    
+	    if(isRegieMode){
+	    	String ntpAdd = prefs.get("NtpAdd", null);
+	    	//Retrieve_Time retrieve_Time = new Retrieve_Time();
+	    	if (ntpAdd != null && ntpAdd.compareTo("")!=0) {
+	    		
+		        return ntpAdd;
+		    } 
+	    	
+	    }else{
+	    	String ipAdd = prefs.get("IpAdd", null);
+	    	if (ipAdd != null && ipAdd.compareTo("")!=0) {
+	
+		        return ipAdd;
+		    } 
+	    }
+	    
+	    return "";
+	}
+	
 	/**
 	 * Returns the programm file preference, i.e. the file that was last opened.
 	 * The preference is read from the OS specific registry. If no such
@@ -457,7 +525,8 @@ public class Main extends Application {
     	try {
     		//System.out.println(Retrieve_Time.getTime()); // Test time
     		RequestDB requestDB = new RequestDB();
-    		ArrayList<Programminformation> progrDB = requestDB.requestMinor(Retrieve_Time.getTime(),true);
+    		Retrieve_Time retrieve_Time = new Retrieve_Time();
+    		ArrayList<Programminformation> progrDB = requestDB.requestMinor(retrieve_Time.getTime(),true);
     		ArrayList< Programm> progrClient = new ArrayList<Programm>();
     		
     		for(Programminformation p : progrDB ){
@@ -474,6 +543,7 @@ public class Main extends Application {
     	                .masthead("Could not load today's data from DB:\n")
     	                .showException(e);
     	    }
+    	
     	}
 	
 	/*
@@ -482,7 +552,8 @@ public class Main extends Application {
 	 */
 	public void loadAllProgrammDataFromServer(){
 		try {
-		ArrayList<Programminformation> progrServer = RequestServer.requestMajor(true);
+		RequestServer requestServer = new RequestServer();
+		ArrayList<Programminformation> progrServer = requestServer.requestMajor(true);
 		ArrayList< Programm> progrClient = new ArrayList<Programm>();
 		
 		for(Programminformation p : progrServer ){
@@ -509,9 +580,9 @@ public class Main extends Application {
 	public void loadTodayProgrammDataFromServer(){
     	try {
     		//System.out.println(Retrieve_Time.getTime()); // Test time
-    		
-    		long time =RequestServer.requestSec();
-    		ArrayList<Programminformation> progrServer = RequestServer.requestMinor(time,true);
+    		RequestServer requestServer = new RequestServer();
+    		long time =requestServer.requestSec();
+    		ArrayList<Programminformation> progrServer = requestServer.requestMinor(time,true);
     		ArrayList< Programm> progrClient = new ArrayList<Programm>();
     		
     		for(Programminformation p : progrServer ){
