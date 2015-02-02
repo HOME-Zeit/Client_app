@@ -2,6 +2,7 @@ package client_ServerRequests;
 
 import java.util.ArrayList;
 
+import application.Main;
 import datenbank.Programminformation;
 /**
  *
@@ -9,41 +10,49 @@ import datenbank.Programminformation;
  */
 public class RequestServer 
 {
-    private static String IPAddress = "localhost";
+    private  String IPAddress;
 
+    public RequestServer(){
+    	String tmpNtp = Main.getIpNtpFromPref();
+		if(tmpNtp.compareTo("")!=0){
+			setIP(tmpNtp);
+		}else{
+			setIP("localhost");
+		}
+    }
 	
-    public static ArrayList <Programminformation> requestMinor(long time, boolean truefalse)
+    public  ArrayList <Programminformation> requestMinor(long time, boolean truefalse)
     {
         return ClientServerConDB.minorCon(time,truefalse);
     }
-    public static ArrayList <Programminformation> requestMajor(boolean truefalse)
+    public  ArrayList <Programminformation> requestMajor(boolean truefalse)
     {
         return ClientServerConDB.majorCon(truefalse);
     }
-    public static ArrayList <Programminformation> requestNumber(int number, boolean truefalse)
+    public  ArrayList <Programminformation> requestNumber(int number, boolean truefalse)
     {
         return ClientServerConDB.numberCon(number,truefalse);
     }
     
-    public static String requestClk ()
+    public  String requestClk ()
     {
         return ClientServerConTime.clkCon();
     }
-    public static String requestDate ()
+    public  String requestDate ()
     {
         return ClientServerConTime.dateCon();
     }
-    public static long requestSec ()
+    public  long requestSec ()
     {
         return ClientServerConTime.secCon();
     }
     
-    public static String getIP(){
-    	return RequestServer.IPAddress;
+    public  String getIP(){
+    	return IPAddress;
     }
     
-    public static void setIP(String ipTmp){
-    	RequestServer.IPAddress = ipTmp;
+    public  void setIP(String ipTmp){
+    	IPAddress = ipTmp;
     	
     }
     

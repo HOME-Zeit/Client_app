@@ -360,7 +360,17 @@ public class TimerGoController {
 	private void getDiffTime() {
 		if (Main.isRegieMode) {
 			try {
-				this.secondsDiff = retrieve_Time.getTime()
+				long epoch = 0;
+	    		Retrieve_Time retrieve_Time = new Retrieve_Time();
+	    		try
+	            {
+	                epoch = retrieve_Time.getTime();
+	            }
+	            catch(Exception e)
+	            {
+	                epoch = retrieve_Time.getTime_failed();
+	            }
+				this.secondsDiff = epoch
 						- LocalDateTime.now().toEpochSecond(
 								ZoneOffset.of("+01:00"));
 			} catch (Exception e) {

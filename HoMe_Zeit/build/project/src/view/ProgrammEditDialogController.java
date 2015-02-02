@@ -145,7 +145,7 @@ public class ProgrammEditDialogController {
     public void setProgramm(Programm programm) {
         this.programm = programm;
 
-        System.out.println(programm.getNumber());
+        //System.out.println(programm.getNumber());
         
         startTerminFieldHours.setText(Integer.toString(programm.getStartTermin().getHour()));
         startTerminFieldMinutes.setText(Integer.toString(programm.getStartTermin().getMinute()));
@@ -309,6 +309,11 @@ public class ProgrammEditDialogController {
                 errorMessage += "Ung\u00fcltig: Minutes (muss ein Zahl sein)!\n"; 
             }  
         }
+        
+        if(programm.abschnittMy.size()!=0 ){
+        	//System.out.println("Yes, I'm here " + programm.abschnittMy.size());
+        	errorMessage+=checkTimeOfAb();
+        }
         	
 
         if (errorMessage.length() == 0) {
@@ -347,8 +352,24 @@ public class ProgrammEditDialogController {
      */
     @FXML
     private void handleAddAb() {
+    	Programm programmT = new Programm(this.programm.getProgInfoObject());
+    	
+    	programmT.setStartTermin(LocalDateTime.of(startTerminFieldDate.getValue(),
+    			LocalTime.of(Integer.parseInt(startTerminFieldHours.getText()),
+    					Integer.parseInt(startTerminFieldMinutes.getText()))));
+    	programmT.setSendungName(sendungField.getText());
+    	programmT.setLange(Integer.parseInt(langeField.getText()));
+    	programmT.setSendeVerant(sendeVerantField.getText());
+    	programmT.setProduktVerant(produktVerantField.getText());
+        
+        // set startRealTime same as startTime
+    	programmT.setStartTerminReal(LocalDateTime.of(startTerminFieldDate.getValue(),
+    			LocalTime.of(Integer.parseInt(startTerminFieldHours.getText()),
+    					Integer.parseInt(startTerminFieldMinutes.getText()))));
+    	programmT.setLangeReal(Integer.parseInt(langeField.getText()));
+    	
         AbschnittMy tempAbschnitt = new AbschnittMy();
-        boolean okClicked = main.showAbschnittEditDialog(tempAbschnitt);
+        boolean okClicked = main.showAbschnittEditDialog(tempAbschnitt,programmT);
         if (okClicked) {
         	if(programm.getNumber()==0){
         		main.getProgrammData().add(programm);
@@ -357,6 +378,14 @@ public class ProgrammEditDialogController {
         	tempAbschnitt.setProgramm(programm.getNumber());
             programm.abschnittMy.add(tempAbschnitt);
             updateDB.segmentsRegister(tempAbschnitt.getAbschnittObject(), true);
+        }
+        main.loadAllProgrammDataFromDB();
+        
+        for(Programm pr : main.getProgrammData()){
+        	if(programm.getNumber()==pr.getNumber()){
+        		programm.abschnittMy.clear();
+        		programm.abschnittMy.addAll(pr.abschnittMy);
+        	}
         }
         Main.getAbschnittData().clear();
     	Main.getAbschnittData().addAll(programm.abschnittMy);
@@ -369,14 +398,40 @@ public class ProgrammEditDialogController {
      */
     @FXML
     private void handleEditAb() {
+    	Programm programmT = new Programm(this.programm.getProgInfoObject());
+    	programmT.setStartTermin(LocalDateTime.of(startTerminFieldDate.getValue(),
+    			LocalTime.of(Integer.parseInt(startTerminFieldHours.getText()),
+    					Integer.parseInt(startTerminFieldMinutes.getText()))));
+    	programmT.setSendungName(sendungField.getText());
+    	programmT.setLange(Integer.parseInt(langeField.getText()));
+    	programmT.setSendeVerant(sendeVerantField.getText());
+    	programmT.setProduktVerant(produktVerantField.getText());
+        
+        // set startRealTime same as startTime
+    	programmT.setStartTerminReal(LocalDateTime.of(startTerminFieldDate.getValue(),
+    			LocalTime.of(Integer.parseInt(startTerminFieldHours.getText()),
+    					Integer.parseInt(startTerminFieldMinutes.getText()))));
+    	programmT.setLangeReal(Integer.parseInt(langeField.getText()));
+    	
     	AbschnittMy selectedAbschnitt = abschnittTable.getSelectionModel().getSelectedItem();
     	int index = programm.abschnittMy.indexOf(selectedAbschnitt);
     	if(selectedAbschnitt.getNummer()!=0){
-            boolean okClicked = main.showAbschnittEditDialog(selectedAbschnitt);
+            boolean okClicked = main.showAbschnittEditDialog(selectedAbschnitt,programmT);
             if (okClicked) {
                 programm.abschnittMy.set(index, selectedAbschnitt);
                 updateDB.segmentsRefactor(selectedAbschnitt.getAbschnittObject(), true);
             }
+            
+            main.loadAllProgrammDataFromDB();
+            
+            for(Programm pr : main.getProgrammData()){
+            	if(programm.getNumber()==pr.getNumber()){
+            		programm.abschnittMy.clear();
+            		programm.abschnittMy.addAll(pr.abschnittMy);
+            	}
+            }
+            Main.getAbschnittData().clear();
+        	Main.getAbschnittData().addAll(programm.abschnittMy);
             
             showAbschnitt(programm);
         } else {
@@ -416,6 +471,9 @@ public class ProgrammEditDialogController {
         }
         else {
             // Nothing selected.
+        	//abschnittToDelete = abschnittTable.getItems().remove(selectedIndex);
+    		//programm.abschnittMy.remove(abschnittToDelete);
+    		//showAbschnitt(programm);
             Dialogs.create()
             	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
                 .title("Can't delete it now")
@@ -424,6 +482,65 @@ public class ProgrammEditDialogController {
                 .showWarning();
         }
     }
+    
+    /*
+     * Check overlap in Abschnitte
+     */
+    private String checkTimeOfAb(){
+    	String str = "";
+    	
+    	Programm programmTest = new Programm();
+    	
+    	programmTest.setStartTermin(LocalDateTime.of(startTerminFieldDate.getValue(),
+    			LocalTime.of(Integer.parseInt(startTerminFieldHours.getText()),
+    					Integer.parseInt(startTerminFieldMinutes.getText()))));
+    	programmTest.setSendungName(sendungField.getText());
+    	programmTest.setLange(Integer.parseInt(langeField.getText()));
+    	programmTest.setSendeVerant(sendeVerantField.getText());
+        programmTest.setProduktVerant(produktVerantField.getText());
+        
+        // set startRealTime same as startTime
+        programmTest.setStartTerminReal(LocalDateTime.of(startTerminFieldDate.getValue(),
+    			LocalTime.of(Integer.parseInt(startTerminFieldHours.getText()),
+    					Integer.parseInt(startTerminFieldMinutes.getText()))));
+        programmTest.setLangeReal(Integer.parseInt(langeField.getText()));
+        programmTest.abschnittMy.addAll(programm.abschnittMy);
+    	
+    	// set data on abschnittTest
+    	for(AbschnittMy abschnittTest : programmTest.abschnittMy ){
+    	
+    	// test time with start and end of the programm
+    	if(abschnittTest.getStartZeit().isBefore(programmTest.getStartTermin()) ||
+    			abschnittTest.getStartZeit().isAfter(programmTest.getStartTermin().plusMinutes(programmTest.getLange()))
+    			|| abschnittTest.getStartZeit().plusMinutes(abschnittTest.getLange()).isAfter(
+    					programmTest.getStartTermin().plusMinutes(programmTest.getLange()))){
+    		str+="Ung\u00fcltig: Zeit des Abschnitt  (must be in interval of the Program)!\n";
+    	}
+    	
+    	// test time with others abschnitte
+    	for(AbschnittMy abMy : programmTest.abschnittMy ){
+    		if(abschnittTest.getNummer() != abMy.getNummer()){
+    		if( (abschnittTest.getStartZeit().isAfter(abMy.getStartZeit()) && abschnittTest.getStartZeit().isBefore(
+    				abMy.getStartZeit().plusMinutes(abMy.getLange()))) || 
+    				(abschnittTest.getStartZeit().plusMinutes(abschnittTest.getLange()).isAfter(abMy.getStartZeit()) &&
+    						abschnittTest.getStartZeit().plusMinutes(abschnittTest.getLange()).isBefore(
+    								abMy.getStartZeit().plusMinutes(abMy.getLange()))) ||
+    								abschnittTest.getStartZeit().isEqual(abMy.getStartZeit()) || 
+    							 	 ( abschnittTest.getStartZeit().isBefore(abMy.getStartZeit()) &&
+    							 		abschnittTest.getStartZeit().plusMinutes(abschnittTest.getLange()).isAfter(
+    							 				abMy.getStartZeit().plusMinutes(abMy.getLange()))) ){
+    				str+="Ung\u00fcltig: Zeit des Abschnitt  (Must not overlap other Abschnitte.)!\n";
+    				return str;
+    		}
+    		
+    		}
+    	}
+    	
+    	}
+
+    	return str;
+    }
+    
     /*
 	// / try add | delete | edit functions again
 

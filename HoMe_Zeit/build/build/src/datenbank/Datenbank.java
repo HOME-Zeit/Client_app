@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.controlsfx.dialog.Dialog;
+import org.controlsfx.dialog.Dialogs;
+
 public class Datenbank 
 {
 	private String adresse = "127.0.0.1:3306";
@@ -69,14 +72,27 @@ public class Datenbank
         	if(exceptionAnzeigen == true)
         	{
         		ex.printStackTrace();
-        	}      	
+        	} 
+        	Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
+           	
         }
 		catch (Exception e)
 		{
 			if(exceptionAnzeigen == true)
         	{
         		e.printStackTrace();
-        	}  
+        	} 
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
 		}
 		return programminformation;
 	}
@@ -120,14 +136,26 @@ public class Datenbank
         	if(exceptionAnzeigen == true)
         	{
         		ex.printStackTrace();
-        	}      	
+        	}      
+        	Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
         }
 		catch (Exception e)
 		{
 			if(exceptionAnzeigen == true)
         	{
         		e.printStackTrace();
-        	}  
+        	} 
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
 		}
 		return programminformation;
 	}
@@ -165,14 +193,26 @@ public class Datenbank
         	if(exceptionAnzeigen == true)
         	{
         		ex.printStackTrace();
-        	}      	
+        	}  
+        	Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
         }
 		catch (Exception e)
 		{
 			if(exceptionAnzeigen == true)
         	{
         		e.printStackTrace();
-        	}  
+        	}
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
 		}
 		return programminformation;
 	}
@@ -204,7 +244,13 @@ public class Datenbank
         	if(exceptionAnzeigen == true)
         	{
         		ex.printStackTrace();
-        	}      	
+        	}   
+        	Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
         }
 		catch (Exception e)
 		{
@@ -212,6 +258,12 @@ public class Datenbank
         	{
         		e.printStackTrace();
         	}  
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
 		}
 		return abschnitt;
 	}
@@ -241,6 +293,12 @@ public class Datenbank
         	{
         		ex.printStackTrace();
         	}
+        	Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
         	return false;
         }
 		catch (Exception e)
@@ -249,6 +307,12 @@ public class Datenbank
         	{
         		e.printStackTrace();
         	}
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
 			return false;
 		}
 		return true;
@@ -281,6 +345,12 @@ public class Datenbank
         	{
         		ex.printStackTrace();
         	}
+        	Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
         	return false;
         }
 		catch (Exception e)
@@ -289,6 +359,12 @@ public class Datenbank
         	{
         		e.printStackTrace();
         	}
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
 			return false;
 		}
 		return true;
@@ -317,6 +393,12 @@ public class Datenbank
         	{
         		ex.printStackTrace();
         	}
+        	Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
         	return false;
         }
 		catch (Exception e)
@@ -325,6 +407,12 @@ public class Datenbank
         	{
         		e.printStackTrace();
         	}
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
 			return false;
 		}
 		return true;
@@ -354,6 +442,12 @@ public class Datenbank
         	{
         		ex.printStackTrace();
         	}
+        	Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
         	return false;
         }
 		catch (Exception e)
@@ -362,6 +456,12 @@ public class Datenbank
         	{
         		e.printStackTrace();
         	}
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
 			return false;
 		}
 		return true;
@@ -392,6 +492,12 @@ public class Datenbank
         	{
         		ex.printStackTrace();
         	}
+        	Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
         	return false;
         }
 		catch (Exception e)
@@ -400,6 +506,12 @@ public class Datenbank
         	{
         		e.printStackTrace();
         	}
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
 			return false;
 		}
 		return true;
@@ -429,6 +541,12 @@ public class Datenbank
         	{
         		ex.printStackTrace();
         	}
+        	Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
         	return false;
         }
 		catch (Exception e)
@@ -437,6 +555,12 @@ public class Datenbank
         	{
         		e.printStackTrace();
         	}
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
 			return false;
 		}
 		return true;
@@ -463,6 +587,12 @@ public class Datenbank
         	{
         		ex.printStackTrace();
         	}
+        	Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
         	return false;
         }
 		catch (Exception e)
@@ -471,6 +601,12 @@ public class Datenbank
         	{
         		e.printStackTrace();
         	}
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
 			return false;
 		}
 		return true;
@@ -498,6 +634,12 @@ public class Datenbank
         	{
         		ex.printStackTrace();
         	}
+        	Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
         	return false;
         }
 		catch (Exception e)
@@ -506,6 +648,12 @@ public class Datenbank
         	{
         		e.printStackTrace();
         	}
+			Dialogs.create()
+        	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Datenbank aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Datenbank, wechseln Sie den Modus oder fragen sie den Administrator")
+            .showWarning();
 			return false;
 		}
 		return true;

@@ -22,7 +22,8 @@ public class ClientServerConTime
     {
         try
         {
-            socket = new Socket(RequestServer.getIP(),55303);
+        	RequestServer requestServer = new RequestServer();
+            socket = new Socket(requestServer.getIP(),55303);
             /*try
             {
             	socket = new Socket(RequestServer.getIP(),55303);
@@ -45,9 +46,9 @@ public class ClientServerConTime
             //System.out.println(e+"\n!Socket Problem!");
         	Dialogs.create()
         	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
-            .title("No connection")
-            .masthead("Program cannot connect with Server")
-            .message("Please check internet connection or change mode")
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Server aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Internetverbindung, wechseln Sie IP-Adresse oder wechseln Sie den Modus")
             .showWarning();
         }
         
@@ -57,7 +58,8 @@ public class ClientServerConTime
     {
         try
         {
-            socket = new Socket(RequestServer.getIP(),55302);
+        	RequestServer requestServer = new RequestServer();
+            socket = new Socket(requestServer.getIP(),55302);
             /*try
             {
             	socket = new Socket(RequestServer.getIP(),55302);
@@ -80,9 +82,9 @@ public class ClientServerConTime
             //System.out.println(e+"\n!Socket Problem!");
         	Dialogs.create()
         	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
-            .title("No connection")
-            .masthead("Program cannot connect with Server")
-            .message("Please check internet connection or change mode")
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Server aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Internetverbindung, wechseln Sie IP-Adresse oder wechseln Sie den Modus")
             .showWarning();
         }
         
@@ -92,7 +94,8 @@ public class ClientServerConTime
     {
         try
         {
-            socket = new Socket(RequestServer.getIP(),55307);
+        	RequestServer requestServer = new RequestServer();
+            socket = new Socket(requestServer.getIP(),55307);
             /*try
             {
             	socket = new Socket(RequestServer.getIP(),55307);
@@ -115,15 +118,13 @@ public class ClientServerConTime
             //System.out.println(e+"\n!Socket Problem!");
         	Dialogs.create()
         	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
-            .title("No connection")
-            .masthead("Program cannot connect with Server")
-            .message("Please check internet connection or change mode")
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Server aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Internetverbindung, wechseln Sie IP-Adresse oder wechseln Sie den Modus")
             .showWarning();
         }
         
         return Long.parseLong(returnString,10);
     }
-    
-    
-    
+  
 }

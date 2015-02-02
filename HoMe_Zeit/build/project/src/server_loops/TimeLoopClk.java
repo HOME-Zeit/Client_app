@@ -45,12 +45,14 @@ public class TimeLoopClk extends Thread
                 printWriter = new PrintWriter(clientSocket.getOutputStream(),true);
                 try
                 {
-                    epoch = Retrieve_Time.getTime();
+                	Retrieve_Time retrieve_Time = new Retrieve_Time();
+                    epoch = retrieve_Time.getTime();
                     date = new Date(epoch);
                 }
                 catch(Exception e)
                 {
-                    epoch = Retrieve_Time.getTime_failed();
+                	Retrieve_Time retrieve_Time = new Retrieve_Time();
+                    epoch = retrieve_Time.getTime_failed();
                     date = new Date(epoch);
                 }
                 printWriter.println(dateFormat.format(date));

@@ -26,7 +26,8 @@ public class ClientServerConDB extends RequestServer
         LongBool longBool = new LongBool(time,truefalse);
         try
         {
-            socket = new Socket(RequestServer.getIP(),55305);
+        	RequestServer requestServer = new RequestServer();
+            socket = new Socket(requestServer.getIP(),55305);
             /*try
             {
             	socket = new Socket(RequestServer.getIP(),55305);
@@ -56,9 +57,9 @@ public class ClientServerConDB extends RequestServer
             //System.out.println(e);
         	Dialogs.create()
         	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
-            .title("No connection")
-            .masthead("Program cannot connect with Server")
-            .message("Please check internet connection or change mode")
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Server aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Internetverbindung, wechseln Sie IP-Adresse oder wechseln Sie den Modus")
             .showWarning();
         }
         return answer;
@@ -67,7 +68,8 @@ public class ClientServerConDB extends RequestServer
     {
         try
         {
-            socket = new Socket(RequestServer.getIP(),55304); 
+        	RequestServer requestServer = new RequestServer();
+            socket = new Socket(requestServer.getIP(),55304); 
             /*try
             {
             	socket = new Socket(RequestServer.getIP(),55304);
@@ -101,9 +103,9 @@ public class ClientServerConDB extends RequestServer
             //System.out.println(e + " socket error");
         	Dialogs.create()
         	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
-            .title("No connection")
-            .masthead("Program cannot connect with Server")
-            .message("Please check internet connection or change mode")
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Server aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Internetverbindung, wechseln Sie IP-Adresse oder wechseln Sie den Modus")
             .showWarning();
         }
         return answer;
@@ -114,7 +116,8 @@ public class ClientServerConDB extends RequestServer
         IntBool intBool = new IntBool(number,truefalse);
         try
         {
-            socket = new Socket(RequestServer.getIP(),55306);
+        	RequestServer requestServer = new RequestServer();
+            socket = new Socket(requestServer.getIP(),55306);
             /*try
             {
             	socket = new Socket(RequestServer.getIP(),55306);
@@ -143,9 +146,9 @@ public class ClientServerConDB extends RequestServer
             //System.out.println(e);
         	Dialogs.create()
         	.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
-            .title("No connection")
-            .masthead("Program cannot connect with Server")
-            .message("Please check internet connection or change mode")
+            .title("Kein Verbindung")
+            .masthead("Das Programm konnte kein Verbindung zum Server aufbauen")
+            .message("Bitte \u00dcberpr\u00fcfen Sie ihre Internetverbindung, wechseln Sie IP-Adresse oder wechseln Sie den Modus")
             .showWarning();
         }
         return answer;

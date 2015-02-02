@@ -21,7 +21,8 @@
           <Menu mnemonicParsing="false" text="Bearbeiten">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#handleChangeMode" text="Modus wechseln" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleChangeIP" text="IP-Adresse wechseln" />
+                  <MenuItem fx:id="ipChange" mnemonicParsing="false" onAction="#handleChangeIP" text="IP-Adresse wechseln" visible="false" />
+                  <MenuItem fx:id="ntpChange" mnemonicParsing="false" onAction="#handleChangeNTP" text="NTP-Server wechseln" visible="false" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Hilfe">

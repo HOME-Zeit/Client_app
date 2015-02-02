@@ -525,8 +525,17 @@ public class Main extends Application {
     	try {
     		//System.out.println(Retrieve_Time.getTime()); // Test time
     		RequestDB requestDB = new RequestDB();
+    		long epoch = 0;
     		Retrieve_Time retrieve_Time = new Retrieve_Time();
-    		ArrayList<Programminformation> progrDB = requestDB.requestMinor(retrieve_Time.getTime(),true);
+    		try
+            {
+                epoch = retrieve_Time.getTime();
+            }
+            catch(Exception e)
+            {
+                epoch = retrieve_Time.getTime_failed();
+            }
+    		ArrayList<Programminformation> progrDB = requestDB.requestMinor(epoch,true);
     		ArrayList< Programm> progrClient = new ArrayList<Programm>();
     		
     		for(Programminformation p : progrDB ){

@@ -93,6 +93,8 @@ public class TimerGoController {
 	private Main main;
 	
 	private Color blackOrWhiteColor = Color.WHITE; 
+	
+	private Retrieve_Time retrieve_Time = new Retrieve_Time();
 
 	/**
 	 * Is called by the main application to give a reference back to itself.
@@ -123,7 +125,7 @@ public class TimerGoController {
 	@FXML
 	private void initialize() {
 		
-		setVisibleMode();
+		//setVisibleMode();
 		// SegmentedButton segmentedButton = new SegmentedButton();
 		// segmentedButton.getButtons().addAll(darkToggle,lightToggle);
 
@@ -336,22 +338,29 @@ public class TimerGoController {
 					int dur1Minutes = (int) dur1.toMinutes();
 					int dur1Seconds = (int) dur1.minusMinutes(dur1Minutes).getSeconds();
 					abschnittTime.setText(String.format("%02d", dur1Minutes) + ":" + String.format("%02d", dur1Seconds));
-					
-				}	
+					break;
+				}
+				else{
+					abschnittInfo.setText("");
+					abschnittRealStart.setText("");
+					abschnittTime.setText("");
+					abschnittDivider.setText("");
+				}
 			}
+			
+		}
+		else{
 			abschnittInfo.setText("");
 			abschnittRealStart.setText("");
 			abschnittTime.setText("");
 			abschnittDivider.setText("");
-		}
-		else{
 		}
 	}
 
 	private void getDiffTime() {
 		if (Main.isRegieMode) {
 			try {
-				this.secondsDiff = Retrieve_Time.getTime()
+				this.secondsDiff = retrieve_Time.getTime()
 						- LocalDateTime.now().toEpochSecond(
 								ZoneOffset.of("+01:00"));
 			} catch (Exception e) {
@@ -360,7 +369,8 @@ public class TimerGoController {
 			}
 		} else {
 			try {
-				this.secondsDiff = RequestServer.requestSec()
+				RequestServer requestServer = new RequestServer();
+				this.secondsDiff = requestServer.requestSec()
 						- LocalDateTime.now().toEpochSecond(
 								ZoneOffset.of("+01:00"));
 			} catch (Exception e) {
