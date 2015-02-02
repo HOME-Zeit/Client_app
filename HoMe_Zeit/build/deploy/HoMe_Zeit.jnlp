@@ -11,7 +11,7 @@
   </resources>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="HoMe_Zeit.jar" size="63506" download="eager" />
+    <jar href="HoMe_Zeit.jar" size="66403" download="eager" />
     <jar href="libs/apache-commons-net.jar" size="460010" download="eager" />
     <jar href="libs/controlsfx-8.20.8.jar" size="957666" download="eager" />
     <jar href="libs/mm.mysql-2.0.4-bin.jar" size="109927" download="eager" />
