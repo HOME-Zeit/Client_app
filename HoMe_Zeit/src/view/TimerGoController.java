@@ -115,6 +115,7 @@ public class TimerGoController {
 		abschnittTime.setTooltip(new Tooltip("Aktuelle Abschnittzeit"));
 	
 	}
+	
 
 	/**
 	 * To show different times
