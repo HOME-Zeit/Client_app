@@ -224,14 +224,14 @@ public class RootLayoutController {
     			.styleClass(Dialog.STYLE_CLASS_CROSS_PLATFORM)
     			  .actions(Dialog.ACTION_OK,Dialog.ACTION_CANCEL)
         	      .title("Ntp-Server Adresse w\u00e4hlen")
-        	      .masthead("Aktuelle NTP = \""+ retrieve_Time.getUrl()+"\"")
+        	      .masthead("Aktuelle NTP = \""+ retrieve_Time.getUrl()+"\".\n\nDefault-Wert ist \"time-a.nist.gov\".")
         	      .message( "Geben Sie die neue Adresse des Ntp-Servers ein")
         	      .showTextInput();
 		
 		/**
 		 * TODO chaeck or in new IP are 4 blocks - str.split(...)
 		 */
-		if(nTPAddress.isPresent() && nTPAddress.get().compareTo("")!=0){
+		if(nTPAddress.isPresent() && nTPAddress.get().trim().compareTo("")!=0){
 			retrieve_Time.setUrl(nTPAddress.get());
 			main.saveIpNtpToPref(retrieve_Time.getUrl());
 			Dialogs.create()

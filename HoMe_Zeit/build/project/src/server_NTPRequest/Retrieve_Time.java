@@ -1,10 +1,14 @@
 package server_NTPRequest;
 
 import java.net.InetAddress;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 
 import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.NtpV3Packet;
 import org.apache.commons.net.ntp.TimeInfo;
+import org.controlsfx.dialog.Dialog;
+import org.controlsfx.dialog.Dialogs;
 
 import application.Main;
 /**
@@ -50,7 +54,9 @@ public class Retrieve_Time
     }
     public long getTime_failed()
     {
-        long time = System.currentTimeMillis();
-        return time;
+        //long time = System.currentTimeMillis()/100;
+        long timeS = LocalDateTime.now().toEpochSecond(ZoneOffset.of("+01:00"));
+        //System.out.println(timeS+"");
+        return timeS;
     }
 }

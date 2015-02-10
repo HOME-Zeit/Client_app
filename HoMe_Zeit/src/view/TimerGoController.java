@@ -104,7 +104,16 @@ public class TimerGoController {
 	public void setMain(Main main) {
 		this.main = main;
 		
-		currTime.setTooltip(new Tooltip("Current time"));
+		Font f = new Font(60);
+		Tooltip tool = new Tooltip("Programmzeit");
+		tool.setFont(f);
+		currTime.setTooltip(new Tooltip("Aktuelle Zeit"));
+		programInfo.setTooltip(new Tooltip("Programminformationen"));
+		timeStartEndAfter.setTooltip(tool);
+		progresProgram.setTooltip(new Tooltip("Programmprogress"));
+		abschnittInfo.setTooltip(new Tooltip("Abschnittformationen"));
+		abschnittTime.setTooltip(new Tooltip("Aktuelle Abschnittzeit"));
+	
 	}
 
 	/**
@@ -327,12 +336,12 @@ public class TimerGoController {
 			for(AbschnittMy ab : programm.abschnittMy){
 				if(curTime.isAfter(ab.getStartZeitReal()) 
 						&& curTime.isBefore(ab.getStartZeitReal().plusMinutes(ab.getRealLange()))){
-					abschnittDivider.setText("|");
+					//abschnittDivider.setText("|");
 					abschnittInfo.setText(ab.getTitel() + " | "
 							+ ab.getMitwirkende() + " | " + ab.getStartZeit().format(formatter3).toString()
 							+ " | " + Integer.toString(ab.getLange()) + " Minuten");
 					
-					abschnittRealStart.setText(ab.getStartZeitReal().format(formatter3).toString());
+					//abschnittRealStart.setText(ab.getStartZeitReal().format(formatter3).toString());
 					java.time.Duration dur1 = java.time.Duration.between(ab.getStartZeitReal(),
 							curTime);
 					int dur1Minutes = (int) dur1.toMinutes();

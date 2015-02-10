@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.8" icons="true" automaticImage="JPEG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="true" nesting-relationships="true">  
+  <class id="1" language="java" name="application.Main" project="HoMe_Zeit" file="/HoMe_Zeit/src/application/Main.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="87" x="719" y="316"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="client_ServerRequests.ClientServerConDB" project="HoMe_Zeit" 
+    file="/HoMe_Zeit/src/client_ServerRequests/ClientServerConDB.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="132" x="63" y="316"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="client_ServerRequests.RequestServer" project="HoMe_Zeit" 
+    file="/HoMe_Zeit/src/client_ServerRequests/RequestServer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="109" x="270" y="223"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="client_ServerRequests.ClientServerConTime" project="HoMe_Zeit" 
+    file="/HoMe_Zeit/src/client_ServerRequests/ClientServerConTime.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="144" x="235" y="316"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="datenbank.Datenbank" project="HoMe_Zeit" 
+    file="/HoMe_Zeit/src/datenbank/Datenbank.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="87" x="421" y="502"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="model.Programm" project="HoMe_Zeit" file="/HoMe_Zeit/src/model/Programm.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="87" x="658" y="409"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="model.AbschnittMy" project="HoMe_Zeit" 
+    file="/HoMe_Zeit/src/model/AbschnittMy.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="94" x="766" y="502"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="server_FrontDBCon.UpdateDB" project="HoMe_Zeit" 
+    file="/HoMe_Zeit/src/server_FrontDBCon/UpdateDB.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="94" x="482" y="316"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="server_FrontDBCon.RequestDB" project="HoMe_Zeit" 
+    file="/HoMe_Zeit/src/server_FrontDBCon/RequestDB.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="94" x="524" y="409"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="server_loops.DBLoopMajor" project="HoMe_Zeit" 
+    file="/HoMe_Zeit/src/server_loops/DBLoopMajor.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="100" x="42" y="130"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="server_loops.TimeLoopSec" project="HoMe_Zeit" 
+    file="/HoMe_Zeit/src/server_loops/TimeLoopSec.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="102" x="649" y="130"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="server_NTPRequest.Retrieve_Time" project="HoMe_Zeit" 
+    file="/HoMe_Zeit/src/server_NTPRequest/Retrieve_Time.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="106" x="719" y="223"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="view.ProgrammEditDialogController" project="HoMe_Zeit" 
+    file="/HoMe_Zeit/src/view/ProgrammEditDialogController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="197" x="440" y="223"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="view.RootLayoutController" project="HoMe_Zeit" 
+    file="/HoMe_Zeit/src/view/RootLayoutController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="144" x="649" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="view.TimerGoController" project="HoMe_Zeit" 
+    file="/HoMe_Zeit/src/view/TimerGoController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="128" x="481" y="130"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="view.AbschnittEditDialogController" project="HoMe_Zeit" 
+    file="/HoMe_Zeit/src/view/AbschnittEditDialogController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="190" x="1120" y="223"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="view.ProgrammOverviewController" project="HoMe_Zeit" 
+    file="/HoMe_Zeit/src/view/ProgrammOverviewController.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="194" x="886" y="223"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="false"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <dependency id="18">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="19">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="20" name="main"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="22">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="23">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="24" name="retrieve_Time"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="26">    
+    <bendpoint x="409" y="223"/>    
+    <bendpoint x="409" y="316"/>    
+    <bendpoint x="409" y="409"/>    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <association id="27">    
+    <bendpoint x="952" y="316"/>    
+    <bendpoint x="952" y="409"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="28" name="abschnitt"/>      
+      <multiplicity id="29" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="30">    
+    <bendpoint x="32" y="223"/>    
+    <bendpoint x="32" y="316"/>    
+    <bendpoint x="32" y="409"/>    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="31">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="32" name="abschnittMy"/>      
+      <multiplicity id="33" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="34">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <association id="35">    
+    <bendpoint x="430" y="409"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="36" name="DB"/>      
+      <multiplicity id="37" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="38">    
+    <bendpoint x="855" y="130"/>    
+    <bendpoint x="855" y="223"/>    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="39" name="main"/>      
+      <multiplicity id="40" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="41">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <association id="42">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="43" name="DB"/>      
+      <multiplicity id="44" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="45">    
+    <bendpoint x="857" y="316"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="46" name="programm"/>      
+      <multiplicity id="47" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="48">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="49" name="programmData"/>      
+      <multiplicity id="50" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="51">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="52" name="main"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <bendpoint x="606" y="316"/>    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="55" name="programm"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="57">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="58" name="updateDB"/>      
+      <multiplicity id="59" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="60">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="61" name="main"/>      
+      <multiplicity id="62" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="63">    
+    <bendpoint x="688" y="223"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="64" name="main"/>      
+      <multiplicity id="65" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="66">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="67">    
+    <bendpoint x="878" y="316"/>    
+    <bendpoint x="878" y="409"/>    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="68">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="69">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="70">    
+    <bendpoint x="836" y="316"/>    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <association id="71">    
+    <bendpoint x="667" y="223"/>    
+    <bendpoint x="667" y="316"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="72" name="programm"/>      
+      <multiplicity id="73" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="74">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="75">    
+    <bendpoint x="781" y="130"/>    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="76">    
+    <bendpoint x="451" y="316"/>    
+    <bendpoint x="451" y="409"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <association id="77">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="78" name="updateDB"/>      
+      <multiplicity id="79" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="80">    
+    <bendpoint x="450" y="130"/>    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <generalization id="81">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <association id="82">    
+    <bendpoint x="775" y="409"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="83" name="abschnittMyData"/>      
+      <multiplicity id="84" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="false" package="false" protected="false" private="false" static="false"/>    
+    <operations public="false" package="false" protected="false" private="false" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
